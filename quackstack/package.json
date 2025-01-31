@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "^22.0.0"
+  },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --port 8888",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -14,8 +17,10 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",
+    "@vue/cli-service": "^5.0.8",
     "gsap": "^3.12.7",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-cli-service": "^5.0.10"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",

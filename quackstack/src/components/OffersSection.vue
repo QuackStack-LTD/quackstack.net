@@ -1,24 +1,26 @@
 <template>
-  <div class="grid grid-cols-12 gap-10 max-md:flex-col w-full font-poppins items-center">
+  <div class="grid grid-cols-12 max-lg:grid-cols-1 gap-10 max-lg:flex-col max-w-full font-poppins items-center flex-wrap justify-between">
     <div class="col-span-12 md:col-span-6 flex flex-col w-full">
-      <div class="flex flex-col w-full text-base font-light text-white text-opacity-80 max-md:mt-10 max-md:max-w-full">
-        <div class="self-start text-[40px] font-semibold text-white mt-[100px] max-md:mt-10" role="heading" aria-level="2">
-          {{ title }}
+      <div class="flex flex-col w-full text-base font-light text-white text-opacity-80 max-lg:mt-10 max-lg:max-w-full max-lg:text-center max-lg:items-center">
+        <div class="max-w-[22rem]">
+          <div class="text-[2.8rem] max-sm:text-[2.2rem] font-semibold text-white mt-[6.25rem] max-lg:mt-10" role="heading" aria-level="2">
+            {{ title }}
+          </div>
+          <div class="mt-20 max-lg:mt-10 max-lg:mr-2.5 max-lg:max-w-full text-[1.2rem] max-sm:text-[1rem]">
+            {{ offerDescription }}
+          </div>
         </div>
-        <div class="mt-20 max-md:mt-10 max-md:mr-2.5 max-md:max-w-full text-[17px]">
-          {{ offerDescription }}
-        </div>
-        <button class="overflow-hidden gap-2 self-start px-10 mt-9 leading-none bg-[#e59c2d] rounded-xl shadow-[0px_0px_8px_0px_#e59c2d] min-h-[46px] text-gray-950 w-fit font-normal cursor-pointer transition-all duration-[125ms] ease-in-out hover:scale-[1.05]" aria-label="Contact Us" @click="ClickContactUs">
+        <button class="overflow-hidden gap-2 px-10 mt-9 leading-none bg-[#e59c2d] rounded-xl shadow-[0px_0px_0.5rem_0px_#e59c2d] min-h-[2.875rem] text-gray-950 w-[12rem] font-normal cursor-pointer transition-all duration-[125ms] ease-in-out hover:scale-[1.05]" aria-label="Contact Us" @click="ClickContactUs">
           Contact Us
         </button>
       </div>
     </div>
 
-    <div class="col-span-12 md:col-span-6 flex flex-col w-full mt-10 max-md:flex-row max-md:overflow-x-auto" ref="cards">
-      <img loading="lazy" src="@/assets/offers/offer1.svg" class="card mt-[10px] max-md:mr-4" />
-      <img loading="lazy" src="@/assets/offers/offer2.svg" class="card mt-[10px] max-md:mr-4" />
-      <img loading="lazy" src="@/assets/offers/offer3.svg" class="card mt-[10px] max-md:mr-4" />
-      <img loading="lazy" src="@/assets/offers/offer4.svg" class="card mt-[10px] max-md:mr-4" />
+    <div class="col-span-12 md:col-span-6 flex flex-col w-full mt-10 overflow-x-none" ref="cards">
+      <img loading="lazy" src="@/assets/offers/offer1.svg" class="card mt-[0.625rem] max-h-[10rem] max-sm:max-h-[7.3rem] max-lg:mr-4 max-lg:max-h-[9.5rem]" />
+      <img loading="lazy" src="@/assets/offers/offer2.svg" class="card mt-[0.625rem] max-h-[10rem] max-sm:max-h-[7.3rem] max-lg:mr-4 max-lg:max-h-[9.5rem]" />
+      <img loading="lazy" src="@/assets/offers/offer3.svg" class="card mt-[0.625rem] max-h-[10rem] max-sm:max-h-[7.3rem] max-lg:mr-4 max-lg:max-h-[9.5rem]" />
+      <img loading="lazy" src="@/assets/offers/offer4.svg" class="card mt-[0.625rem] max-h-[10rem] max-sm:max-h-[7.3rem] max-lg:mr-4 max-lg:max-h-[9.5rem]" />
     </div>
   </div>
 </template>
@@ -41,7 +43,7 @@ export default defineComponent({
   },
   emits: ['scrollToContact'],
   setup(props, {emit}) {
-    
+
     const cards = ref<HTMLElement | null>(null);
 
     const scrollState = reactive({
@@ -80,7 +82,7 @@ export default defineComponent({
 
         const observer = new IntersectionObserver(
           (entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach((entry, _) => {
               const target = entry.target as HTMLElement;
 
               // Check if the image is in the viewport and if scrolling up
@@ -100,7 +102,7 @@ export default defineComponent({
       }
     });
 
-    return { 
+    return {
       cards,
       ClickContactUs
      };

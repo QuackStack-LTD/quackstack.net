@@ -1,29 +1,29 @@
 <template>
-    <div class="flex flex-row gap-x-40 font-poppins mx-auto">
-      <div class="flex flex-col text-white text-[50px] font-semibold max-w-[350px] gap-y-15">
-        <div>
-          <p>Your vison</p>
-          <span class="flex flex-row gap-x-3 p-0 m-0">
-            <p class="text-amber-400">Brought</p>
-            <p>to live.</p>
-          </span>
-        </div>
-        <div class="text-[17px] font-light">
-          <h>Our team delivers tailored software solutions, optimizing your system requirements, integration, and scalability to ensure exceptional performance and success.</h>
-        </div>
+  <div class="flex flex-row gap-x-40 font-poppins mx-auto flex-wrap w-full items-center justify-between max-lg:text-center max-lg:gap-y-10 max-lg:justify-center">
+    <div class="flex flex-col text-white text-[3.5rem] max-sm:text-[2.2rem] max-md:text-[2.8rem] font-semibold max-w-[30rem] gap-y-15 max-lg:gap-y-10 max-md:max-w-full">
+      <div class="flex flex-col max-lg:items-center">
+        <p>Your vision</p>
+        <p class="flex flex-row gap-x-3 p-0 m-0">
+          <span class="text-amber-400">Brought</span> to life.
+        </p>
       </div>
-      <div>
-        <img src="@/assets/laptop.svg" class="w-[452px]">
+      <div class="text-[1.2rem] max-w-full font-light max-sm:text-[1rem]">
+        <h class="text-wrap">Our team delivers tailored software solutions, optimizing your system requirements, integration, and
+          scalability to ensure exceptional performance and success.</h>
       </div>
     </div>
+    <div>
+      <img src="@/assets/laptop.svg" class="h-[32rem] max-sm:h-[19rem] max-md:h-[27rem]">
+    </div>
+  </div>
 
 
-  </template>
-  
-  <script lang="ts">
-  import { defineComponent } from 'vue'
-  
-  export default defineComponent({
-    name: 'Heading',
-  })
-  </script>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'HeroHeading',
+})
+</script>

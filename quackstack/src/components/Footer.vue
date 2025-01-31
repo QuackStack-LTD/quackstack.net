@@ -1,11 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-interface FooterProps {
-  companyName: string;
-  year: number;
-}
-
 export default defineComponent({
   name: 'FooterComponent',
   props: {
@@ -22,7 +17,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <footer 
+  <footer
     class="flex flex-col items-center w-full bg-transparent mb-10"
     role="contentinfo"
   >

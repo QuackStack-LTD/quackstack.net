@@ -1,19 +1,19 @@
 <template>
-  <div class="grid grid-cols-12 gap-5 max-md:grid-cols-1 font-poppins">
-    <div class="col-span-12 md:col-span-6 flex flex-col w-full max-md:ml-0 max-md:w-full">
-      <div class="flex relative flex-col self-stretch my-auto max-md:mt-10 max-md:max-w-full">
-        <div class="text-[40px] font-semibold text-white max-md:max-w-full" role="heading" aria-level="2">
+  <div class="grid grid-cols-12 gap-5 max-lg:grid-cols-1 font-poppins w-full max-lg:items-center lg:justify-between justify-center">
+    <div class="col-span-12 md:col-span-6 flex w-full flex-col max-lg:ml-0 max-lg:w-full">
+      <div class="flex relative flex-col self-stretch my-auto w-full max-lg:mt-10 max-lg:max-w-full max-lg:text-center flex-wrap">
+        <div class="text-[2.8rem] max-sm:text-[2.2rem]  font-semibold text-white max-lg:max-w-full" role="heading" aria-level="2">
           {{ title }}
         </div>
-        <div class="mt-20 text-[17px] font-light text-white text-opacity-80 max-md:mt-10 max-md:mr-2.5 max-md:max-w-full mt-1">
+        <div class="mt-20 text-[1.2rem] max-sm:text-[1rem] w-full md:w-[calc(100%-10rem)] font-light text-white text-opacity-80 max-lg:mt-10 max-lg:max-w-full max-lg:px-4 mt-1">
           {{ description }}
         </div>
       </div>
     </div>
 
-    <div class="col-span-12 md:col-span-6 flex flex-col w-full max-md:ml-0 max-md:w-full">
+    <div class="col-span-12 md:col-span-6 flex flex-col max-md:ml-0 max-md:w-full max-lg:items-center">
       <img ref="imageElement" loading="lazy" src="@/assets/development.svg"
-        class="object-contain grow w-full rounded-none aspect-[1.02] max-md:mt-10 max-md:max-w-full"
+        class="object-contain grow rounded-none aspect-[1] h-[35rem] max-sm:h-[18rem] max-md:place-self-center max-lg:mt-10 max-lg:max-h-[34rem]"
         :alt="imageAlt" />
     </div>
   </div>
