@@ -1,11 +1,11 @@
 <template>
   <div class="grid grid-cols-12 gap-5 max-lg:grid-cols-1 font-poppins w-full max-lg:items-center lg:justify-between justify-center">
     <div class="col-span-12 md:col-span-6 flex w-full flex-col max-lg:ml-0 max-lg:w-full">
-      <div class="flex relative flex-col self-stretch my-auto w-full max-lg:mt-10 max-lg:max-w-full max-lg:text-center flex-wrap">
-        <div class="text-[2.8rem] max-sm:text-[2.2rem]  font-semibold text-white max-lg:max-w-full" role="heading" aria-level="2">
+      <div class="flex relative flex-col self-stretch my-auto w-full max-lg:mt-10 max-lg:max-w-full max-lg:text-center flex-wrap items-center">
+        <div class="text-[2.8rem] max-sm:text-[2.2rem] w-full max-md:w-[calc(100%-10rem)] max-md:items-center font-semibold text-white max-lg:max-w-full" role="heading" aria-level="2">
           {{ title }}
         </div>
-        <div class="mt-20 text-[1.2rem] max-sm:text-[1rem] w-full md:w-[calc(100%-10rem)] font-light text-white text-opacity-80 max-lg:mt-10 max-lg:max-w-full max-lg:px-4 mt-1">
+        <div class="mt-20 text-[1.2rem] max-sm:text-[1rem] w-full max-md:w-[calc(100%-5rem)] max-md:items-center font-light text-white text-opacity-80 max-lg:mt-10 max-lg:max-w-full max-lg:px-4 mt-1">
           {{ description }}
         </div>
       </div>

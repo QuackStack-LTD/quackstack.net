@@ -1,26 +1,26 @@
 <template>
   <div class="grid grid-cols-12 max-lg:grid-cols-1 gap-10 max-lg:flex-col max-w-full font-poppins items-center flex-wrap justify-between">
     <div class="col-span-12 md:col-span-6 flex flex-col w-full">
-      <div class="flex flex-col w-full text-base font-light text-white text-opacity-80 max-lg:mt-10 max-lg:max-w-full max-lg:text-center max-lg:items-center">
+      <div class="flex flex-col w-full text-base font-light text-white justify-between max-w-full text-opacity-80 max-lg:mt-10 max-lg:max-w-full max-lg:text-center max-lg:items-center">
         <div class="max-w-[22rem]">
           <div class="text-[2.8rem] max-sm:text-[2.2rem] font-semibold text-white mt-[6.25rem] max-lg:mt-10" role="heading" aria-level="2">
             {{ title }}
           </div>
-          <div class="mt-20 max-lg:mt-10 max-lg:mr-2.5 max-lg:max-w-full text-[1.2rem] max-sm:text-[1rem]">
+          <div class="mt-20 max-lg:mt-10 w-[22rem] max-lg:max-w-full text-[1.2rem] max-sm:text-[1rem] max-md:items-center ">
             {{ offerDescription }}
           </div>
         </div>
-        <button class="overflow-hidden gap-2 px-10 mt-9 leading-none bg-[#e59c2d] rounded-xl shadow-[0px_0px_0.5rem_0px_#e59c2d] min-h-[2.875rem] text-gray-950 w-[12rem] font-normal cursor-pointer transition-all duration-[125ms] ease-in-out hover:scale-[1.05]" aria-label="Contact Us" @click="ClickContactUs">
+        <button class="overflow-hidden md:ml-[0.5rem] gap-2 px-10 mt-9 leading-none bg-[#e59c2d] rounded-xl shadow-[0px_0px_0.5rem_0px_#e59c2d] min-h-[2.875rem] text-gray-950 w-[12rem] font-normal cursor-pointer transition-all duration-[125ms] ease-in-out hover:scale-[1.05]" aria-label="Contact Us" @click="ClickContactUs">
           Contact Us
         </button>
       </div>
     </div>
 
-    <div class="col-span-12 md:col-span-6 flex flex-col w-full mt-10 overflow-x-none" ref="cards">
-      <img loading="lazy" src="@/assets/offers/offer1.svg" class="card mt-[0.625rem] max-h-[10rem] max-sm:max-h-[7.3rem] max-lg:mr-4 max-lg:max-h-[9.5rem]" />
-      <img loading="lazy" src="@/assets/offers/offer2.svg" class="card mt-[0.625rem] max-h-[10rem] max-sm:max-h-[7.3rem] max-lg:mr-4 max-lg:max-h-[9.5rem]" />
-      <img loading="lazy" src="@/assets/offers/offer3.svg" class="card mt-[0.625rem] max-h-[10rem] max-sm:max-h-[7.3rem] max-lg:mr-4 max-lg:max-h-[9.5rem]" />
-      <img loading="lazy" src="@/assets/offers/offer4.svg" class="card mt-[0.625rem] max-h-[10rem] max-sm:max-h-[7.3rem] max-lg:mr-4 max-lg:max-h-[9.5rem]" />
+    <div class="col-span-12 md:col-span-6 flex flex-col w-full mt-10 overflow-x-none justify-center items-center" ref="cards">
+      <img loading="lazy" src="@/assets/offers/offer1.svg" class="card mt-[0.625rem] h-[10rem] max-sm:max-h-[7.3rem] max-lg:max-h-[9.5rem]" />
+      <img loading="lazy" src="@/assets/offers/offer2.svg" class="card mt-[0.625rem] h-[10rem] max-sm:max-h-[7.3rem] max-lg:max-h-[9.5rem]" />
+      <img loading="lazy" src="@/assets/offers/offer3.svg" class="card mt-[0.625rem] h-[10rem] max-sm:max-h-[7.3rem] max-lg:max-h-[9.5rem]" />
+      <img loading="lazy" src="@/assets/offers/offer4.svg" class="card mt-[0.625rem] h-[10rem] max-sm:max-h-[7.3rem] max-lg:max-h-[9.5rem]" />
     </div>
   </div>
 </template>

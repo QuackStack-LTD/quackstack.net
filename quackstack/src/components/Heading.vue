@@ -4,11 +4,11 @@
       <div class="flex flex-col max-lg:items-center">
         <p>Your vision</p>
         <p class="flex flex-row gap-x-3 p-0 m-0">
-          <span class="text-amber-400">Brought</span> to life.
+          <span class="text-amber-400">Brought</span> to live.
         </p>
       </div>
-      <div class="text-[1.2rem] max-w-full font-light max-sm:text-[1rem]">
-        <h class="text-wrap">Our team delivers tailored software solutions, optimizing your system requirements, integration, and
+      <div class="text-[1.2rem] max-w-full font-light max-sm:text-[1rem] w-full max-md:w-[calc(100%-5rem)] max-md:items-center max-md:mx-auto max-lg:px-4">
+        <h>Our team delivers tailored software solutions, optimizing your system requirements, integration, and
           scalability to ensure exceptional performance and success.</h>
       </div>
     </div>
