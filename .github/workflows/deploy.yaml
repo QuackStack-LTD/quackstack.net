@@ -16,11 +16,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Go to Application Directory
-        run: cd quackstack
-
       - name: Install Dependencies
-        run: npm install
+        run: cd quackstack
+          npm install
 
       - name: Deploy Application
-        run: npm deploy
+        run: cd quackstack
+          npm deploy
