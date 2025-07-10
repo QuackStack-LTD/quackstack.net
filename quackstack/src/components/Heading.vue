@@ -6,7 +6,7 @@
       <div class="flex flex-col max-lg:items-center">
         <p>Your vision</p>
         <p class="flex flex-row gap-x-3 p-0 m-0">
-          <span class="text-amber-400">Brought</span> to live.
+          <span class="text-amber-400">Brought</span> to life.
         </p>
       </div>
       <div
