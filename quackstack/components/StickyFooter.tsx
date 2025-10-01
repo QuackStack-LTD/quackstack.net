@@ -34,7 +34,7 @@ const StickyFooter: React.FC = () => {
 				</div>
 				<div className='text-base text-center md:text-right space-y-1'>
 					<p className='hover:text-orange-400 transition-colors duration-200 cursor-pointer'>Terms & Privacy</p>
-					<p className='tracking-wide font-semibold'>Copyright © 2024 QuackStack Ltd</p>
+					<p className='tracking-wide font-semibold'>Copyright © 2025 QuackStack Ltd</p>
 				</div>
 			</div>
 			<div className='absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 w-[60vw] h-32 bg-gradient-to-t from-orange-500/30 to-transparent rounded-full blur-2xl pointer-events-none' />
