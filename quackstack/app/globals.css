@@ -1,3 +1,13 @@
+/* Always show pointer for all Button and button elements */
+button,
+[role='button'],
+.btn,
+.Button,
+.shadcn-ui-button,
+.cursor-pointer,
+[data-radix-collection-item] {
+	cursor: pointer !important;
+}
 @import 'tailwindcss';
 @import 'tw-animate-css';
 

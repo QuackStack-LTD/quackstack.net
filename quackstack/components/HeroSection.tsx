@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useMotionValue, useSpring, motion } from 'framer-motion';
@@ -83,7 +85,7 @@ const HeroSection: React.FC = () => {
 					>
 						<Button
 							size='lg'
-							className='relative overflow-hidden group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white rounded-xl sm:rounded-2xl backdrop-blur-xl bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-orange-600/30 border border-orange-400/40 shadow-[0_8px_32px_0_rgba(251,146,60,0.37)] hover:shadow-[0_8px_40px_0_rgba(251,146,60,0.6)] transition-all duration-500 hover:scale-105 hover:rotate-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-orange-300/20 before:via-transparent before:to-orange-500/20 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-xl sm:after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+							className='relative overflow-hidden cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white rounded-xl sm:rounded-2xl backdrop-blur-xl bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-orange-600/30 border border-orange-400/40 shadow-[0_8px_32px_0_rgba(251,146,60,0.37)] hover:shadow-[0_8px_40px_0_rgba(251,146,60,0.6)] transition-all duration-500 hover:scale-105 hover:rotate-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-orange-300/20 before:via-transparent before:to-orange-500/20 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-xl sm:after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
 							style={{
 								zIndex: 1,
 								background: 'linear-gradient(135deg, rgba(251,146,60,0.3) 0%, rgba(234,88,12,0.2) 50%, rgba(251,146,60,0.3) 100%)',
@@ -93,12 +95,12 @@ const HeroSection: React.FC = () => {
 							}}
 							aria-label='Get started with QuackStack'
 						>
-							<span className='relative z-10 font-light drop-shadow-sm group-hover:drop-shadow-md transition-all duration-300'>Contact Us</span>
+							<span className='relative z-10 font-light drop-shadow-sm group-hover:drop-shadow-md transition-all duration-300 '>Contact Us</span>
 							<div className='absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-500'></div>
 						</Button>
 						<Button
 							size='lg'
-							className='relative overflow-hidden group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white rounded-xl sm:rounded-2xl backdrop-blur-xl bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-orange-600/30 border border-orange-400/40 shadow-[0_8px_32px_0_rgba(251,146,60,0.37)] hover:shadow-[0_8px_40px_0_rgba(251,146,60,0.6)] transition-all duration-500 hover:scale-105 hover:-rotate-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-orange-300/20 before:via-transparent before:to-orange-500/20 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-xl sm:after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+							className='relative overflow-hidden cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white rounded-xl sm:rounded-2xl backdrop-blur-xl bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-orange-600/30 border border-orange-400/40 shadow-[0_8px_32px_0_rgba(251,146,60,0.37)] hover:shadow-[0_8px_40px_0_rgba(251,146,60,0.6)] transition-all duration-500 hover:scale-105 hover:-rotate-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-orange-300/20 before:via-transparent before:to-orange-500/20 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-xl sm:after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
 							style={{
 								zIndex: 1,
 								background: 'linear-gradient(135deg, rgba(251,146,60,0.3) 0%, rgba(234,88,12,0.2) 50%, rgba(251,146,60,0.3) 100%)',
