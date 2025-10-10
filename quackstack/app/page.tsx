@@ -45,8 +45,6 @@ export default function QuackStackPortfolio() {
 
 	return (
 		<div className='min-h-screen bg-black text-white overflow-x-hidden relative'>
-			<ParallaxCanvas />
-			<ParallaxBackground />
 			<Navbar />
 
 			<motion.div initial='hidden' whileInView='visible' viewport={{ once: true, amount: 0.2 }} variants={sectionVariants} transition={{ duration: 0.6, ease: 'easeOut' }} className='relative z-10'>

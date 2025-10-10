@@ -6,21 +6,21 @@ import SectionHeading from '@/components/SectionHeading';
 
 const defaultTeam = [
 	{
-		name: 'Valentina Senov',
+		name: 'Emil Momchev',
 		role: 'Lead Developer',
-		image: '/professional-developer-portrait.png',
+		image: '/emo.jpg',
 		skills: ['React', 'Next.js', 'TypeScript'],
 	},
 	{
-		name: 'Alex Kim',
+		name: 'Iliyan Sinapov',
 		role: 'UI/UX Designer',
-		image: '/professional-designer-portrait.png',
+		image: '/iliyan.jpg',
 		skills: ['Figma', 'Tailwind CSS', 'Branding'],
 	},
 	{
-		name: 'Jordan Lee',
+		name: 'Martin Uzunov',
 		role: 'DevOps Engineer',
-		image: '/professional-engineer-portrait.png',
+		image: '/marto.jpg',
 		skills: ['AWS', 'Docker', 'CI/CD'],
 	},
 ];
@@ -35,7 +35,7 @@ const TeamSection: React.FC = () => {
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
 					{defaultTeam.map((member, index) => (
 						<motion.div key={index} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6, delay: index * 0.08 }} whileHover={{ y: -6 }}>
-							<Card className='relative overflow-hidden liquid-glass hover:liquid-glass-orange transition-all duration-500 group text-center rounded-xl'>
+							<Card className='relative overflow-hidden liquid-glass transition-all duration-500 group text-center rounded-xl'>
 								<CardContent className='p-6 relative z-10'>
 									<div className='relative mb-6'>
 										<Image

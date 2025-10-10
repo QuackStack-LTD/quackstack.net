@@ -26,7 +26,7 @@ const ContactSection: React.FC = () => {
 	};
 
 	return (
-		<section id='contact' className='py-32 bg-black/50 relative overflow-hidden'>
+		<section id='contact' className='py-32 bg-transparent relative overflow-hidden'>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.4 }} transition={{ duration: 0.7 }} className='text-center mb-20'>
 					<h2 className='text-4xl md:text-5xl font-bold text-white mb-6 glow-text'>Contact Us</h2>
@@ -68,7 +68,7 @@ const ContactSection: React.FC = () => {
 						</div>
 					</motion.div>
 					<motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.1 }}>
-						<Card className='liquid-glass rounded-xl'>
+						<Card className='liquid-glass-orange rounded-xl'>
 							<CardContent className='p-8'>
 								<form className='space-y-6' onSubmit={handleSubmit} autoComplete='off'>
 									<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>

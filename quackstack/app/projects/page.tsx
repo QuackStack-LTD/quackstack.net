@@ -69,7 +69,7 @@ export default function ProjectsPage() {
 										variant={selectedCategory === category ? 'default' : 'outline'}
 										size='sm'
 										onClick={() => setSelectedCategory(category)}
-										className={selectedCategory === category ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'border-orange-400/60 text-orange-400 hover:bg-orange-400/20'}
+										className={selectedCategory === category ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'liquid-glass-orange'}
 									>
 										{category}
 									</Button>
@@ -87,7 +87,7 @@ export default function ProjectsPage() {
 										variant={selectedStatus === status ? 'default' : 'outline'}
 										size='sm'
 										onClick={() => setSelectedStatus(status)}
-										className={selectedStatus === status ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'border-orange-400/60 text-orange-400 hover:bg-orange-400/20'}
+										className={selectedStatus === status ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'liquid-glass-orange'}
 									>
 										{status}
 									</Button>
@@ -109,7 +109,7 @@ export default function ProjectsPage() {
 
 					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
 						{filteredProjects.map((project) => (
-							<Card key={project.id} className='relative overflow-hidden group liquid-glass hover:liquid-glass-orange transition-all duration-500 flex flex-col cursor-pointer rounded-xl'>
+							<Card key={project.id} className='relative overflow-hidden group liquid-glass-orange transition-all duration-500 flex flex-col cursor-pointer rounded-xl'>
 								<Link href={`/project/${project.id}`} className='block flex-1'>
 									<div className='relative overflow-hidden h-48'>
 										<Image src={project.image} alt={project.title} fill className='object-cover transition-transform duration-300 hover:scale-105' />
@@ -147,7 +147,7 @@ export default function ProjectsPage() {
 												asChild
 												size='sm'
 												variant='outline'
-												className='border-orange-400/60 text-orange-400 hover:bg-orange-400/20 hover:text-orange-300 bg-transparent backdrop-blur-sm hover:border-orange-300 transition-all duration-300'
+												className='liquid-glass-orange hover:text-orange-300 bg-transparent backdrop-blur-sm hover:border-orange-300 transition-all duration-300'
 												onClick={(e) => e.stopPropagation()}
 											>
 												<a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
@@ -161,7 +161,7 @@ export default function ProjectsPage() {
 												asChild
 												size='sm'
 												variant='outline'
-												className='border-orange-400/60 text-orange-400 hover:bg-orange-400/20 hover:text-orange-300 bg-transparent backdrop-blur-sm hover:border-orange-300 transition-all duration-300'
+												className='liquid-glass-orange hover:text-orange-300 bg-transparent backdrop-blur-sm hover:border-orange-300 transition-all duration-300'
 												onClick={(e) => e.stopPropagation()}
 											>
 												<a href={project.githubUrl} target='_blank' rel='noopener noreferrer'>
@@ -202,7 +202,7 @@ export default function ProjectsPage() {
 						<Button asChild size='lg' className='bg-orange-500 hover:bg-orange-600 text-white'>
 							<Link href='/#contact'>Get In Touch</Link>
 						</Button>
-						<Button asChild size='lg' variant='outline' className='border-orange-400/60 text-orange-400 hover:bg-orange-400/20'>
+						<Button asChild size='lg' variant='outline' className='liquid-glass-orange'>
 							<Link href='/blog'>Read Our Blog</Link>
 						</Button>
 					</div>

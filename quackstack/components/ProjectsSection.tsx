@@ -92,7 +92,7 @@ const ProjectsSection: React.FC = () => {
 				{/* View All Projects Button */}
 				{projectsData.length > featuredProjects.length && (
 					<div className='text-center mt-12'>
-						<Button asChild size='lg' className='bg-orange-500 hover:bg-orange-600 text-white'>
+						<Button asChild size='lg' className='liquid-glass-orange text-white'>
 							<Link href='/projects'>
 								View All Projects
 								<ArrowRight className='w-4 h-4 ml-2' />
