@@ -1,39 +1,23 @@
 name: Image Build & Push - QS Off Site
 
-permissions:
-  contents: read
-  packages: write
-  
 on:
   workflow_dispatch:
   push:
-    branches: [master]
+    branches: [ new-site-next ]
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
-  build-and-push:
-    name: Build and Push Image
-    runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: ./quackstack
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Login to GHCR
-        run: echo "${{ secrets.QS_PAT }}" | docker login ghcr.io -u "${{ secrets.QS_USERNAME }}" --password-stdin
-
-      - name: Build and Push Multi-Arch Image
-        run: |
-          repo="ghcr.io/quackstack-ltd/quackstack.net"
-          docker buildx build \
-            --platform linux/amd64,linux/arm64 \
-            --tag "${repo}:latest" \
-            --tag "${repo}:${{ github.sha }}" \
-            --push \
-            .
+  call-reusable:
+    uses: QuackStack-LTD/Pond/.github/workflows/build-and-push.yaml@main
+    with:
+      context: ./quackstack
+      repo: ghcr.io/quackstack-ltd/quackstack.net
+      tags: latest,sha
+      platforms: linux/amd64,linux/arm64
+      dockerfile: Dockerfile
+      build-args: ""
+      push: true
+    secrets: inherit
