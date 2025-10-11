@@ -3,7 +3,7 @@ name: Image Build & Push QS Off Site
 on:
   workflow_dispatch:
   push:
-    branches: [ new-site-next ]
+    branches: [ main ]
     paths:
       - 'quackstack/**'
 
