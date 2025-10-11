@@ -1,4 +1,4 @@
-name: Image Build & Push - QS Off Site
+name: Image Build & Push QS Off Site
 
 on:
   workflow_dispatch:
