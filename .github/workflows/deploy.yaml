@@ -1,39 +1,28 @@
-name: Image Build & Push - QS Off Site
+name: Deploy QS Site to Swarm
+
+on:
+  workflow_run:
+    workflows: [ "Image Build & Push QS Off Site" ]
+    types: [ completed ]
+    branches: [ new-site-next ]
+
+  workflow_dispatch:
 
 permissions:
   contents: read
-  packages: write
-  
-on:
-  workflow_dispatch:
-  push:
-    branches: [master]
+  packages: read
 
 jobs:
-  build-and-push:
-    name: Build and Push Image
-    runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: ./quackstack
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Login to GHCR
-        run: echo "${{ secrets.QS_PAT }}" | docker login ghcr.io -u "${{ secrets.QS_USERNAME }}" --password-stdin
-
-      - name: Build and Push Multi-Arch Image
-        run: |
-          repo="ghcr.io/quackstack-ltd/quackstack.net"
-          docker buildx build \
-            --platform linux/amd64,linux/arm64 \
-            --tag "${repo}:latest" \
-            --tag "${repo}:${{ github.sha }}" \
-            --push \
-            .
+  deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    uses: QuackStack-LTD/Pond/.github/workflows/swarm-deploy.yaml@main
+    with:
+      stack: qs-site
+      compose-file: deployment/docker-stack.yaml
+      images-csv: ghcr.io/quackstack-ltd/quackstack.net:latest
+      clean-volumes: true
+      
+      docker-api-version: "1.47"
+      readiness-attempts: 12
+      readiness-sleep-seconds: 10
+    secrets: inherit
