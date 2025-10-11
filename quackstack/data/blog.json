@@ -1,0 +1,62 @@
+[
+	{
+		"id": "react-performance-optimization",
+		"title": "React Performance Optimization: Best Practices for 2024",
+		"slug": "react-performance-optimization",
+		"excerpt": "Learn the latest techniques to optimize your React applications for better performance and user experience.",
+		"content": "# React Performance Optimization: Best Practices for 2024\n\nReact applications can sometimes suffer from performance issues as they grow in complexity. In this comprehensive guide, we'll explore the latest techniques and best practices to optimize your React applications for better performance and user experience.\n\n## Understanding React Performance\n\nBefore diving into optimization techniques, it's crucial to understand what affects React performance:\n\n1. **Rendering frequency**: How often components re-render\n2. **Bundle size**: The size of your JavaScript bundles\n3. **Network requests**: API calls and data fetching\n4. **Memory usage**: How efficiently your app uses memory\n\n## Key Optimization Techniques\n\n### 1. Use React.memo for Component Memoization\n\n```jsx\nconst ExpensiveComponent = React.memo(({ data }) => {\n  return (\n    <div>\n      {/* Complex rendering logic */}\n    </div>\n  );\n});\n```\n\n### 2. Implement useMemo and useCallback\n\n```jsx\nconst ExpensiveCalculation = ({ items }) => {\n  const expensiveValue = useMemo(() => {\n    return items.reduce((acc, item) => acc + item.value, 0);\n  }, [items]);\n\n  const handleClick = useCallback(() => {\n    // Handle click\n  }, []);\n\n  return <div>{expensiveValue}</div>;\n};\n```\n\n### 3. Code Splitting with React.lazy\n\n```jsx\nconst LazyComponent = React.lazy(() => import('./LazyComponent'));\n\nfunction App() {\n  return (\n    <Suspense fallback={<div>Loading...</div>}>\n      <LazyComponent />\n    </Suspense>\n  );\n}\n```\n\n## Conclusion\n\nBy implementing these optimization techniques, you can significantly improve your React application's performance. Remember to measure performance before and after optimizations to ensure they're effective.",
+		"author": "QuackStack Team",
+		"publishedAt": "2024-09-15",
+		"updatedAt": "2024-09-15",
+		"tags": ["React", "Performance", "JavaScript", "Optimization"],
+		"category": "Development",
+		"featured": true,
+		"readTime": 8,
+		"image": "/placeholder.jpg"
+	},
+	{
+		"id": "nextjs-13-app-router",
+		"title": "Mastering Next.js 13 App Router: A Complete Guide",
+		"slug": "nextjs-13-app-router",
+		"excerpt": "Discover the power of Next.js 13's App Router and learn how to build modern web applications with improved developer experience.",
+		"content": "# Mastering Next.js 13 App Router: A Complete Guide\n\nNext.js 13 introduced a revolutionary App Router that changes how we think about routing in React applications. This new approach brings improved developer experience, better performance, and more intuitive file-based routing.\n\n## What's New in App Router?\n\nThe App Router introduces several key concepts:\n\n1. **File-based routing**: Routes are defined by folder structure\n2. **Layout system**: Shared UI components across routes\n3. **Server Components**: Components that render on the server by default\n4. **Streaming**: Progressive page loading for better UX\n\n## Key Features\n\n### Layouts\n\nLayouts allow you to share UI between routes:\n\n```tsx\n// app/layout.tsx\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return (\n    <html>\n      <body>\n        <nav>Navigation</nav>\n        {children}\n        <footer>Footer</footer>\n      </body>\n    </html>\n  );\n}\n```\n\n### Dynamic Routes\n\nCreate dynamic routes using square brackets:\n\n```tsx\n// app/blog/[slug]/page.tsx\nexport default function BlogPost({ params }: { params: { slug: string } }) {\n  return <h1>Post: {params.slug}</h1>;\n}\n```\n\n### Loading States\n\nCreate loading states with `loading.tsx`:\n\n```tsx\n// app/blog/loading.tsx\nexport default function Loading() {\n  return <div>Loading posts...</div>;\n}\n```\n\n## Migration Tips\n\nMigrating from the Pages Router to App Router requires careful planning:\n\n1. Start with new routes in the App Router\n2. Gradually migrate existing pages\n3. Update data fetching patterns\n4. Test thoroughly\n\n## Conclusion\n\nThe App Router represents the future of Next.js development. Its improved developer experience and performance benefits make it an excellent choice for new projects.",
+		"author": "QuackStack Team",
+		"publishedAt": "2024-08-22",
+		"updatedAt": "2024-08-22",
+		"tags": ["Next.js", "App Router", "React", "Web Development"],
+		"category": "Development",
+		"featured": true,
+		"readTime": 12,
+		"image": "/placeholder.svg"
+	},
+	{
+		"id": "typescript-best-practices",
+		"title": "TypeScript Best Practices for Scalable Applications",
+		"slug": "typescript-best-practices",
+		"excerpt": "Learn essential TypeScript patterns and practices that will help you build maintainable and scalable applications.",
+		"content": "# TypeScript Best Practices for Scalable Applications\n\nTypeScript has become the standard for building large-scale JavaScript applications. In this guide, we'll explore best practices that will help you write better TypeScript code and build more maintainable applications.\n\n## Type Safety First\n\nAlways prioritize type safety in your TypeScript applications:\n\n### Use Strict Mode\n\n```json\n{\n  \"compilerOptions\": {\n    \"strict\": true,\n    \"noImplicitAny\": true,\n    \"strictNullChecks\": true\n  }\n}\n```\n\n### Define Clear Interfaces\n\n```typescript\ninterface User {\n  id: string;\n  name: string;\n  email: string;\n  role: 'admin' | 'user' | 'moderator';\n  createdAt: Date;\n}\n```\n\n## Advanced Patterns\n\n### Generic Types\n\n```typescript\ninterface APIResponse<T> {\n  data: T;\n  status: number;\n  message: string;\n}\n\nfunction fetchData<T>(url: string): Promise<APIResponse<T>> {\n  // Implementation\n}\n```\n\n### Utility Types\n\n```typescript\ntype PartialUser = Partial<User>;\ntype UserEmail = Pick<User, 'email'>;\ntype UserWithoutId = Omit<User, 'id'>;\n```\n\n## Code Organization\n\n1. **Use barrel exports** for cleaner imports\n2. **Organize types** in separate files\n3. **Follow naming conventions** consistently\n4. **Document complex types** with JSDoc comments\n\n## Conclusion\n\nFollowing these TypeScript best practices will help you build more robust and maintainable applications. The key is consistency and gradual adoption of advanced patterns as your codebase grows.",
+		"author": "QuackStack Team",
+		"publishedAt": "2024-07-10",
+		"updatedAt": "2024-07-10",
+		"tags": ["TypeScript", "Best Practices", "JavaScript", "Development"],
+		"category": "Development",
+		"featured": false,
+		"readTime": 10,
+		"image": "/placeholder.png"
+	},
+	{
+		"id": "web-accessibility-guide",
+		"title": "Web Accessibility: Building Inclusive Digital Experiences",
+		"slug": "web-accessibility-guide",
+		"excerpt": "A comprehensive guide to web accessibility principles and practical implementation strategies for developers.",
+		"content": "# Web Accessibility: Building Inclusive Digital Experiences\n\nWeb accessibility ensures that websites and applications are usable by everyone, including people with disabilities. This guide covers essential accessibility principles and practical implementation strategies.\n\n## Why Accessibility Matters\n\nAccessibility is not just about compliance—it's about creating inclusive experiences that benefit everyone:\n\n- **Legal requirements**: Many countries have accessibility laws\n- **Broader audience**: Reach more users\n- **Better UX**: Accessible design often improves usability for everyone\n- **SEO benefits**: Many accessibility practices improve search rankings\n\n## WCAG Guidelines\n\nThe Web Content Accessibility Guidelines (WCAG) provide a foundation for accessibility:\n\n### Perceivable\n- Provide text alternatives for images\n- Offer captions for videos\n- Ensure sufficient color contrast\n\n### Operable\n- Make all functionality keyboard accessible\n- Give users enough time to read content\n- Avoid content that causes seizures\n\n### Understandable\n- Make text readable and understandable\n- Make content appear and operate predictably\n- Help users avoid and correct mistakes\n\n### Robust\n- Maximize compatibility with assistive technologies\n\n## Practical Implementation\n\n### Semantic HTML\n\n```html\n<main>\n  <h1>Page Title</h1>\n  <nav aria-label=\"Main navigation\">\n    <ul>\n      <li><a href=\"/home\">Home</a></li>\n      <li><a href=\"/about\">About</a></li>\n    </ul>\n  </nav>\n  <article>\n    <h2>Article Title</h2>\n    <p>Article content...</p>\n  </article>\n</main>\n```\n\n### ARIA Labels\n\n```html\n<button aria-label=\"Close dialog\" onclick=\"closeDialog()\">\n  ×\n</button>\n\n<input \n  type=\"search\" \n  aria-label=\"Search products\"\n  aria-describedby=\"search-help\"\n>\n<div id=\"search-help\">Enter keywords to search our catalog</div>\n```\n\n### Focus Management\n\n```css\n/* Visible focus indicators */\n:focus {\n  outline: 2px solid #005fcc;\n  outline-offset: 2px;\n}\n\n/* Skip to main content link */\n.skip-link {\n  position: absolute;\n  left: -9999px;\n}\n\n.skip-link:focus {\n  left: 6px;\n  top: 7px;\n  z-index: 999999;\n}\n```\n\n## Testing Your Accessibility\n\n1. **Keyboard navigation**: Tab through your entire interface\n2. **Screen readers**: Test with NVDA, JAWS, or VoiceOver\n3. **Automated tools**: Use axe-core, Lighthouse, or WAVE\n4. **Color contrast**: Ensure ratios meet WCAG standards\n\n## Conclusion\n\nBuilding accessible web experiences is an ongoing process that requires consideration from the design phase through implementation and testing. By following these guidelines, you'll create more inclusive digital experiences for all users.",
+		"author": "QuackStack Team",
+		"publishedAt": "2024-06-28",
+		"updatedAt": "2024-06-28",
+		"tags": ["Accessibility", "Web Development", "UX", "Inclusive Design"],
+		"category": "Design",
+		"featured": false,
+		"readTime": 15,
+		"image": "/placeholder.jpg"
+	}
+]

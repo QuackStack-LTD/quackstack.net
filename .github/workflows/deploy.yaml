@@ -1,0 +1,28 @@
+name: Deploy QS Site to Swarm
+
+on:
+  workflow_run:
+    workflows: [ "Image Build & Push QS Off Site" ]
+    types: [ completed ]
+    branches: [ new-site-next ]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    uses: QuackStack-LTD/Pond/.github/workflows/swarm-deploy.yaml@main
+    with:
+      stack: qs-site
+      compose-file: deployment/docker-stack.yaml
+      images-csv: ghcr.io/quackstack-ltd/quackstack.net:latest
+      clean-volumes: true
+      
+      docker-api-version: "1.47"
+      readiness-attempts: 12
+      readiness-sleep-seconds: 10
+    secrets: inherit
