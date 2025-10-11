@@ -10,7 +10,7 @@ permissions:
   packages: write
 
 jobs:
-  call-reusable:
+  call-pond:
     uses: QuackStack-LTD/Pond/.github/workflows/build-and-push.yaml@main
     with:
       context: ./quackstack
