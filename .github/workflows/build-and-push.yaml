@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   push:
     branches: [ new-site-next ]
+    paths:
+      - 'quackstack/**'
+
 
 permissions:
   contents: read
