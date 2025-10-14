@@ -1,30 +1,37 @@
-FROM node:20 AS base
+FROM node:20-bookworm-slim AS base
+ENV PNPM_HOME=/pnpm
+ENV PATH=$PNPM_HOME:$PATH
+RUN corepack enable pnpm
 
 FROM base AS deps
-RUN apk add --no-cache libc6-compat
+# Install only what you need; ca-certificates is useful if you ever curl HTTPS
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
-RUN corepack enable pnpm && pnpm i --frozen-lockfile
+COPY package.json pnpm-lock.yaml .npmrc* ./
+RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
+    pnpm fetch --frozen-lockfile
 
 FROM base AS builder
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /pnpm/store /pnpm/store
+COPY package.json pnpm-lock.yaml .npmrc* ./
+RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
+    pnpm install --frozen-lockfile --offline
 COPY . .
-RUN corepack enable pnpm && pnpm run build
+RUN pnpm run build
 
-FROM base AS runner
+FROM node:20-bookworm-slim AS runner
 WORKDIR /app
-ENV NODE_ENV=production
-ENV HOSTNAME=0.0.0.0
-ENV PORT=3000
-
-RUN addgroup --system --gid 1001 nodejs \
- && adduser --system --uid 1001 nextjs
-
+ENV NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3000
+# non-root user
+RUN groupadd -g 1001 nodejs \
+ && useradd -u 1001 -g nodejs -s /usr/sbin/nologin -m nextjs
+# Copy standalone output produced by `output: 'standalone'`
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
-
 USER nextjs
 EXPOSE 3000
 CMD ["node", "server.js"]
