@@ -1,26 +1,18 @@
-FROM node:20-bookworm-slim AS base
+FROM node:20-bookworm-slim AS builder
 ENV PNPM_HOME=/pnpm
 ENV PATH=$PNPM_HOME:$PATH
-RUN corepack enable pnpm
-
-FROM base AS deps
-# HTTPS certs are useful for fetch; keep image lean
+RUN corepack enable pnpm \
+ && pnpm config set store-dir /pnpm/store
 RUN apt-get update \
  && apt-get install -y --no-install-recommends ca-certificates \
  && rm -rf /var/lib/apt/lists/*
-WORKDIR /app
-COPY package.json pnpm-lock.yaml .npmrc* ./
-# Populate the pnpm store cache. This is a cache mount; no COPY later.
-RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
-    pnpm fetch --frozen-lockfile
 
-FROM base AS builder
 WORKDIR /app
-# Bring in only the files that affect install; install from cached store offline
 COPY package.json pnpm-lock.yaml .npmrc* ./
+
 RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
-    pnpm install --frozen-lockfile --offline
-# Now add the rest of the source and build
+    pnpm install --frozen-lockfile
+
 COPY . .
 RUN pnpm run build
 
@@ -29,11 +21,11 @@ WORKDIR /app
 ENV NODE_ENV=production \
     HOSTNAME=0.0.0.0 \
     PORT=3000
-# Certs for HTTPS healthchecks and outbound calls
+
 RUN apt-get update \
  && apt-get install -y --no-install-recommends ca-certificates \
  && rm -rf /var/lib/apt/lists/*
-# Non-root user
+
 RUN groupadd -g 1001 nodejs \
  && useradd -u 1001 -g nodejs -s /usr/sbin/nologin -m nextjs
 
