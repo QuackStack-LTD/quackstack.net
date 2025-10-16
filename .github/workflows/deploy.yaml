@@ -1,39 +1,28 @@
-name: Deploy
+name: Deploy QS Site to Swarm
 
 on:
-  push:
-    branches: ["main"]
+  workflow_run:
+    workflows: [ "Image Build & Push QS Off Site" ]
+    types: [ completed ]
+    branches: [ new-site-next ]
+
+  workflow_dispatch:
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
+  packages: read
 
 jobs:
   deploy:
-    name: Deploy Application
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: use node.js
-        uses: actions/setup-node@v3
-
-      - name: Install Dependencies
-        run: |
-          cd quackstack
-          npm install
-
-      - name: Configure Git for Deployment
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Deploy Application
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cd quackstack
-          npm run deploy
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    uses: QuackStack-LTD/Pond/.github/workflows/swarm-deploy.yaml@main
+    with:
+      stack: qs-site
+      compose-file: deployment/docker-stack.yaml
+      images-csv: ghcr.io/quackstack-ltd/quackstack.net:latest
+      clean-volumes: true
+      
+      docker-api-version: "1.47"
+      readiness-attempts: 12
+      readiness-sleep-seconds: 10
+    secrets: inherit

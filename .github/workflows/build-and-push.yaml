@@ -1,0 +1,26 @@
+name: Image Build & Push QS Off Site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ new-site-next ]
+    paths:
+      - 'quackstack/**'
+
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  call-pond:
+    uses: QuackStack-LTD/Pond/.github/workflows/build-and-push.yaml@main
+    with:
+      context: ./quackstack
+      repo: ghcr.io/quackstack-ltd/quackstack.net
+      tags: latest,sha
+      platforms: linux/amd64,linux/arm64
+      dockerfile: Dockerfile
+      build-args: ""
+      push: true
+    secrets: inherit
