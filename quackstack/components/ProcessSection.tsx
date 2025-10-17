@@ -43,14 +43,7 @@ const lineVariants = {
 
 const ProcessSection: React.FC = () => {
 	return (
-		<section id='process' className='py-32 bg-orange-700/40 relative overflow-hidden'>
-			{/* Top fade to black */}
-			<div className='absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black via-black/60 to-transparent z-10 pointer-events-none' />
-
-			{/* {/* Bottom fade to black */}
-			<div className='absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black via-black/60 to-transparent z-10 pointer-events-none' />
-			{/* <div className='absolute inset-0 opacity-40 mix-blend-screen bg-[radial-gradient(circle_at_20%_20%,#f97316,transparent_60%)]' /> */}
-			<div className='absolute inset-0 opacity-30 bg-black' />
+		<section id='process' className='relative py-32 overflow-hidden'>
 			<motion.div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20' initial='hidden' whileInView='visible' viewport={{ once: false, amount: 0.3 }} variants={containerVariants}>
 				{/* Top fade to black */}
 

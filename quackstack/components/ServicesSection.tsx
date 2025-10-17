@@ -35,11 +35,8 @@ const cardVariants = {
 
 const ServicesSection: React.FC = () => {
 	return (
-		<section id='services' className='py-32 relative bg-section-alt'>
+		<section id='services' className='py-32 relative'>
 			<div className='absolute inset-0 opacity-40 mix-blend-screen bg-[radial-gradient(circle_at_20%_20%,#f97316,transparent_60%)]' />
-			<div className='absolute inset-0 opacity-30 bg-black' />
-			<div className='absolute top-0 left-0 right-0 h-[100px] bg-gradient-to-b from-black via-black/80 to-transparent -z-0 pointer-events-none' />
-			<div className='absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent -z-0 pointer-events-none' />
 
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'>
 				<SectionHeading title='What we offer' subtext='Our team delivers exceptional software solutions, supporting you through every step of your digital transformation journey.' gradient />

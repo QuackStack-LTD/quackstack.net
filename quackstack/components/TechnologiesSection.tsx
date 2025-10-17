@@ -18,7 +18,7 @@ const TechnologiesSection: React.FC = () => {
 	const prefersReducedMotion = useReducedMotion();
 
 	return (
-		<section className='py-24 bg-black/40 overflow-hidden'>
+		<section className='py-24 overflow-hidden'>
 			<SectionHeading title='Technologies We Master' subtext='A curated stack enabling rapid, resilient product delivery.' gradient />
 			<div className='relative'>
 				<motion.div

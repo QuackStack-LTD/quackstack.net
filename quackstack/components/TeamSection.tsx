@@ -29,7 +29,7 @@ const TeamSection: React.FC = () => {
 	// Removed manual scroll transforms & unused hover state
 
 	return (
-		<section id='team' className='py-32 bg-black/30'>
+		<section id='team' className='py-32'>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<SectionHeading title='Meet Our Team' subtext='Talented professionals dedicated to bringing your vision to life with expertise and passion.' gradient />
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
