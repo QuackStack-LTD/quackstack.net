@@ -14,7 +14,7 @@ const ProjectsSection: React.FC = () => {
 	return (
 		<section id='projects' className='relative py-24 overflow-hidden'>
 			{/* Particle background effect */}
-			<div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_60%,rgba(251,146,60,0.18),transparent_65%)] pointer-events-none' />
+			<div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_60%,rgba(251,146,60,0.18),transparent_45%)] pointer-events-none' />
 
 			<div className='max-w-7xl mx-auto px-6 relative z-20'>
 				<h2 className='text-4xl md:text-5xl font-bold text-white mb-8 glow-text text-center'>Featured Projects</h2>

@@ -36,7 +36,12 @@ const cardVariants = {
 const ServicesSection: React.FC = () => {
 	return (
 		<section id='services' className='py-32 relative'>
-			<div className='absolute inset-0 opacity-40 mix-blend-screen bg-[radial-gradient(circle_at_20%_20%,#f97316,transparent_60%)]' />
+			<div
+				className='absolute inset-0 opacity-60'
+				style={{
+					background: 'radial-gradient(circle at center, rgba(249, 115, 22, 0.8) 0%, rgba(249, 115, 22, 0.3) 10%, transparent 50%)',
+				}}
+			/>
 
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'>
 				<SectionHeading title='What we offer' subtext='Our team delivers exceptional software solutions, supporting you through every step of your digital transformation journey.' gradient />

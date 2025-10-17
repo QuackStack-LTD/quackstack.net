@@ -33,31 +33,31 @@ export default function QuackStackPortfolio() {
 				</div>
 			</SectionParallaxBg>
 
-			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#331408'>
+			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05'>
 				<div className='relative z-10'>
 					<ProjectsSection />
 				</div>
 			</SectionParallaxBg>
 
-			<SectionParallaxBg colorFrom='#331408' colorTo='#4d1f0a'>
-				<div className='relative z-10'>
+			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05'>
+				<div className='relative z-20'>
 					<TeamSection />
 				</div>
 			</SectionParallaxBg>
 
-			<SectionParallaxBg colorFrom='#4d1f0a' colorTo='#662b0d'>
+			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05'>
 				<div className='relative z-10'>
 					<ProcessSection />
 				</div>
 			</SectionParallaxBg>
 
-			<SectionParallaxBg colorFrom='#662b0d' colorTo='#4d1f0a'>
+			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05'>
 				<div className='relative z-10'>
 					<TechnologiesSection />
 				</div>
 			</SectionParallaxBg>
 
-			<SectionParallaxBg colorFrom='#4d1f0a' colorTo='#000000' className='min-h-[80vh]'>
+			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05' className='min-h-[80vh]'>
 				<div className='relative z-10'>
 					<ContactSection />
 				</div>
