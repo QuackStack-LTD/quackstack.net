@@ -28,12 +28,12 @@ const ContactSection: React.FC = () => {
 	return (
 		<section id='contact' className='py-32 bg-transparent relative overflow-hidden'>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-				<motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.4 }} transition={{ duration: 0.7 }} className='text-center mb-20'>
+				<motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.4 }} transition={{ duration: 0.7 }} className='text-center mb-20'>
 					<h2 className='text-4xl md:text-5xl font-bold text-white mb-6 glow-text'>Contact Us</h2>
 					<p className='text-xl text-gray-300 max-w-3xl mx-auto'>We are here to assist you with any questions you may have.</p>
 				</motion.div>
-				<div className='grid grid-cols-1 lg:grid-cols-2 gap-16 items-start'>
-					<motion.div className='space-y-8' initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }}>
+				<div className='grid gap-12 lg:grid-cols-2 items-start'>
+					<motion.div className='space-y-8' initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
 						<div>
 							<h3 className='text-2xl font-semibold text-orange-400 mb-6'>Get in Touch</h3>
 							<div className='space-y-6'>
@@ -67,7 +67,8 @@ const ContactSection: React.FC = () => {
 							</div>
 						</div>
 					</motion.div>
-					<motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.1 }}>
+
+					<motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.1 }}>
 						<Card className='liquid-glass-orange rounded-xl'>
 							<CardContent className='p-8'>
 								<form className='space-y-6' onSubmit={handleSubmit} autoComplete='off'>

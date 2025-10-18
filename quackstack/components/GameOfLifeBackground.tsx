@@ -118,15 +118,14 @@ const GameOfLifeBackground: React.FC = () => {
 		});
 	}, [rows, cols, countNeighbors]);
 
-	// Handle canvas click to create cells
+	// Handle canvas click to create cells - now works from anywhere on the page
 	const handleCanvasClick = useCallback(
-		(e: React.MouseEvent<HTMLCanvasElement>) => {
+		(e: MouseEvent) => {
 			const canvas = canvasRef.current;
 			if (!canvas) return;
 
-			const rect = canvas.getBoundingClientRect();
-			const x = e.clientX - rect.left;
-			const y = e.clientY - rect.top;
+			const x = e.clientX;
+			const y = e.clientY;
 
 			const col = Math.floor(x / cellSize);
 			const row = Math.floor(y / cellSize);
@@ -143,6 +142,16 @@ const GameOfLifeBackground: React.FC = () => {
 		},
 		[cellSize, rows, cols]
 	);
+
+	// Add global click listener
+	useEffect(() => {
+		const handleClick = (e: MouseEvent) => {
+			handleCanvasClick(e);
+		};
+
+		document.addEventListener('click', handleClick);
+		return () => document.removeEventListener('click', handleClick);
+	}, [handleCanvasClick]);
 
 	// Draw grid
 	const drawGrid = useCallback(() => {
@@ -197,7 +206,7 @@ const GameOfLifeBackground: React.FC = () => {
 			const elapsed = timestamp - lastUpdateRef.current;
 
 			// Update every 1200ms (slower - about 0.8 generations per second for better performance)
-			if (elapsed > 1200 && isRunning) {
+			if (elapsed > 2200 && isRunning) {
 				updateGrid();
 				lastUpdateRef.current = timestamp;
 			}
@@ -218,8 +227,7 @@ const GameOfLifeBackground: React.FC = () => {
 	return (
 		<canvas
 			ref={canvasRef}
-			onClick={handleCanvasClick}
-			className='fixed inset-0 w-full h-full cursor-crosshair pointer-events-auto'
+			className='fixed inset-0 w-full h-full pointer-events-none'
 			style={{
 				opacity: 0.5,
 				zIndex: -5,

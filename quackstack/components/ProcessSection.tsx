@@ -46,7 +46,7 @@ const ProcessSection: React.FC = () => {
 		<section id='process' className='relative py-36 overflow-hidden'>
 			<div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_40%,rgba(251,146,60,0.18),transparent_45%)] pointer-events-none' />
 
-			<motion.div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20' initial='hidden' whileInView='visible' viewport={{ once: false, amount: 0.3 }} variants={containerVariants}>
+			<motion.div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20' initial='hidden' whileInView='visible' viewport={{ once: true, amount: 0.3 }} variants={containerVariants}>
 				{/* Top fade to black */}
 
 				<div className='text-center mb-20'>
@@ -75,20 +75,6 @@ const ProcessSection: React.FC = () => {
 								</div>
 								<h3 className='text-orange-400 font-semibold mt-3 sm:mt-4 mb-2 tracking-wide group-hover:text-orange-300 transition-colors text-center'>{phase.title}</h3>
 								<p className='text-gray-300 text-center text-sm leading-relaxed px-4 sm:px-0'>{phase.description}</p>
-								{/* mini glowing connector on xl except last */}
-								{index < phases.length - 1 && (
-									<motion.span
-										className='hidden xl:block absolute top-[48px] sm:top-[56px] right-[-24px] w-12 h-[2px] rounded-full'
-										style={{
-											background: 'linear-gradient(90deg, rgba(251,146,60,0.85), rgba(251,146,60,0))',
-											filter: 'drop-shadow(0 0 6px rgba(251,146,60,0.7))',
-										}}
-										initial={{ scaleX: 0, opacity: 0 }}
-										whileInView={{ scaleX: 1, opacity: 1 }}
-										viewport={{ once: true }}
-										transition={{ duration: 0.5, delay: 0.3 + index * 0.08 }}
-									/>
-								)}
 							</motion.div>
 						))}
 					</div>

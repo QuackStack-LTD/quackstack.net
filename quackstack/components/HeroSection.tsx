@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
 
 			<div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
 				<div className='space-y-8 md:space-y-16'>
-					<motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.5 }} transition={{ duration: 0.7 }} className='space-y-6 md:space-y-12'>
+					<motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.7 }} className='space-y-6 md:space-y-12'>
 						<h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight'>
 							<span className='block text-foreground mb-1 md:mb-2'>Your vision</span>
 							<span
@@ -42,11 +42,15 @@ const HeroSection: React.FC = () => {
 						className='flex flex-col sm:flex-row gap-4 md:gap-6 justify-center px-4 sm:px-0'
 						initial={{ opacity: 0, y: 30 }}
 						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: false, amount: 0.4 }}
+						viewport={{ once: true, amount: 0.4 }}
 						transition={{ duration: 0.6, delay: 0.1 }}
 					>
 						<Button
 							size='lg'
+							onClick={() => {
+								const contactSection = document.getElementById('contact');
+								contactSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+							}}
 							className='relative overflow-hidden cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white rounded-xl sm:rounded-2xl backdrop-blur-xl bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-orange-600/30 border border-orange-400/40 shadow-[0_8px_32px_0_rgba(251,146,60,0.37)] hover:shadow-[0_8px_40px_0_rgba(251,146,60,0.6)] transition-all duration-500 hover:scale-105 hover:rotate-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-orange-300/20 before:via-transparent before:to-orange-500/20 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-xl sm:after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
 							style={{
 								zIndex: 1,
@@ -62,6 +66,10 @@ const HeroSection: React.FC = () => {
 						</Button>
 						<Button
 							size='lg'
+							onClick={() => {
+								const projectsSection = document.getElementById('projects');
+								projectsSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+							}}
 							className='relative overflow-hidden cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white rounded-xl sm:rounded-2xl backdrop-blur-xl bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-orange-600/30 border border-orange-400/40 shadow-[0_8px_32px_0_rgba(251,146,60,0.37)] hover:shadow-[0_8px_40px_0_rgba(251,146,60,0.6)] transition-all duration-500 hover:scale-105 hover:-rotate-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-orange-300/20 before:via-transparent before:to-orange-500/20 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-xl sm:after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
 							style={{
 								zIndex: 1,

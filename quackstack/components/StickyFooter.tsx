@@ -28,7 +28,7 @@ const Section2 = () => {
 				<img src='/logo.svg' alt='QuackStack Logo' className='h-12 w-auto' style={{ filter: 'drop-shadow(0 4px 32px #fbbf24cc)' }} />
 			</div>
 			<div className='flex flex-col sm:flex-row items-center gap-4 text-sm'>
-				<Link href='/terms' className='text-gray-300 hover:text-orange-400 transition-colors cursor-pointer'>
+				<Link href='/tos' className='text-gray-300 hover:text-orange-400 transition-colors cursor-pointer'>
 					Terms of Service
 				</Link>
 				<span className='hidden sm:inline text-gray-500'>•</span>
