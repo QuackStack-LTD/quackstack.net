@@ -1,9 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sun, Moon, Monitor, Menu, X } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import ThemedLogo from '@/components/ThemedLogo';
 
 const sectionIds = ['home', 'services', 'technologies', 'projects', 'team', 'process', 'contact'];
 
@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
 						<div className='flex items-center'>
 							<Link href='/' className='flex items-center'>
 								<div className='w-[120px] sm:w-[180px] h-[36px] sm:h-[54px] flex items-center justify-center'>
-									<Image src='/logo.svg' alt='QuackStack Logo' width={180} height={54} className='w-[120px] sm:w-[180px] h-[36px] sm:h-[54px] object-contain drop-shadow-xl' unoptimized priority />
+									<ThemedLogo width={180} height={54} className='w-[120px] sm:w-[180px] h-[36px] sm:h-[54px] object-contain drop-shadow-xl' />
 								</div>
 							</Link>
 						</div>

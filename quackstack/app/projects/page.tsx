@@ -1,28 +1,43 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, ArrowRight, ExternalLink, Github, Filter } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { ArrowLeft, ArrowRight, ExternalLink, Github, Filter, Search } from 'lucide-react';
 import projectsData from '@/data/projects.json';
 
 export default function ProjectsPage() {
 	const [selectedCategory, setSelectedCategory] = useState<string>('All');
 	const [selectedStatus, setSelectedStatus] = useState<string>('All');
+	const [searchQuery, setSearchQuery] = useState('');
 
 	// Get unique categories and statuses
 	const categories = ['All', ...Array.from(new Set(projectsData.map((project) => project.category)))];
 	const statuses = ['All', ...Array.from(new Set(projectsData.map((project) => project.status)))];
 
-	// Filter projects
-	const filteredProjects = projectsData.filter((project) => {
-		const categoryMatch = selectedCategory === 'All' || project.category === selectedCategory;
-		const statusMatch = selectedStatus === 'All' || project.status === selectedStatus;
-		return categoryMatch && statusMatch;
-	});
+	// Filter projects with search
+	const filteredProjects = useMemo(() => {
+		return projectsData.filter((project) => {
+			const categoryMatch = selectedCategory === 'All' || project.category === selectedCategory;
+			const statusMatch = selectedStatus === 'All' || project.status === selectedStatus;
+
+			if (!searchQuery.trim()) {
+				return categoryMatch && statusMatch;
+			}
+
+			const query = searchQuery.toLowerCase();
+			const titleMatch = project.title.toLowerCase().includes(query);
+			const descriptionMatch = project.description.toLowerCase().includes(query);
+			const techMatch = project.tech?.some((tech: string) => tech.toLowerCase().includes(query));
+			const tagsMatch = project.tags?.some((tag: string) => tag.toLowerCase().includes(query));
+
+			return categoryMatch && statusMatch && (titleMatch || descriptionMatch || techMatch || tagsMatch);
+		});
+	}, [selectedCategory, selectedStatus, searchQuery]);
 
 	return (
 		<div className='min-h-screen bg-background text-foreground'>
@@ -47,6 +62,24 @@ export default function ProjectsPage() {
 				<div className='max-w-7xl mx-auto text-center'>
 					<h1 className='text-4xl md:text-5xl lg:text-6xl font-bold mb-6 glow-text'>Our Complete Portfolio</h1>
 					<p className='text-xl text-gray-300 max-w-3xl mx-auto mb-8'>Explore our comprehensive collection of projects spanning various technologies and industries.</p>
+
+					{/* Search Bar */}
+					<div className='max-w-2xl mx-auto relative'>
+						<Search className='absolute left-4 top-1/2 transform -translate-y-1/2 text-foreground/40 w-5 h-5' />
+						<Input
+							type='text'
+							placeholder='Search projects by name, description, or technology...'
+							value={searchQuery}
+							onChange={(e) => setSearchQuery(e.target.value)}
+							className='w-full pl-12 pr-4 py-6 text-lg bg-background/50 backdrop-blur-sm border-orange-400/30 focus:border-orange-400 rounded-xl'
+						/>
+					</div>
+
+					{(searchQuery || selectedCategory !== 'All' || selectedStatus !== 'All') && (
+						<p className='mt-4 text-foreground/60'>
+							Found {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
+						</p>
+					)}
 				</div>
 			</section>
 
@@ -178,11 +211,12 @@ export default function ProjectsPage() {
 
 					{filteredProjects.length === 0 && (
 						<div className='text-center py-12'>
-							<p className='text-gray-400 text-lg'>No projects found matching your filters.</p>
+							<p className='text-gray-400 text-lg'>No projects found matching your search or filters.</p>
 							<Button
 								onClick={() => {
 									setSelectedCategory('All');
 									setSelectedStatus('All');
+									setSearchQuery('');
 								}}
 								className='mt-4 bg-orange-500 hover:bg-orange-600 text-white'
 							>

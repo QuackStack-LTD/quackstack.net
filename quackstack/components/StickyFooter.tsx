@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 
 const Content = () => {
 	return (
-		<div className='bg-gradient-to-b from-orange-900/40 via-orange-950/60 to-black py-12 px-6 sm:px-12 h-full w-full flex flex-col justify-between border-t border-orange-500/50 shadow-[0_-8px_32px_rgba(251,146,60,0.25)]'>
+		<div className='bg-amber-950/40 py-12 px-6 sm:px-12 h-full w-full flex flex-col justify-between border-t border-orange-500/50 shadow-[0_-8px_32px_rgba(251,146,60,0.25)]'>
 			<Section1 />
 			<Section2 />
 		</div>

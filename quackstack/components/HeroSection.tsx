@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
 	}, [scrollY]);
 
 	return (
-		<section id='hero' className='relative flex flex-col items-center justify-center min-h-[90vh] py-48 text-center z-10 overflow-hidden'>
+		<section id='home' className='relative flex flex-col items-center justify-center min-h-[90vh] py-48 text-center z-10 overflow-hidden'>
 			<div ref={nakerRef} className='absolute inset-0 -z-10 w-full h-full opacity-[0.35]' />
 			<div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_60%,rgba(251,146,60,0.18),transparent_45%)] pointer-events-none' />
 

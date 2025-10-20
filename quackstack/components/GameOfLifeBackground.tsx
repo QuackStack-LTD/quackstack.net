@@ -19,18 +19,73 @@ const GameOfLifeBackground: React.FC = () => {
 	const lastUpdateRef = useRef<number>(0);
 	const { resolvedTheme } = useTheme();
 
-	// Initialize grid
+	// Classic Game of Life patterns - small and subtle
+	const patterns = {
+		blinker: [
+			[0, -1],
+			[0, 0],
+			[0, 1],
+		],
+		beacon: [
+			[0, 0],
+			[0, 1],
+			[1, 0],
+			[2, 3],
+			[3, 2],
+			[3, 3],
+		],
+		block: [
+			[0, 0],
+			[0, 1],
+			[1, 0],
+			[1, 1],
+		],
+	};
+
+	// Place a pattern at a specific location
+	const placePattern = (grid: Cell[][], pattern: number[][], centerRow: number, centerCol: number) => {
+		pattern.forEach(([dr, dc]) => {
+			const r = centerRow + dr;
+			const c = centerCol + dc;
+			if (r >= 0 && r < grid.length && c >= 0 && c < grid[0].length) {
+				grid[r][c] = { alive: true, age: 0 };
+			}
+		});
+	};
+
+	// Initialize grid with cool patterns
 	const initializeGrid = useCallback((numRows: number, numCols: number) => {
 		const newGrid: Cell[][] = [];
 		for (let i = 0; i < numRows; i++) {
 			newGrid[i] = [];
 			for (let j = 0; j < numCols; j++) {
-				newGrid[i][j] = {
-					alive: Math.random() > 0.95, // Even sparser for better performance
-					age: 0,
-				};
+				newGrid[i][j] = { alive: false, age: 0 };
 			}
 		}
+
+		// Place small gliders scattered around
+
+		// Place some small oscillators (blinkers)
+		for (let i = 0; i < 8; i++) {
+			const row = Math.floor(Math.random() * numRows);
+			const col = Math.floor(Math.random() * numCols);
+			placePattern(newGrid, patterns.blinker, row, col);
+		}
+
+		// Place a few beacons
+		for (let i = 0; i < 4; i++) {
+			const row = Math.floor((numRows / 5) * (i + 1));
+			const col = Math.floor((numCols / 5) * ((i % 4) + 1));
+			placePattern(newGrid, patterns.beacon, row, col);
+		}
+
+		// Place some static blocks for variety
+		for (let i = 0; i < 6; i++) {
+			const row = Math.floor(Math.random() * numRows);
+			const col = Math.floor(Math.random() * numCols);
+			placePattern(newGrid, patterns.block, row, col);
+		}
+
 		return newGrid;
 	}, []);
 
@@ -206,7 +261,7 @@ const GameOfLifeBackground: React.FC = () => {
 			const elapsed = timestamp - lastUpdateRef.current;
 
 			// Update every 1200ms (slower - about 0.8 generations per second for better performance)
-			if (elapsed > 2200 && isRunning) {
+			if (elapsed > 1200 && isRunning) {
 				updateGrid();
 				lastUpdateRef.current = timestamp;
 			}

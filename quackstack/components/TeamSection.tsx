@@ -47,7 +47,6 @@ const TeamSection: React.FC = () => {
 											className='w-32 h-32 rounded-full mx-auto object-cover border-4 border-orange-500/30 group-hover:border-orange-400/50 transition-colors duration-300'
 											unoptimized
 										/>
-										<div className='absolute inset-0 rounded-full bg-gradient-to-br from-orange-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
 									</div>
 									<h3 className='text-xl font-semibold text-orange-400 mb-2 group-hover:drop-shadow-sm transition-all duration-300'>{member.name}</h3>
 									<p className='text-gray-300 mb-4 group-hover:drop-shadow-sm transition-all duration-300'>{member.role}</p>
