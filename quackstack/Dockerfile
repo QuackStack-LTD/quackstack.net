@@ -35,4 +35,4 @@ COPY --from=builder /app/public ./public
 
 USER nextjs
 EXPOSE 3000
-CMD ["node", "apps/web/server.js"]
+CMD ["node", "server.js"]
