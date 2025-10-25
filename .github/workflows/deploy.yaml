@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: [ "Image Build & Push QS Off Site" ]
     types: [ completed ]
-    branches: [ new-site-next ]
+    branches: [ main ]
 
   workflow_dispatch:
 
