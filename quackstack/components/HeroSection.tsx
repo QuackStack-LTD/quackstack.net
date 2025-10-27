@@ -28,10 +28,7 @@ const HeroSection: React.FC = () => {
 					<motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.7 }} className='space-y-6 md:space-y-12'>
 						<h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight'>
 							<span className='block text-foreground mb-1 md:mb-2'>Your vision</span>
-							<span
-								className='block text-orange-400 glow-text mb-1 md:mb-2'
-								style={{ textShadow: `0 0 20px rgba(251, 146, 60, 0.9), 0 0 40px rgba(251, 146, 60, 0.7), 0 0 60px rgba(251, 146, 60, 0.5)`, filter: 'brightness(1.3) saturate(1.2)' }}
-							>
+							<span className='block text-orange-400 glow-text mb-1 md:mb-2' style={{ textShadow: `0 0 30px rgba(251, 146, 60, 1), 0 0 60px rgba(251, 146, 60, 0.8), 0 0 90px rgba(251, 146, 60, 0.6), 0 0 120px rgba(251, 146, 60, 0.4)` }}>
 								Brought
 							</span>
 							<span className='block text-foreground'>to life.</span>
@@ -51,7 +48,7 @@ const HeroSection: React.FC = () => {
 								const contactSection = document.getElementById('contact');
 								contactSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 							}}
-							className='relative overflow-hidden cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white rounded-xl sm:rounded-2xl backdrop-blur-xl bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-orange-600/30 border border-orange-400/40 shadow-[0_8px_32px_0_rgba(251,146,60,0.37)] hover:shadow-[0_8px_40px_0_rgba(251,146,60,0.6)] transition-all duration-500 hover:scale-105 hover:rotate-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-orange-300/20 before:via-transparent before:to-orange-500/20 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-xl sm:after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+							className='relative overflow-hidden cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-orange-400 dark:text-white rounded-xl sm:rounded-2xl backdrop-blur-xl bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-orange-600/30 border border-orange-400/40 shadow-[0_8px_32px_0_rgba(251,146,60,0.37)] hover:shadow-[0_8px_40px_0_rgba(251,146,60,0.6)] transition-all duration-500 hover:scale-105 hover:rotate-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-orange-300/20 before:via-transparent before:to-orange-500/20 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-xl sm:after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
 							style={{
 								zIndex: 1,
 								background: 'linear-gradient(135deg, rgba(251,146,60,0.3) 0%, rgba(234,88,12,0.2) 50%, rgba(251,146,60,0.3) 100%)',
@@ -70,7 +67,7 @@ const HeroSection: React.FC = () => {
 								const projectsSection = document.getElementById('projects');
 								projectsSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 							}}
-							className='relative overflow-hidden cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white rounded-xl sm:rounded-2xl backdrop-blur-xl bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-orange-600/30 border border-orange-400/40 shadow-[0_8px_32px_0_rgba(251,146,60,0.37)] hover:shadow-[0_8px_40px_0_rgba(251,146,60,0.6)] transition-all duration-500 hover:scale-105 hover:-rotate-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-orange-300/20 before:via-transparent before:to-orange-500/20 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-xl sm:after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+							className='relative overflow-hidden cursor-pointer group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-orange-400 dark:text-white rounded-xl sm:rounded-2xl backdrop-blur-xl bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-orange-600/30 border border-orange-400/40 shadow-[0_8px_32px_0_rgba(251,146,60,0.37)] hover:shadow-[0_8px_40px_0_rgba(251,146,60,0.6)] transition-all duration-500 hover:scale-105 hover:-rotate-1 before:absolute before:inset-0 before:bg-gradient-to-r before:from-orange-300/20 before:via-transparent before:to-orange-500/20 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-xl sm:after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
 							style={{
 								zIndex: 1,
 								background: 'linear-gradient(135deg, rgba(251,146,60,0.3) 0%, rgba(234,88,12,0.2) 50%, rgba(251,146,60,0.3) 100%)',

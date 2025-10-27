@@ -19,8 +19,8 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({ eyebrow, title, 
 	return (
 		<motion.div variants={wrapper} initial='hidden' whileInView='visible' viewport={{ once: false, amount: 0.35 }} className={`mb-16 ${align === 'center' ? 'text-center mx-auto' : ''} max-w-3xl ${className}`}>
 			{eyebrow && <div className='uppercase tracking-[0.18em] text-[11px] font-semibold text-orange-400/80 mb-3'>{eyebrow}</div>}
-			<h2 className={`font-bold leading-tight text-white text-4xl md:text-5xl ${gradient ? 'bg-[linear-gradient(110deg,#fb923c,#f59e0b,#fb923c)] bg-clip-text text-transparent' : ''}`}>{title}</h2>
-			{subtext && <p className='mt-5 text-lg md:text-xl text-gray-300 leading-relaxed'>{subtext}</p>}
+			<h2 className={`font-bold leading-tight text-black dark:text-white text-4xl md:text-5xl ${gradient ? 'bg-[linear-gradient(110deg,#fb923c,#f59e0b,#fb923c)] bg-clip-text text-transparent' : ''}`}>{title}</h2>
+			{subtext && <p className='mt-5 text-lg md:text-xl text-gray-950 dark:text-gray-300 leading-relaxed'>{subtext}</p>}
 		</motion.div>
 	);
 };

@@ -23,42 +23,42 @@ export default function QuackStackPortfolio() {
 
 			<GameOfLifeBackground />
 
-			<div className='relative z-10'>
+			<div className='relative z-10 bg-background'>
 				<HeroSection />
 			</div>
 
-			<SectionParallaxBg colorFrom='#0a0a0a' colorTo='#1a0b05'>
-				<div className='relative z-10'>
+			<SectionParallaxBg colorFrom='rgba(251, 146, 60, 0.03)' colorTo='rgba(251, 146, 60, 0.05)'>
+				<div className='relative z-10 bg-background/50'>
 					<ServicesSection />
 				</div>
 			</SectionParallaxBg>
 
-			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05'>
-				<div className='relative z-10'>
+			<SectionParallaxBg colorFrom='rgba(251, 146, 60, 0.05)' colorTo='rgba(251, 146, 60, 0.05)'>
+				<div className='relative z-10 bg-background/50'>
 					<ProjectsSection />
 				</div>
 			</SectionParallaxBg>
 
-			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05'>
-				<div className='relative z-20'>
+			<SectionParallaxBg colorFrom='rgba(251, 146, 60, 0.05)' colorTo='rgba(251, 146, 60, 0.05)'>
+				<div className='relative z-10 bg-background/50'>
 					<TeamSection />
 				</div>
 			</SectionParallaxBg>
 
-			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05'>
-				<div className='relative z-10'>
+			<SectionParallaxBg colorFrom='rgba(251, 146, 60, 0.05)' colorTo='rgba(251, 146, 60, 0.05)'>
+				<div className='relative z-10 bg-background/50'>
 					<ProcessSection />
 				</div>
 			</SectionParallaxBg>
 
-			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05'>
-				<div className='relative z-10'>
+			<SectionParallaxBg colorFrom='rgba(251, 146, 60, 0.05)' colorTo='rgba(251, 146, 60, 0.05)'>
+				<div className='relative z-10 bg-background/50'>
 					<TechnologiesSection />
 				</div>
 			</SectionParallaxBg>
 
-			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05' className='min-h-[80vh]'>
-				<div className='relative z-10'>
+			<SectionParallaxBg colorFrom='rgba(251, 146, 60, 0.05)' colorTo='rgba(251, 146, 60, 0.08)' className='min-h-[80vh]'>
+				<div className='relative z-10 bg-background/50'>
 					<ContactSection />
 				</div>
 			</SectionParallaxBg>

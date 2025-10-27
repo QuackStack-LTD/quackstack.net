@@ -6,22 +6,22 @@ import SectionHeading from '@/components/SectionHeading';
 
 const defaultTeam = [
 	{
+		name: 'Martin Uzunov',
+		role: 'Chief Executive Officer',
+		image: '/marto.jpg',
+		skills: ['AWS', 'Docker', 'CI/CD'],
+	},
+	{
 		name: 'Emil Momchev',
-		role: 'Lead Developer',
+		role: 'Chief Product Officer',
 		image: '/emo.jpg',
 		skills: ['React', 'Next.js', 'TypeScript'],
 	},
 	{
 		name: 'Iliyan Sinapov',
-		role: 'UI/UX Designer',
+		role: 'Chief Technology Officer',
 		image: '/iliyan.jpg',
 		skills: ['Figma', 'Tailwind CSS', 'Branding'],
-	},
-	{
-		name: 'Martin Uzunov',
-		role: 'DevOps Engineer',
-		image: '/marto.jpg',
-		skills: ['AWS', 'Docker', 'CI/CD'],
 	},
 ];
 
@@ -30,7 +30,7 @@ const TeamSection: React.FC = () => {
 
 	return (
 		<section id='team' className='py-32'>
-			<div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_60%,rgba(251,146,60,0.18),transparent_55%)] pointer-events-none' />
+			<div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_60%,rgba(251,146,60,0.18),transparent_35%)] pointer-events-none' />
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<SectionHeading title='Meet Our Team' subtext='Talented professionals dedicated to bringing your vision to life with expertise and passion.' gradient />
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
@@ -48,11 +48,11 @@ const TeamSection: React.FC = () => {
 											unoptimized
 										/>
 									</div>
-									<h3 className='text-xl font-semibold text-orange-400 mb-2 group-hover:drop-shadow-sm transition-all duration-300'>{member.name}</h3>
-									<p className='text-gray-300 mb-4 group-hover:drop-shadow-sm transition-all duration-300'>{member.role}</p>
+									<h3 className='text-xl font-semibold text-orange-600 dark:text-orange-400 mb-2 group-hover:drop-shadow-sm transition-all duration-300'>{member.name}</h3>
+									<p className='text-foreground/70 mb-4 group-hover:drop-shadow-sm transition-all duration-300'>{member.role}</p>
 									<div className='flex flex-wrap justify-center gap-2'>
 										{member.skills.map((skill, skillIndex) => (
-											<span key={skillIndex} className='bg-orange-500/30 text-orange-300 px-2 py-1 rounded text-sm backdrop-blur-sm border border-orange-500/20'>
+											<span key={skillIndex} className='bg-orange-500/30 text-orange-700 dark:text-orange-300 px-2 py-1 rounded text-sm backdrop-blur-sm border border-orange-500/20'>
 												{skill}
 											</span>
 										))}
