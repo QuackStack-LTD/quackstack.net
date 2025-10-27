@@ -52,7 +52,7 @@ const ContactSection: React.FC = () => {
 									</div>
 									<div>
 										<p className='text-foreground/60'>Phone</p>
-										<p className='text-foreground font-medium'>(+1) 676767676767</p>
+										<p className='text-foreground font-medium'>(+359) 893 058 517</p>
 									</div>
 								</div>
 								<div className='flex items-center space-x-4 hover:scale-105 transition-transform duration-300'>
@@ -61,7 +61,7 @@ const ContactSection: React.FC = () => {
 									</div>
 									<div>
 										<p className='text-foreground/60'>Location</p>
-										<p className='text-foreground font-medium'>Vraca</p>
+										<p className='text-foreground font-medium'>Remote, Bulgaria</p>
 									</div>
 								</div>
 							</div>

@@ -85,20 +85,20 @@ const ContactInfo = () => {
 	return (
 		<div className='flex flex-col gap-2'>
 			<h3 className='mb-2 uppercase text-orange-600 dark:text-orange-400 font-semibold text-sm'>Contact</h3>
-			<a href='mailto:hello@quackstack.net' className='flex items-center gap-2 text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm group'>
+			<a href='mailto:contact@quackstack.net' className='flex items-center gap-2 text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm group'>
 				<Mail className='w-4 h-4 text-orange-600 dark:text-orange-400 group-hover:text-orange-500 dark:group-hover:text-orange-300' />
-				hello@quackstack.net
+				contact@quackstack.net
 			</a>
 			<a href='tel:+1234567890' className='flex items-center gap-2 text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm group'>
 				<Phone className='w-4 h-4 text-orange-600 dark:text-orange-400 group-hover:text-orange-500 dark:group-hover:text-orange-300' />
-				+1 (234) 567-890
+				+359 893 058 517
 			</a>
 			<div className='flex items-center gap-2 text-foreground/70 text-sm'>
 				<MapPin className='w-4 h-4 text-orange-600 dark:text-orange-400' />
-				London, United Kingdom
+				Remote, Bulgaria
 			</div>
 			<a
-				href='https://linkedin.com/company/quackstack'
+				href='https://www.linkedin.com/company/106319048'
 				target='_blank'
 				rel='noopener noreferrer'
 				className='flex items-center gap-2 text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm group mt-2'
