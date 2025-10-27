@@ -82,22 +82,24 @@ const Navbar: React.FC = () => {
 								<a
 									key={id}
 									href={`#${id}`}
-									className={`text-gray-300 hover:text-orange-400 px-2 lg:px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 rounded-md ${currentSection === idx ? 'text-orange-400 font-bold bg-orange-400/10' : ''}`}
+									className={`text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 px-2 lg:px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 rounded-md ${
+										currentSection === idx ? 'text-orange-500 dark:text-orange-400 font-bold bg-orange-400/10' : ''
+									}`}
 								>
 									{id.charAt(0).toUpperCase() + id.slice(1)}
 								</a>
 							))}
-							<Link href='/blog' className='text-foreground/80 hover:text-orange-400 px-2 lg:px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 rounded-md'>
+							<Link href='/blog' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 px-2 lg:px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 rounded-md'>
 								Blog
 							</Link>
 						</div>
 
 						{/* Right side buttons */}
 						<div className='flex items-center space-x-2'>
-							<Button aria-label='Toggle theme' variant='ghost' size='sm' onClick={toggleTheme} className='text-foreground/80 hover:text-orange-400 hover:bg-orange-400/10'>
+							<Button aria-label='Toggle theme' variant='ghost' size='sm' onClick={toggleTheme} className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-400/10'>
 								<ThemeIcon className='h-4 w-4' />
 							</Button>
-							<Button variant='ghost' size='sm' className='md:hidden text-foreground/80 hover:text-orange-400' onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+							<Button variant='ghost' size='sm' className='md:hidden text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400' onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
 								{mobileMenuOpen ? <X className='h-5 w-5' /> : <Menu className='h-5 w-5' />}
 							</Button>
 						</div>
@@ -115,13 +117,15 @@ const Navbar: React.FC = () => {
 						<a
 							key={id}
 							href={`#${id}`}
-							className={`block px-3 py-3 text-base font-medium transition-all duration-300 rounded-md ${currentSection === idx ? 'text-orange-400 bg-orange-400/10' : 'text-foreground/80 hover:text-orange-400 hover:bg-orange-400/5'}`}
+							className={`block px-3 py-3 text-base font-medium transition-all duration-300 rounded-md ${
+								currentSection === idx ? 'text-orange-500 dark:text-orange-400 bg-orange-400/10' : 'text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-400/5'
+							}`}
 							onClick={handleNavClick}
 						>
 							{id.charAt(0).toUpperCase() + id.slice(1)}
 						</a>
 					))}
-					<Link href='/blog' className='block px-3 py-3 text-base font-medium text-foreground/80 hover:text-orange-400 hover:bg-orange-400/5 transition-all duration-300 rounded-md' onClick={handleNavClick}>
+					<Link href='/blog' className='block px-3 py-3 text-base font-medium text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-400/5 transition-all duration-300 rounded-md' onClick={handleNavClick}>
 						Blog
 					</Link>
 				</div>

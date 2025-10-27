@@ -50,8 +50,8 @@ const ProcessSection: React.FC = () => {
 				{/* Top fade to black */}
 
 				<div className='text-center mb-20'>
-					<h2 className='text-4xl md:text-5xl font-bold text-white mb-6 glow-text'>Development Process</h2>
-					<p className='text-xl text-gray-300 max-w-3xl mx-auto'>Our development process follows a proven methodology to ensure quality, efficiency, and client satisfaction at every step.</p>
+					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-6 glow-text'>Development Process</h2>
+					<p className='text-xl text-foreground/70 max-w-3xl mx-auto'>Our development process follows a proven methodology to ensure quality, efficiency, and client satisfaction at every step.</p>
 				</div>
 				{/* Wrapper: on xl keep all in one row (no wrap) to prevent last item wrapping */}
 				<div className='relative'>
@@ -73,8 +73,8 @@ const ProcessSection: React.FC = () => {
 								>
 									{phase.step}
 								</div>
-								<h3 className='text-orange-400 font-semibold mt-3 sm:mt-4 mb-2 tracking-wide group-hover:text-orange-300 transition-colors text-center'>{phase.title}</h3>
-								<p className='text-gray-300 text-center text-sm leading-relaxed px-4 sm:px-0'>{phase.description}</p>
+								<h3 className='text-orange-600 dark:text-orange-400 font-semibold mt-3 sm:mt-4 mb-2 tracking-wide group-hover:text-orange-500 dark:group-hover:text-orange-300 transition-colors text-center'>{phase.title}</h3>
+								<p className='text-foreground/70 text-center text-sm leading-relaxed px-4 sm:px-0'>{phase.description}</p>
 							</motion.div>
 						))}
 					</div>

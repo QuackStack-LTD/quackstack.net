@@ -18,10 +18,22 @@ const ProjectsSection: React.FC = () => {
 			<div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_60%,rgba(251,146,60,0.18),transparent_45%)] pointer-events-none' />
 
 			<div className='max-w-7xl mx-auto px-6 relative z-20'>
-				<motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.5 }} className='text-4xl md:text-5xl font-bold text-white mb-8 glow-text text-center'>
+				<motion.h2
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{ duration: 0.5 }}
+					className='text-4xl md:text-5xl font-bold text-foreground mb-8 glow-text text-center'
+				>
 					Featured Projects
 				</motion.h2>
-				<motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.5, delay: 0.1 }} className='text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-center'>
+				<motion.p
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{ duration: 0.5, delay: 0.1 }}
+					className='text-lg text-foreground/70 max-w-3xl mx-auto mb-12 text-center'
+				>
 					Explore our portfolio of successful projects that showcase our expertise and innovation.
 				</motion.p>
 
@@ -37,17 +49,17 @@ const ProjectsSection: React.FC = () => {
 									</div>
 									<CardContent className='p-5 flex flex-col flex-1 relative z-10'>
 										<div className='flex items-center justify-between mb-2'>
-											<h3 className='text-lg font-semibold text-orange-400 group-hover:drop-shadow-sm transition-all duration-300'>{project.title}</h3>
-											<ArrowRight className='w-4 h-4 text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+											<h3 className='text-lg font-semibold text-orange-600 dark:text-orange-400 group-hover:drop-shadow-sm transition-all duration-300'>{project.title}</h3>
+											<ArrowRight className='w-4 h-4 text-orange-600 dark:text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
 										</div>
-										<p className='text-gray-200 mb-3 leading-relaxed text-sm flex-1 group-hover:drop-shadow-sm transition-all duration-300'>{project.description}</p>
+										<p className='text-foreground/80 mb-3 leading-relaxed text-sm flex-1 group-hover:drop-shadow-sm transition-all duration-300'>{project.description}</p>
 										<div className='flex flex-wrap gap-2 mb-4'>
 											{project.tech.slice(0, 3).map((tech, techIndex) => (
-												<span key={techIndex} className='bg-orange-500/30 text-orange-300 px-2 py-1 rounded text-xs backdrop-blur-sm border border-orange-500/20'>
+												<span key={techIndex} className='bg-orange-500/30 text-orange-700 dark:text-orange-300 px-2 py-1 rounded text-xs backdrop-blur-sm border border-orange-500/20'>
 													{tech}
 												</span>
 											))}
-											{project.tech.length > 3 && <span className='bg-orange-500/20 text-orange-400 px-2 py-1 rounded text-xs backdrop-blur-sm border border-orange-500/20'>+{project.tech.length - 3}</span>}
+											{project.tech.length > 3 && <span className='bg-orange-500/20 text-orange-600 dark:text-orange-400 px-2 py-1 rounded text-xs backdrop-blur-sm border border-orange-500/20'>+{project.tech.length - 3}</span>}
 										</div>
 									</CardContent>
 								</Link>
@@ -59,7 +71,7 @@ const ProjectsSection: React.FC = () => {
 												aria-label={`Open live demo for ${project.title}`}
 												size='sm'
 												variant='outline'
-												className='border-orange-400/60 text-orange-400 hover:bg-orange-400/20 hover:text-orange-300 bg-transparent backdrop-blur-sm hover:border-orange-300 transition-all duration-300'
+												className='border-orange-500/60 dark:border-orange-400/60 text-orange-600 dark:text-orange-400 hover:bg-orange-400/20 hover:text-orange-500 dark:hover:text-orange-300 bg-transparent backdrop-blur-sm hover:border-orange-500 dark:hover:border-orange-300 transition-all duration-300'
 												onClick={(e) => e.stopPropagation()}
 											>
 												<a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
@@ -74,7 +86,7 @@ const ProjectsSection: React.FC = () => {
 												aria-label={`View source code for ${project.title}`}
 												size='sm'
 												variant='outline'
-												className='border-orange-400/60 text-orange-400 hover:bg-orange-400/20 hover:text-orange-300 bg-transparent backdrop-blur-sm hover:border-orange-300 transition-all duration-300'
+												className='border-orange-500/60 dark:border-orange-400/60 text-orange-600 dark:text-orange-400 hover:bg-orange-400/20 hover:text-orange-500 dark:hover:text-orange-300 bg-transparent backdrop-blur-sm hover:border-orange-500 dark:hover:border-orange-300 transition-all duration-300'
 												onClick={(e) => e.stopPropagation()}
 											>
 												<a href={project.githubUrl} target='_blank' rel='noopener noreferrer'>
@@ -93,7 +105,7 @@ const ProjectsSection: React.FC = () => {
 				{/* View All Projects Button */}
 				{projectsData.length > featuredProjects.length && (
 					<motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.5, delay: 0.3 }} className='text-center mt-12'>
-						<Button asChild size='lg' className='liquid-glass-orange text-white'>
+						<Button asChild size='lg' className='liquid-glass-orange text-orange-400 dark:text-white'>
 							<Link href='/projects'>
 								View All Projects
 								<ArrowRight className='w-4 h-4 ml-2' />

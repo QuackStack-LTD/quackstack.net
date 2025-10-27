@@ -26,42 +26,42 @@ const ContactSection: React.FC = () => {
 	};
 
 	return (
-		<section id='contact' className='py-32 bg-transparent relative overflow-hidden'>
+		<section id='contact' className='py-32 bg-transparent relative overflow-hidden border-b border-orange-500/20'>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.4 }} transition={{ duration: 0.7 }} className='text-center mb-20'>
-					<h2 className='text-4xl md:text-5xl font-bold text-white mb-6 glow-text'>Contact Us</h2>
-					<p className='text-xl text-gray-300 max-w-3xl mx-auto'>We are here to assist you with any questions you may have.</p>
+					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-6 glow-text'>Contact Us</h2>
+					<p className='text-xl text-foreground/70 max-w-3xl mx-auto'>We are here to assist you with any questions you may have.</p>
 				</motion.div>
 				<div className='grid gap-12 lg:grid-cols-2 items-start'>
 					<motion.div className='space-y-8' initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
 						<div>
-							<h3 className='text-2xl font-semibold text-orange-400 mb-6'>Get in Touch</h3>
+							<h3 className='text-2xl font-semibold text-orange-600 dark:text-orange-400 mb-6'>Get in Touch</h3>
 							<div className='space-y-6'>
 								<div className='flex items-center space-x-4 hover:scale-105 transition-transform duration-300'>
 									<div className='w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center'>
-										<Mail className='w-6 h-6 text-orange-400' />
+										<Mail className='w-6 h-6 text-orange-600 dark:text-orange-400' />
 									</div>
 									<div className='flex flex-col'>
-										<p className='text-gray-300'>Email</p>
-										<p className='text-white font-medium'>contact@quackstack.net</p>
+										<p className='text-foreground/60'>Email</p>
+										<p className='text-foreground font-medium'>contact@quackstack.net</p>
 									</div>
 								</div>
 								<div className='flex items-center space-x-4 hover:scale-105 transition-transform duration-300'>
 									<div className='w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center'>
-										<Phone className='w-6 h-6 text-orange-400' />
+										<Phone className='w-6 h-6 text-orange-600 dark:text-orange-400' />
 									</div>
 									<div>
-										<p className='text-gray-300'>Phone</p>
-										<p className='text-white font-medium'>(+1) 676767676767</p>
+										<p className='text-foreground/60'>Phone</p>
+										<p className='text-foreground font-medium'>(+1) 676767676767</p>
 									</div>
 								</div>
 								<div className='flex items-center space-x-4 hover:scale-105 transition-transform duration-300'>
 									<div className='w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center'>
-										<MapPin className='w-6 h-6 text-orange-400' />
+										<MapPin className='w-6 h-6 text-orange-600 dark:text-orange-400' />
 									</div>
 									<div>
-										<p className='text-gray-300'>Location</p>
-										<p className='text-white font-medium'>Vraca</p>
+										<p className='text-foreground/60'>Location</p>
+										<p className='text-foreground font-medium'>Vraca</p>
 									</div>
 								</div>
 							</div>
@@ -74,7 +74,7 @@ const ContactSection: React.FC = () => {
 								<form className='space-y-6' onSubmit={handleSubmit} autoComplete='off'>
 									<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
 										<div>
-											<label htmlFor='first' className='block text-sm font-medium text-gray-300 mb-2'>
+											<label htmlFor='first' className='block text-sm font-medium text-foreground/70 mb-2'>
 												First Name
 											</label>
 											<Input
@@ -82,14 +82,14 @@ const ContactSection: React.FC = () => {
 												name='first'
 												value={form.first}
 												onChange={handleChange}
-												className='bg-gray-700/50 border-gray-600 text-white focus:border-orange-400 focus:ring-2 focus:ring-orange-400 backdrop-blur-sm transition-all duration-200'
+												className='bg-background/50 border-border text-foreground focus:border-orange-500 dark:focus:border-orange-400 focus:ring-2 focus:ring-orange-500/50 dark:focus:ring-orange-400/50 backdrop-blur-sm transition-all duration-200'
 												placeholder='John'
 												required
 												autoComplete='off'
 											/>
 										</div>
 										<div>
-											<label htmlFor='last' className='block text-sm font-medium text-gray-300 mb-2'>
+											<label htmlFor='last' className='block text-sm font-medium text-foreground/70 mb-2'>
 												Last Name
 											</label>
 											<Input
@@ -97,7 +97,7 @@ const ContactSection: React.FC = () => {
 												name='last'
 												value={form.last}
 												onChange={handleChange}
-												className='bg-gray-700/50 border-gray-600 text-white focus:border-orange-400 focus:ring-2 focus:ring-orange-400 backdrop-blur-sm transition-all duration-200'
+												className='bg-background/50 border-border text-foreground focus:border-orange-500 dark:focus:border-orange-400 focus:ring-2 focus:ring-orange-500/50 dark:focus:ring-orange-400/50 backdrop-blur-sm transition-all duration-200'
 												placeholder='Doe'
 												required
 												autoComplete='off'
@@ -105,7 +105,7 @@ const ContactSection: React.FC = () => {
 										</div>
 									</div>
 									<div>
-										<label htmlFor='email' className='block text-sm font-medium text-gray-300 mb-2'>
+										<label htmlFor='email' className='block text-sm font-medium text-foreground/70 mb-2'>
 											Email
 										</label>
 										<Input
@@ -114,14 +114,14 @@ const ContactSection: React.FC = () => {
 											type='email'
 											value={form.email}
 											onChange={handleChange}
-											className='bg-gray-700/50 border-gray-600 text-white focus:border-orange-400 focus:ring-2 focus:ring-orange-400 backdrop-blur-sm transition-all duration-200'
+											className='bg-background/50 border-border text-foreground focus:border-orange-500 dark:focus:border-orange-400 focus:ring-2 focus:ring-orange-500/50 dark:focus:ring-orange-400/50 backdrop-blur-sm transition-all duration-200'
 											placeholder='john@example.com'
 											required
 											autoComplete='off'
 										/>
 									</div>
 									<div>
-										<label htmlFor='subject' className='block text-sm font-medium text-gray-300 mb-2'>
+										<label htmlFor='subject' className='block text-sm font-medium text-foreground/70 mb-2'>
 											Subject
 										</label>
 										<Input
@@ -129,14 +129,14 @@ const ContactSection: React.FC = () => {
 											name='subject'
 											value={form.subject}
 											onChange={handleChange}
-											className='bg-gray-700/50 border-gray-600 text-white focus:border-orange-400 focus:ring-2 focus:ring-orange-400 backdrop-blur-sm transition-all duration-200'
+											className='bg-background/50 border-border text-foreground focus:border-orange-500 dark:focus:border-orange-400 focus:ring-2 focus:ring-orange-500/50 dark:focus:ring-orange-400/50 backdrop-blur-sm transition-all duration-200'
 											placeholder='Project Inquiry'
 											required
 											autoComplete='off'
 										/>
 									</div>
 									<div>
-										<label htmlFor='message' className='block text-sm font-medium text-gray-300 mb-2'>
+										<label htmlFor='message' className='block text-sm font-medium text-foreground/70 mb-2'>
 											Message
 										</label>
 										<Textarea
@@ -144,7 +144,7 @@ const ContactSection: React.FC = () => {
 											name='message'
 											value={form.message}
 											onChange={handleChange}
-											className='bg-gray-700/50 border-gray-600 text-white focus:border-orange-400 focus:ring-2 focus:ring-orange-400 min-h-32 backdrop-blur-sm transition-all duration-200'
+											className='bg-background/50 border-border text-foreground focus:border-orange-500 dark:focus:border-orange-400 focus:ring-2 focus:ring-orange-500/50 dark:focus:ring-orange-400/50 min-h-32 backdrop-blur-sm transition-all duration-200'
 											placeholder='Tell us about your project...'
 											required
 											autoComplete='off'
