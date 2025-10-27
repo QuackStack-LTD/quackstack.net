@@ -40,7 +40,7 @@ export default function QuackStackPortfolio() {
 			</SectionParallaxBg>
 
 			<SectionParallaxBg colorFrom='#1a0b05' colorTo='#1a0b05'>
-				<div className='relative z-20'>
+				<div className='relative z-10'>
 					<TeamSection />
 				</div>
 			</SectionParallaxBg>

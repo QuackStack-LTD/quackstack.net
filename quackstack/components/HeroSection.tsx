@@ -28,10 +28,7 @@ const HeroSection: React.FC = () => {
 					<motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.7 }} className='space-y-6 md:space-y-12'>
 						<h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight'>
 							<span className='block text-foreground mb-1 md:mb-2'>Your vision</span>
-							<span
-								className='block text-orange-400 glow-text mb-1 md:mb-2'
-								style={{ textShadow: `0 0 20px rgba(251, 146, 60, 0.9), 0 0 40px rgba(251, 146, 60, 0.7), 0 0 60px rgba(251, 146, 60, 0.5)`, filter: 'brightness(1.3) saturate(1.2)' }}
-							>
+							<span className='block text-orange-400 glow-text mb-1 md:mb-2' style={{ textShadow: `0 0 30px rgba(251, 146, 60, 1), 0 0 60px rgba(251, 146, 60, 0.8), 0 0 90px rgba(251, 146, 60, 0.6), 0 0 120px rgba(251, 146, 60, 0.4)` }}>
 								Brought
 							</span>
 							<span className='block text-foreground'>to life.</span>
