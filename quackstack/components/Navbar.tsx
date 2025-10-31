@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sun, Moon, Monitor, Menu, X } from 'lucide-react';

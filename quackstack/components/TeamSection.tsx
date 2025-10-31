@@ -29,8 +29,13 @@ const TeamSection: React.FC = () => {
 	// Removed manual scroll transforms & unused hover state
 
 	return (
-		<section id='team' className='py-32'>
-			<div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_60%,rgba(251,146,60,0.18),transparent_35%)] pointer-events-none' />
+		<section id='team' className='py-32 relative'>
+			<div
+				className='absolute inset-0 opacity-60'
+				style={{
+					background: 'radial-gradient(circle at center, rgba(249, 115, 22, 0.8) 0%, rgba(249, 115, 22, 0.3) 10%, transparent 50%)',
+				}}
+			/>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<SectionHeading title='Meet Our Team' subtext='Talented professionals dedicated to bringing your vision to life with expertise and passion.' gradient />
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
