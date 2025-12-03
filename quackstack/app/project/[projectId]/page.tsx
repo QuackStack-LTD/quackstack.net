@@ -47,14 +47,14 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 					<div className='flex items-center justify-between h-16'>
 						<Link href='/#projects'>
-							<Button variant='ghost' className='text-gray-300 hover:text-orange-400 hover:bg-orange-400/10 cursor-pointer'>
+							<Button variant='ghost' className='text-gray-300 hover:text-primary hover:bg-[rgba(var(--duck-rgb),0.1)] cursor-pointer'>
 								<ArrowLeft className='w-4 h-4 mr-2' />
 								Back to Projects
 							</Button>
 						</Link>
 						<div className='flex space-x-4'>
 							{project.demoUrl && (
-								<Button asChild className='bg-orange-500 hover:bg-orange-600 text-white cursor-pointer'>
+								<Button asChild className='liquid-glass-orange text-primary-contrast cursor-pointer'>
 									<a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
 										<ExternalLink className='w-4 h-4 mr-2' />
 										Live Demo
@@ -62,7 +62,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 								</Button>
 							)}
 							{project.githubUrl && (
-								<Button asChild variant='outline' className='border-orange-400/60 text-orange-400 hover:bg-orange-400/20 cursor-pointer'>
+								<Button asChild variant='outline' className='border-[rgba(var(--duck-rgb),0.6)] text-primary hover:bg-[rgba(var(--duck-rgb),0.12)] cursor-pointer'>
 									<a href={project.githubUrl} target='_blank' rel='noopener noreferrer'>
 										<Github className='w-4 h-4 mr-2' />
 										Code
@@ -79,7 +79,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 				<div className='max-w-7xl mx-auto'>
 					<div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
 						<div>
-							<Badge variant='outline' className='mb-4 border-orange-500/30 text-orange-400'>
+							<Badge variant='outline' className='mb-4 border-[rgba(var(--duck-rgb),0.3)] text-primary'>
 								{project.category}
 							</Badge>
 							<h1 className='text-4xl md:text-5xl lg:text-6xl font-bold mb-6 glow-text'>{project.title}</h1>
@@ -88,7 +88,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 							{/* Project Info */}
 							<div className='grid grid-cols-2 md:grid-cols-4 gap-4 mb-8'>
 								<div className='text-center'>
-									<Calendar className='w-6 h-6 text-orange-400 mx-auto mb-2' />
+									<Calendar className='w-6 h-6 text-primary mx-auto mb-2' />
 									<p className='text-sm text-gray-400'>Date</p>
 									<p className='text-white font-medium'>
 										{new Date(project.projectDate).toLocaleDateString('en-US', {
@@ -98,17 +98,17 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 									</p>
 								</div>
 								<div className='text-center'>
-									<Clock className='w-6 h-6 text-orange-400 mx-auto mb-2' />
+									<Clock className='w-6 h-6 text-primary mx-auto mb-2' />
 									<p className='text-sm text-gray-400'>Duration</p>
 									<p className='text-white font-medium'>{project.duration}</p>
 								</div>
 								<div className='text-center'>
-									<Users className='w-6 h-6 text-orange-400 mx-auto mb-2' />
+									<Users className='w-6 h-6 text-primary mx-auto mb-2' />
 									<p className='text-sm text-gray-400'>Team</p>
 									<p className='text-white font-medium'>{project.teamSize} members</p>
 								</div>
 								<div className='text-center'>
-									<div className='w-6 h-6 bg-orange-400 rounded-full mx-auto mb-2 flex items-center justify-center'>
+									<div className='w-6 h-6 bg-primary rounded-full mx-auto mb-2 flex items-center justify-center'>
 										<div className='w-3 h-3 bg-white rounded-full'></div>
 									</div>
 									<p className='text-sm text-gray-400'>Status</p>
@@ -119,7 +119,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 							{/* Tech Stack */}
 							<div className='flex flex-wrap gap-2'>
 								{project.tech.map((tech, index) => (
-									<Badge key={index} className='bg-orange-500/20 text-orange-300 border-orange-500/30'>
+									<Badge key={index} className='bg-[rgba(var(--duck-rgb),0.18)] text-[rgba(var(--duck-rgb),0.9)] border-[rgba(var(--duck-rgb),0.3)]'>
 										{tech}
 									</Badge>
 								))}
@@ -128,7 +128,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
 						{/* Main Image */}
 						<div className='relative'>
-							<div className='aspect-video relative overflow-hidden rounded-lg border border-orange-500/20'>
+							<div className='aspect-video relative overflow-hidden rounded-lg border border-[rgba(var(--duck-rgb),0.2)]'>
 								<Image src={project.image} alt={project.title} fill className='object-cover' priority />
 								<div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />
 							</div>
@@ -144,29 +144,29 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 						{/* Main Content */}
 						<div className='lg:col-span-2 space-y-12'>
 							{/* Challenge */}
-							<Card className='liquid-glass-orange rounded-xl'>
+							<Card className='liquid-glass-orange text-primary-contrast rounded-xl'>
 								<CardContent className='p-8'>
-									<h2 className='text-2xl font-bold text-orange-400 mb-4'>The Challenge</h2>
+									<h2 className='text-2xl font-bold text-primary mb-4'>The Challenge</h2>
 									<p className='text-gray-300 leading-relaxed'>{project.challenge}</p>
 								</CardContent>
 							</Card>
 
 							{/* Solution */}
-							<Card className='liquid-glass-orange rounded-xl'>
+							<Card className='liquid-glass-orange text-primary-contrast rounded-xl'>
 								<CardContent className='p-8'>
-									<h2 className='text-2xl font-bold text-orange-400 mb-4'>Our Solution</h2>
+									<h2 className='text-2xl font-bold text-primary mb-4'>Our Solution</h2>
 									<p className='text-gray-300 leading-relaxed'>{project.solution}</p>
 								</CardContent>
 							</Card>
 
 							{/* Results */}
-							<Card className='liquid-glass-orange rounded-xl'>
+							<Card className='liquid-glass-orange text-primary-contrast rounded-xl'>
 								<CardContent className='p-8'>
-									<h2 className='text-2xl font-bold text-orange-400 mb-4'>Results & Impact</h2>
+									<h2 className='text-2xl font-bold text-primary mb-4'>Results & Impact</h2>
 									<ul className='space-y-3'>
 										{project.results.map((result, index) => (
 											<li key={index} className='flex items-start'>
-												<div className='w-2 h-2 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0' />
+												<div className='w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0' />
 												<span className='text-gray-300'>{result}</span>
 											</li>
 										))}
@@ -186,7 +186,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 													setCurrentIndex(index + 1);
 													setLightboxOpen(true);
 												}}
-												className='aspect-video relative overflow-hidden rounded-lg border border-orange-500/20 focus:outline-none focus:ring-2 focus:ring-orange-400 cursor-pointer'
+												className='aspect-video relative overflow-hidden rounded-lg border border-[rgba(var(--duck-rgb),0.2)] focus:outline-none focus:ring-2 focus:ring-[rgba(var(--duck-rgb),0.6)] cursor-pointer'
 											>
 												<Image src={image} alt={`${project.title} screenshot ${index + 2}`} fill className='object-cover' />
 											</button>
@@ -199,13 +199,13 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 						{/* Sidebar */}
 						<div className='space-y-8'>
 							{/* Features */}
-							<Card className='liquid-glass-orange rounded-xl'>
+							<Card className='liquid-glass-orange text-primary-contrast rounded-xl'>
 								<CardContent className='p-6'>
-									<h3 className='text-xl font-bold text-orange-400 mb-4'>Key Features</h3>
+									<h3 className='text-xl font-bold text-primary mb-4'>Key Features</h3>
 									<ul className='space-y-2'>
 										{project.features.map((feature, index) => (
 											<li key={index} className='flex items-start'>
-												<div className='w-1.5 h-1.5 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0' />
+												<div className='w-1.5 h-1.5 bg-primary rounded-full mt-2 mr-3 flex-shrink-0' />
 												<span className='text-gray-300 text-sm'>{feature}</span>
 											</li>
 										))}
@@ -214,12 +214,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 							</Card>
 
 							{/* Project Tags */}
-							<Card className='liquid-glass-orange rounded-xl'>
+							<Card className='liquid-glass-orange text-primary-contrast rounded-xl'>
 								<CardContent className='p-6'>
-									<h3 className='text-xl font-bold text-orange-400 mb-4'>Tags</h3>
+									<h3 className='text-xl font-bold text-primary mb-4'>Tags</h3>
 									<div className='flex flex-wrap gap-2'>
 										{project.tags.map((tag, index) => (
-											<Badge key={index} variant='outline' className='border-orange-500/30 text-orange-300 text-xs'>
+											<Badge key={index} variant='outline' className='border-[rgba(var(--duck-rgb),0.3)] text-[rgba(var(--duck-rgb),0.9)] text-xs'>
 												{tag}
 											</Badge>
 										))}
@@ -228,9 +228,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 							</Card>
 
 							{/* Client Info */}
-							<Card className='liquid-glass-orange rounded-xl'>
+							<Card className='liquid-glass-orange text-primary-contrast rounded-xl'>
 								<CardContent className='p-6'>
-									<h3 className='text-xl font-bold text-orange-400 mb-4'>Project Details</h3>
+									<h3 className='text-xl font-bold text-primary mb-4'>Project Details</h3>
 									<div className='space-y-3'>
 										<div>
 											<p className='text-sm text-gray-400'>Client</p>
@@ -319,15 +319,15 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 			)}
 
 			{/* CTA Section */}
-			<section className='py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-orange-500/10 to-transparent'>
+			<section className='py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[rgba(var(--duck-rgb),0.08)] to-transparent'>
 				<div className='max-w-4xl mx-auto text-center'>
 					<h2 className='text-3xl md:text-4xl font-bold text-white mb-6'>Have a Similar Project in Mind?</h2>
 					<p className='text-xl text-gray-300 mb-8'>Let's discuss how we can bring your vision to life with our expertise and creativity.</p>
 					<div className='flex flex-col sm:flex-row gap-4 justify-center'>
-						<Button asChild size='lg' className='bg-orange-500 hover:bg-orange-600 text-white'>
+						<Button asChild size='lg' className='liquid-glass-orange text-primary-contrast'>
 							<Link href='/#contact'>Get In Touch</Link>
 						</Button>
-						<Button asChild size='lg' variant='outline' className='border-orange-400/60 text-orange-400 hover:bg-orange-400/20'>
+						<Button asChild size='lg' variant='outline' className='border-[rgba(var(--duck-rgb),0.6)] text-primary hover:bg-[rgba(var(--duck-rgb),0.12)]'>
 							<Link href='/#projects'>View All Projects</Link>
 						</Button>
 					</div>

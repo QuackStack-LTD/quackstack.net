@@ -5,7 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-	"relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-orange-400/70",
+	"relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-[rgba(var(--duck-rgb),0.7)]",
 	{
 		variants: {
 			variant: {
@@ -15,11 +15,11 @@ const buttonVariants = cva(
 				secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
 				ghost: 'hover:bg-accent/60 hover:text-accent-foreground dark:hover:bg-accent/40',
 				link: 'text-primary underline-offset-4 hover:underline hover:text-primary/90',
-				gradient: 'text-black font-semibold shadow-md hover:shadow-lg bg-[linear-gradient(90deg,#fb923c,#f59e0b,#fb923c)] bg-[length:200%_100%] animate-none hover:bg-[position:100%] transition-[background-position] ease-linear',
+				gradient: 'text-white font-semibold shadow-md hover:shadow-lg bg-[var(--gradient-primary)] bg-[length:200%_100%] animate-none hover:bg-[position:100%] transition-[background-position] ease-linear',
 				glass: 'backdrop-blur-md bg-white/10 border border-white/15 hover:bg-white/15 hover:border-white/25 shadow-[0_0_0_1px_rgba(255,255,255,0.05)]',
-				soft: 'bg-orange-400/15 text-orange-300 hover:bg-orange-400/25 hover:text-orange-200 border border-orange-400/20',
+				soft: 'bg-[rgba(var(--duck-rgb),0.15)] text-white hover:bg-[rgba(var(--duck-rgb),0.25)] border border-[rgba(var(--duck-rgb),0.2)]',
 				'outline-soft': 'border border-white/15 hover:border-white/35 bg-gradient-to-br from-white/5 to-white/0',
-				'ghost-soft': 'text-orange-300 hover:text-orange-200 hover:bg-orange-400/10',
+				'ghost-soft': 'text-white hover:bg-[rgba(var(--duck-rgb),0.1)]',
 				subtle: 'bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] border border-white/5',
 			},
 			size: {
@@ -30,7 +30,7 @@ const buttonVariants = cva(
 				pill: 'h-11 px-8 rounded-full',
 			},
 			glow: {
-				true: 'hover:shadow-[0_0_0_1px_rgba(251,146,60,0.4),0_8px_32px_-4px_rgba(251,146,60,0.55)]',
+				true: 'hover:shadow-[0_0_0_1px_rgba(var(--duck-rgb),0.4),0_8px_32px_-4px_rgba(var(--duck-rgb),0.55)]',
 				false: '',
 			},
 			elevate: {
@@ -39,7 +39,7 @@ const buttonVariants = cva(
 			},
 		},
 		compoundVariants: [
-			{ variant: 'gradient', glow: true, class: 'shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_8px_30px_-6px_rgba(251,146,60,0.6)]' },
+			{ variant: 'gradient', glow: true, class: 'shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_8px_30px_-6px_rgba(var(--duck-rgb),0.6)]' },
 			{ variant: 'glass', glow: true, class: 'shadow-[0_0_0_1px_rgba(255,255,255,0.2),0_4px_22px_-4px_rgba(255,255,255,0.25)]' },
 		],
 		defaultVariants: {
@@ -53,7 +53,10 @@ const buttonVariants = cva(
 
 function Button({ className, variant, size, glow, elevate, asChild = false, ...props }: React.ComponentProps<'button'> & VariantProps<typeof buttonVariants> & { asChild?: boolean }) {
 	const Comp = asChild ? Slot : 'button';
-	return <Comp data-slot='button' className={cn(buttonVariants({ variant, size, glow, elevate, className }))} {...props} />;
+	// Ensure consumer `className` is appended to the generated variant classes
+	// so utilities like `liquid-glass-orange` and `text-primary-contrast` actually take effect.
+	const classes = cn(buttonVariants({ variant, size, glow, elevate }), className);
+	return <Comp data-slot='button' className={classes} {...props} />;
 }
 
 export { Button, buttonVariants };

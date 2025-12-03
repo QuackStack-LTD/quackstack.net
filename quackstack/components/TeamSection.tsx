@@ -33,7 +33,7 @@ const TeamSection: React.FC = () => {
 			<div
 				className='absolute inset-0 opacity-60'
 				style={{
-					background: 'radial-gradient(circle at center, rgba(249, 115, 22, 0.8) 0%, rgba(249, 115, 22, 0.3) 10%, transparent 50%)',
+					background: 'radial-gradient(circle at center, rgba(var(--duck-rgb), 0.85) 0%, rgba(var(--duck-rgb), 0.18) 10%, transparent 50%)',
 				}}
 			/>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -49,15 +49,15 @@ const TeamSection: React.FC = () => {
 											alt={member.name}
 											width={128}
 											height={128}
-											className='w-32 h-32 rounded-full mx-auto object-cover border-4 border-orange-500/30 group-hover:border-orange-400/50 transition-colors duration-300'
+											className='w-32 h-32 rounded-full mx-auto object-cover border-4 border-[rgba(var(--duck-rgb),0.12)] group-hover:border-[rgba(var(--duck-rgb),0.28)] transition-colors duration-300'
 											unoptimized
 										/>
 									</div>
-									<h3 className='text-xl font-semibold text-orange-600 dark:text-orange-400 mb-2 group-hover:drop-shadow-sm transition-all duration-300'>{member.name}</h3>
+									<h3 className='text-xl font-semibold text-primary dark:text-primary mb-2 group-hover:drop-shadow-sm transition-all duration-300'>{member.name}</h3>
 									<p className='text-foreground/70 mb-4 group-hover:drop-shadow-sm transition-all duration-300'>{member.role}</p>
 									<div className='flex flex-wrap justify-center gap-2'>
 										{member.skills.map((skill, skillIndex) => (
-											<span key={skillIndex} className='bg-orange-500/30 text-orange-700 dark:text-orange-300 px-2 py-1 rounded text-sm backdrop-blur-sm border border-orange-500/20'>
+											<span key={skillIndex} className='bg-[rgba(var(--duck-rgb),0.12)] text-primary dark:text-primary px-2 py-1 rounded text-sm backdrop-blur-sm border border-[rgba(var(--duck-rgb),0.18)]'>
 												{skill}
 											</span>
 										))}

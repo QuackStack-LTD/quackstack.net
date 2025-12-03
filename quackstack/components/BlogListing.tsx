@@ -42,12 +42,12 @@ export default function BlogListing({ posts }: BlogListingProps) {
 				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 					<div className='flex items-center justify-between h-16'>
 						<Link href='/'>
-							<Button variant='ghost' className='text-foreground/70 hover:text-orange-400 hover:bg-orange-400/10'>
+							<Button variant='ghost' className='text-foreground/70 hover:text-primary hover:bg-[rgba(var(--duck-rgb),0.08)]'>
 								<ArrowLeft className='w-4 h-4 mr-2' />
 								Back to Home
 							</Button>
 						</Link>
-						<h1 className='text-xl font-bold text-orange-400'>QuackStack Blog</h1>
+						<h1 className='text-xl font-bold text-primary'>QuackStack Blog</h1>
 						<div className='w-32'></div> {/* Spacer for centering */}
 					</div>
 				</div>
@@ -67,7 +67,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
 							placeholder='Search posts by title, category, or tags...'
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
-							className='w-full pl-12 pr-4 py-6 text-lg bg-background/50 backdrop-blur-sm border-orange-400/30 focus:border-orange-400 rounded-xl'
+							className='w-full pl-12 pr-4 py-6 text-lg bg-background/50 backdrop-blur-sm border-[rgba(var(--duck-rgb),0.22)] focus:border-[rgba(var(--duck-rgb),0.85)] rounded-xl'
 						/>
 					</div>
 
@@ -90,7 +90,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
 									<div className='relative overflow-hidden h-64'>
 										<Image src={post.image || ''} alt={post.title} fill className='object-cover transition-transform duration-300 hover:scale-105' />
 										<div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300' />
-										<Badge className='absolute top-4 left-4 bg-orange-500/80 text-white'>Featured</Badge>
+										<Badge className='absolute top-4 left-4 bg-[rgba(var(--duck-rgb),0.85)] text-white'>Featured</Badge>
 									</div>
 									<CardContent className='p-6'>
 										<div className='flex items-center space-x-4 text-sm text-gray-400 mb-3'>
@@ -107,17 +107,20 @@ export default function BlogListing({ posts }: BlogListingProps) {
 												{post.readTime} min read
 											</div>
 										</div>
-										<h3 className='text-xl font-bold text-foreground mb-3 group-hover:text-orange-400 transition-colors duration-300'>{post.title}</h3>
+										<h3 className='text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300'>{post.title}</h3>
 										<p className='text-foreground/70 mb-4 leading-relaxed'>{post.excerpt}</p>
 										<div className='flex flex-wrap gap-2 mb-4'>
 											{post.tags?.slice(0, 3).map((tag, index) => (
-												<Badge key={index} variant='outline' className='border-orange-500/30 text-orange-300 text-xs'>
+												<Badge key={index} variant='outline' className='border-[rgba(var(--duck-rgb),0.3)] text-[rgba(var(--duck-rgb),0.9)] text-xs'>
 													{tag}
 												</Badge>
 											))}
 										</div>
 										<Link href={`/blog/${post.slug}`}>
-											<Button variant='outline' className='border-orange-400/60 text-orange-400 hover:bg-orange-400/20 hover:text-orange-300 bg-transparent backdrop-blur-sm hover:border-orange-300 transition-all duration-300'>
+											<Button
+												variant='outline'
+												className='liquid-glass-orange text-primary-contrast hover:text-[rgba(var(--duck-rgb),0.95)] bg-transparent backdrop-blur-sm hover:border-[rgba(var(--duck-rgb),0.45)] transition-all duration-300'
+											>
 												Read More
 											</Button>
 										</Link>
@@ -136,7 +139,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
 					{filteredPosts.length === 0 ? (
 						<div className='text-center py-16'>
 							<p className='text-xl text-foreground/60'>No posts found matching your search.</p>
-							<Button onClick={() => setSearchQuery('')} variant='outline' className='mt-4 border-orange-400/60 text-orange-400 hover:bg-orange-400/20'>
+							<Button onClick={() => setSearchQuery('')} variant='outline' className='mt-4 border-[rgba(var(--duck-rgb),0.6)] text-primary hover:bg-[rgba(var(--duck-rgb),0.12)]'>
 								Clear Search
 							</Button>
 						</div>
@@ -147,7 +150,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
 									<div className='relative overflow-hidden h-48'>
 										<Image src={post.image || ''} alt={post.title} fill className='object-cover transition-transform duration-300 hover:scale-105' />
 										<div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300' />
-										<Badge className='absolute top-4 left-4 bg-orange-500/80 text-white text-xs'>{post.category}</Badge>
+										<Badge className='absolute top-4 left-4 bg-[rgba(var(--duck-rgb),0.85)] text-white text-xs'>{post.category}</Badge>
 									</div>
 									<CardContent className='p-5 flex flex-col flex-1'>
 										<div className='flex items-center space-x-4 text-xs text-gray-400 mb-3'>
@@ -164,11 +167,11 @@ export default function BlogListing({ posts }: BlogListingProps) {
 												{post.readTime} min
 											</div>
 										</div>
-										<h3 className='text-lg font-bold text-foreground mb-3 group-hover:text-orange-400 transition-colors duration-300 line-clamp-2'>{post.title}</h3>
+										<h3 className='text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2'>{post.title}</h3>
 										<p className='text-foreground/70 mb-4 leading-relaxed text-sm flex-1 line-clamp-3'>{post.excerpt}</p>
 										<div className='flex flex-wrap gap-1 mb-4'>
 											{post.tags?.slice(0, 2).map((tag, index) => (
-												<Badge key={index} variant='outline' className='border-orange-500/30 text-orange-300 text-xs'>
+												<Badge key={index} variant='outline' className='border-[rgba(var(--duck-rgb),0.3)] text-[rgba(var(--duck-rgb),0.9)] text-xs'>
 													{tag}
 												</Badge>
 											))}
@@ -177,7 +180,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
 											<Button
 												size='sm'
 												variant='outline'
-												className='w-full border-orange-400/60 text-orange-400 hover:bg-orange-400/20 hover:text-orange-300 bg-transparent backdrop-blur-sm hover:border-orange-300 transition-all duration-300'
+												className='w-full border-[rgba(var(--duck-rgb),0.6)] text-[rgba(var(--duck-rgb),0.95)] hover:bg-[rgba(var(--duck-rgb),0.12)] hover:text-[rgba(var(--duck-rgb),0.95)] bg-transparent backdrop-blur-sm hover:border-[rgba(var(--duck-rgb),0.45)] transition-all duration-300'
 											>
 												Read More
 											</Button>
@@ -191,7 +194,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
 			</section>
 
 			{/* Newsletter Section */}
-			<section className='py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-orange-500/10 to-transparent'>
+			<section className='py-16 px-4 sm:px-6 lg:px-8 bg-[linear-gradient(90deg,rgba(var(--duck-rgb),0.08),transparent)]'>
 				<div className='max-w-4xl mx-auto text-center'>
 					<h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>Stay Updated</h2>
 					<p className='text-xl text-foreground/70 mb-8'>Subscribe to our newsletter to get the latest insights and updates delivered to your inbox.</p>
@@ -199,9 +202,9 @@ export default function BlogListing({ posts }: BlogListingProps) {
 						<input
 							type='email'
 							placeholder='Enter your email'
-							className='flex-1 px-4 py-3 bg-background/50 border border-orange-500/30 rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-orange-400 backdrop-blur-sm'
+							className='flex-1 px-4 py-3 bg-background/50 border border-[rgba(var(--duck-rgb),0.3)] rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-[rgba(var(--duck-rgb),0.85)] backdrop-blur-sm'
 						/>
-						<Button className='bg-orange-500 hover:bg-orange-600 text-white px-8'>Subscribe</Button>
+						<Button className='liquid-glass-orange text-primary-contrast px-8'>Subscribe</Button>
 					</div>
 				</div>
 			</section>

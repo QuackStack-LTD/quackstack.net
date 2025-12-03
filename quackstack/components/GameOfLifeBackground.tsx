@@ -19,6 +19,17 @@ const GameOfLifeBackground: React.FC = () => {
 	const lastUpdateRef = useRef<number>(0);
 	const { resolvedTheme } = useTheme();
 
+	// read CSS variable for duck/yellow color so canvas can match UI tokens
+	const duckRgbRef = useRef('255, 212, 59');
+
+	useEffect(() => {
+		if (typeof window === 'undefined') return;
+		const computed = getComputedStyle(document.documentElement).getPropertyValue('--duck-rgb');
+		if (computed) {
+			duckRgbRef.current = computed.trim() || duckRgbRef.current;
+		}
+	}, [resolvedTheme]);
+
 	// Classic Game of Life patterns - small and subtle
 	const patterns = {
 		blinker: [
@@ -232,19 +243,20 @@ const GameOfLifeBackground: React.FC = () => {
 					// Calculate opacity based on age for smoother fading effect
 					const fadeOpacity = Math.max(0.2, 1 - cell.age / 30);
 
-					// Stronger fill with orange glow
-					ctx.fillStyle = `rgba(251, 146, 60, ${fadeOpacity * 0.25})`;
+					// Stronger fill with brand duck/yellow glow
+					const duck = duckRgbRef.current;
+					ctx.fillStyle = `rgba(${duck}, ${fadeOpacity * 0.25})`;
 					ctx.fillRect(x, y, cellSize, cellSize);
 
-					// Draw bright orange border
-					ctx.strokeStyle = `rgba(251, 146, 60, ${fadeOpacity})`;
+					// Draw bright border using duck color
+					ctx.strokeStyle = `rgba(${duck}, ${fadeOpacity})`;
 					ctx.lineWidth = 2;
 					ctx.strokeRect(x, y, cellSize, cellSize);
 
-					// Add stronger inner glow effect
+					// Add stronger inner glow effect using duck color
 					const gradient = ctx.createRadialGradient(x + cellSize / 2, y + cellSize / 2, 0, x + cellSize / 2, y + cellSize / 2, cellSize / 2);
-					gradient.addColorStop(0, `rgba(251, 146, 60, ${fadeOpacity * 0.4})`);
-					gradient.addColorStop(0.5, `rgba(251, 146, 60, ${fadeOpacity * 0.2})`);
+					gradient.addColorStop(0, `rgba(${duck}, ${fadeOpacity * 0.4})`);
+					gradient.addColorStop(0.5, `rgba(${duck}, ${fadeOpacity * 0.2})`);
 					gradient.addColorStop(1, 'transparent');
 					ctx.fillStyle = gradient;
 					ctx.fillRect(x, y, cellSize, cellSize);
