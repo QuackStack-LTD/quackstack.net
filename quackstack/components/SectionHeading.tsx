@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useReducedEffects } from '@/hooks/use-reduced-effects';
 
 interface SectionHeadingProps {
 	eyebrow?: string;
@@ -11,17 +12,21 @@ interface SectionHeadingProps {
 }
 
 const wrapper = {
-	hidden: { opacity: 0, y: 32 },
-	visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as any } },
+	hidden: { opacity: 0, y: 20 },
+	visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as any } },
 };
 
 export const SectionHeading: React.FC<SectionHeadingProps> = ({ eyebrow, title, subtext, align = 'center', className = '', gradient }) => {
+	const reduced = useReducedEffects();
+	const Wrapper: any = reduced ? 'div' : motion.div;
+	const wrapperProps = reduced ? {} : { variants: wrapper, initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.35 } };
+
 	return (
-		<motion.div variants={wrapper} initial='hidden' whileInView='visible' viewport={{ once: false, amount: 0.35 }} className={`mb-16 ${align === 'center' ? 'text-center mx-auto' : ''} max-w-3xl ${className}`}>
-			{eyebrow && <div className='uppercase tracking-[0.18em] text-[11px] font-semibold text-orange-400/80 mb-3'>{eyebrow}</div>}
-			<h2 className={`font-bold leading-tight text-black dark:text-white text-4xl md:text-5xl ${gradient ? 'bg-[linear-gradient(110deg,#fb923c,#f59e0b,#fb923c)] bg-clip-text text-transparent' : ''}`}>{title}</h2>
+		<Wrapper {...wrapperProps} className={`mb-16 ${align === 'center' ? 'text-center mx-auto' : ''} max-w-3xl ${className}`}>
+			{eyebrow && <div className='uppercase tracking-[0.18em] text-[11px] font-semibold text-primary/80 mb-3'>{eyebrow}</div>}
+			<h2 className={`font-bold leading-tight text-black dark:text-white text-4xl md:text-5xl ${gradient ? 'bg-[var(--gradient-primary)] bg-clip-text text-transparent' : ''}`}>{title}</h2>
 			{subtext && <p className='mt-5 text-lg md:text-xl text-gray-950 dark:text-gray-300 leading-relaxed'>{subtext}</p>}
-		</motion.div>
+		</Wrapper>
 	);
 };
 

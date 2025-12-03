@@ -36,12 +36,12 @@ export default function ThemedLogo({ width = 180, height = 54, className = '' }:
 				/>
 				<defs>
 					<linearGradient id='paint0_linear' x1='9.95556' y1='0.353411' x2='27.0766' y2='33.478' gradientUnits='userSpaceOnUse'>
-						<stop stopColor='#fb923c' />
-						<stop offset='1' stopColor='#ea580c' />
+						<stop stopColor='#F3C836' />
+						<stop offset='1' stopColor='#E59C2D' />
 					</linearGradient>
 					<linearGradient id='paint1_linear' x1='9.80125' y1='0.437881' x2='27.1062' y2='33.6342' gradientUnits='userSpaceOnUse'>
-						<stop stopColor='#fb923c' />
-						<stop offset='1' stopColor='#ea580c' />
+						<stop stopColor='#F3C836' />
+						<stop offset='1' stopColor='#E59C2D' />
 					</linearGradient>
 					<clipPath id='clip0'>
 						<rect width='35.5' height='35.5' fill='white' />
@@ -72,12 +72,12 @@ export default function ThemedLogo({ width = 180, height = 54, className = '' }:
 			/>
 			<defs>
 				<linearGradient id='paint0_linear' x1='9.95556' y1='0.353411' x2='27.0766' y2='33.478' gradientUnits='userSpaceOnUse'>
-					<stop stopColor='#fb923c' />
-					<stop offset='1' stopColor='#ea580c' />
+					<stop stopColor='#F3C836' />
+					<stop offset='1' stopColor='#E59C2D' />
 				</linearGradient>
 				<linearGradient id='paint1_linear' x1='9.80125' y1='0.437881' x2='27.1062' y2='33.6342' gradientUnits='userSpaceOnUse'>
-					<stop stopColor='#fb923c' />
-					<stop offset='1' stopColor='#ea580c' />
+					<stop stopColor='#F3C836' />
+					<stop offset='1' stopColor='#E59C2D' />
 				</linearGradient>
 				<clipPath id='clip0'>
 					<rect width='35.5' height='35.5' fill='white' />

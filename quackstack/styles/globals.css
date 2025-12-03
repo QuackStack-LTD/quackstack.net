@@ -45,7 +45,21 @@
 	--grad-5: radial-gradient(circle at 30% 30%, #1e3a8a 0%, #312e81 35%, #1e1b4b 70%, #0f172a 100%);
 	--grad-warm: linear-gradient(120deg, #1c1917 0%, #7c2d12 40%, #b45309 70%, #ea580c 100%);
 	--grad-surface: linear-gradient(160deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 60%, rgba(255, 255, 255, 0.01) 100%);
-	--glow-orange: 0 0 0 1px #fb923c, 0 0 12px 2px #fb923c55, 0 0 48px 8px #f9731633;
+	--glow-duck: 0 0 0 1px rgba(var(--duck-rgb), 0.9), 0 0 12px 2px rgba(var(--duck-rgb), 0.33), 0 0 48px 8px rgba(var(--duck-rgb), 0.2);
+}
+
+.text-primary {
+    color: var(--duck-500) !important;
+}
+.bg-primary {
+    background-color: var(--duck) !important;
+}
+.bg-primary-gradient {
+    background: var(--gradient-primary) !important;
+}
+.text-primary-contrast {
+    color: #ffffff !important;
+}
 }
 
 .dark {
@@ -158,7 +172,7 @@
 		backdrop-filter: blur(24px);
 		-webkit-backdrop-filter: blur(24px);
 	}
-	.glow-orange {
-		box-shadow: var(--glow-orange);
+	.glow-duck {
+		box-shadow: var(--glow-duck);
 	}
 }

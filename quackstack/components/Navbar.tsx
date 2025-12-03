@@ -16,7 +16,11 @@ const Navbar: React.FC = () => {
 	// Avoid hydration mismatch by rendering a deterministic icon until mounted
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => setMounted(true), []);
-	const ThemeIcon = mounted ? (resolvedTheme === 'light' ? Sun : resolvedTheme === 'dark' ? Moon : Monitor) : Sun;
+
+	// Use the user-selected `theme` to choose the icon (light/dark/system).
+	// `resolvedTheme` is the effective theme (light/dark) when `theme === 'system',
+	// but we want the icon to reflect the user's selection (e.g. a 'system' monitor icon).
+	const ThemeIcon = mounted ? (theme === 'light' ? Sun : theme === 'dark' ? Moon : Monitor) : Sun;
 
 	// Scroll spy effect
 	useEffect(() => {
@@ -84,24 +88,24 @@ const Navbar: React.FC = () => {
 								<a
 									key={id}
 									href={`#${id}`}
-									className={`text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 px-2 lg:px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 rounded-md ${
-										currentSection === idx ? 'text-orange-500 dark:text-orange-400 font-bold bg-orange-400/10' : ''
+									className={`text-foreground/70 hover:text-primary dark:hover:text-primary px-2 lg:px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 rounded-md ${
+										currentSection === idx ? 'text-primary font-bold bg-[rgba(var(--duck-rgb),0.08)]' : ''
 									}`}
 								>
 									{id.charAt(0).toUpperCase() + id.slice(1)}
 								</a>
 							))}
-							<Link href='/blog' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 px-2 lg:px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 rounded-md'>
+							<Link href='/blog' className='text-foreground/70 hover:text-primary dark:hover:text-primary px-2 lg:px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 rounded-md'>
 								Blog
 							</Link>
 						</div>
 
 						{/* Right side buttons */}
 						<div className='flex items-center space-x-2'>
-							<Button aria-label='Toggle theme' variant='ghost' size='sm' onClick={toggleTheme} className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-400/10'>
+							<Button aria-label='Toggle theme' variant='ghost' size='sm' onClick={toggleTheme} className='text-foreground/70 hover:text-primary dark:hover:text-primary hover:bg-[rgba(var(--duck-rgb),0.08)]'>
 								<ThemeIcon className='h-4 w-4' />
 							</Button>
-							<Button variant='ghost' size='sm' className='md:hidden text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400' onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+							<Button variant='ghost' size='sm' className='md:hidden text-foreground/70 hover:text-primary dark:hover:text-primary' onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
 								{mobileMenuOpen ? <X className='h-5 w-5' /> : <Menu className='h-5 w-5' />}
 							</Button>
 						</div>
@@ -120,14 +124,18 @@ const Navbar: React.FC = () => {
 							key={id}
 							href={`#${id}`}
 							className={`block px-3 py-3 text-base font-medium transition-all duration-300 rounded-md ${
-								currentSection === idx ? 'text-orange-500 dark:text-orange-400 bg-orange-400/10' : 'text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-400/5'
+								currentSection === idx ? 'text-primary dark:text-primary bg-[rgba(var(--duck-rgb),0.08)]' : 'text-foreground/70 hover:text-primary dark:hover:text-primary hover:bg-[rgba(var(--duck-rgb),0.05)]'
 							}`}
 							onClick={handleNavClick}
 						>
 							{id.charAt(0).toUpperCase() + id.slice(1)}
 						</a>
 					))}
-					<Link href='/blog' className='block px-3 py-3 text-base font-medium text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-400/5 transition-all duration-300 rounded-md' onClick={handleNavClick}>
+					<Link
+						href='/blog'
+						className='block px-3 py-3 text-base font-medium text-foreground/70 hover:text-primary dark:hover:text-primary hover:bg-[rgba(var(--duck-rgb),0.05)] transition-all duration-300 rounded-md'
+						onClick={handleNavClick}
+					>
 						Blog
 					</Link>
 				</div>

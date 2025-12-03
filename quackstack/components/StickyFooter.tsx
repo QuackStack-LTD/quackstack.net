@@ -8,7 +8,7 @@ import ThemedLogo from './ThemedLogo';
 
 const Content = () => {
 	return (
-		<div className='bg-gradient-to-b from-orange-100/90 to-orange-50 dark:from-[#1e0c02] dark:to-[#0a0402] py-12 px-6 sm:px-12 h-full w-full flex flex-col justify-between shadow-[0_-8px_32px_rgba(251,146,60,0.25)]'>
+		<div className='bg-gradient-to-b from-[rgba(var(--duck-rgb),0.18)] via-[rgba(var(--duck-rgb),0.08)] to-[rgba(var(--duck-rgb),0.02)]  py-12 px-6 sm:px-12 h-full w-full flex flex-col justify-between shadow-[0_-10px_40px_rgba(var(--duck-rgb),0.28)]'>
 			<Section1 />
 			<Section2 />
 		</div>
@@ -31,11 +31,11 @@ const Section2 = () => {
 				<ThemedLogo width={220} height={72} className='w-[120px] sm:w-[220px] h-12 object-contain drop-shadow-xl' />
 			</div>
 			<div className='flex flex-col sm:flex-row items-center gap-4 text-sm'>
-				<Link href='/tos' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer'>
+				<Link href='/tos' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer'>
 					Terms of Service
 				</Link>
 				<span className='hidden sm:inline text-foreground/40'>•</span>
-				<Link href='/privacy' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer'>
+				<Link href='/privacy' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer'>
 					Privacy Policy
 				</Link>
 			</div>
@@ -48,32 +48,32 @@ const Nav = () => {
 	return (
 		<>
 			<div className='flex flex-col gap-2'>
-				<h3 className='mb-2 uppercase text-orange-600 dark:text-orange-400 font-semibold text-sm'>Company</h3>
-				<a href='#home' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm'>
+				<h3 className='mb-2 uppercase text-primary dark:text-primary font-semibold text-sm'>Company</h3>
+				<a href='#home' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm'>
 					Home
 				</a>
-				<a href='#projects' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm'>
+				<a href='#projects' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm'>
 					Projects
 				</a>
-				<a href='#team' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm'>
+				<a href='#team' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm'>
 					Our Team
 				</a>
-				<a href='#contact' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm'>
+				<a href='#contact' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm'>
 					Contact Us
 				</a>
 			</div>
 			<div className='flex flex-col gap-2'>
-				<h3 className='mb-2 uppercase text-orange-600 dark:text-orange-400 font-semibold text-sm'>Resources</h3>
-				<Link href='/blog' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm'>
+				<h3 className='mb-2 uppercase text-primary dark:text-primary font-semibold text-sm'>Resources</h3>
+				<Link href='/blog' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm'>
 					Blog
 				</Link>
-				<a href='#services' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm'>
+				<a href='#services' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm'>
 					Services
 				</a>
-				<a href='#technologies' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm'>
+				<a href='#technologies' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm'>
 					Technologies
 				</a>
-				<a href='#process' className='text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm'>
+				<a href='#process' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm'>
 					Process
 				</a>
 			</div>
@@ -84,26 +84,26 @@ const Nav = () => {
 const ContactInfo = () => {
 	return (
 		<div className='flex flex-col gap-2'>
-			<h3 className='mb-2 uppercase text-orange-600 dark:text-orange-400 font-semibold text-sm'>Contact</h3>
-			<a href='mailto:contact@quackstack.net' className='flex items-center gap-2 text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm group'>
-				<Mail className='w-4 h-4 text-orange-600 dark:text-orange-400 group-hover:text-orange-500 dark:group-hover:text-orange-300' />
+			<h3 className='mb-2 uppercase text-primary dark:text-primary font-semibold text-sm'>Contact</h3>
+			<a href='mailto:contact@quackstack.net' className='flex items-center gap-2 text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm group'>
+				<Mail className='w-4 h-4 text-primary dark:text-primary group-hover:text-primary dark:group-hover:text-primary' />
 				contact@quackstack.net
 			</a>
-			<a href='tel:+1234567890' className='flex items-center gap-2 text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm group'>
-				<Phone className='w-4 h-4 text-orange-600 dark:text-orange-400 group-hover:text-orange-500 dark:group-hover:text-orange-300' />
+			<a href='tel:+1234567890' className='flex items-center gap-2 text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm group'>
+				<Phone className='w-4 h-4 text-primary dark:text-primary group-hover:text-primary dark:group-hover:text-primary' />
 				+359 893 058 517
 			</a>
 			<div className='flex items-center gap-2 text-foreground/70 text-sm'>
-				<MapPin className='w-4 h-4 text-orange-600 dark:text-orange-400' />
+				<MapPin className='w-4 h-4 text-primary dark:text-primary' />
 				Remote, Bulgaria
 			</div>
 			<a
 				href='https://www.linkedin.com/company/106319048'
 				target='_blank'
 				rel='noopener noreferrer'
-				className='flex items-center gap-2 text-foreground/70 hover:text-orange-500 dark:hover:text-orange-400 transition-colors cursor-pointer text-sm group mt-2'
+				className='flex items-center gap-2 text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm group mt-2'
 			>
-				<Linkedin className='w-4 h-4 text-orange-600 dark:text-orange-400 group-hover:text-orange-500 dark:group-hover:text-orange-300' />
+				<Linkedin className='w-4 h-4 text-primary dark:text-primary group-hover:text-primary dark:group-hover:text-primary' />
 				LinkedIn
 			</a>
 		</div>
@@ -112,8 +112,9 @@ const ContactInfo = () => {
 
 const StickyFooter: React.FC = () => {
 	return (
-		<div className='relative h-[500px]' style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}>
-			<div className='fixed bottom-0 h-[500px] w-full'>
+		/* On small screens we avoid a huge fixed element - make footer flow normally */
+		<div className='relative md:h-[500px] h-auto' style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}>
+			<div className='w-full md:fixed md:bottom-0 md:h-[500px] h-auto'>
 				<Content />
 			</div>
 		</div>

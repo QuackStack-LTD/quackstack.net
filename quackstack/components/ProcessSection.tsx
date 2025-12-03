@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const phases = [
 	{ step: '01', title: 'Discovery', color: 'bg-green-500', description: 'Understanding your needs and goals' },
 	{ step: '02', title: 'Design', color: 'bg-blue-500', description: 'Creating wireframes and prototypes' },
-	{ step: '03', title: 'Development', color: 'bg-orange-500', description: 'Building your solution with best practices' },
+	{ step: '03', title: 'Development', color: 'bg-[var(--duck-500)]', description: 'Building your solution with best practices' },
 	{ step: '04', title: 'Testing', color: 'bg-purple-500', description: 'Quality assurance and optimization' },
 	{ step: '05', title: 'Launch', color: 'bg-red-500', description: 'Deployment and go-live support' },
 ];
@@ -44,7 +44,7 @@ const lineVariants = {
 const ProcessSection: React.FC = () => {
 	return (
 		<section id='process' className='relative py-36 overflow-hidden'>
-			<div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_40%,rgba(251,146,60,0.18),transparent_45%)] pointer-events-none' />
+			<div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_40%,rgba(var(--duck-rgb),0.18),transparent_45%)] pointer-events-none' />
 
 			<motion.div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20' initial='hidden' whileInView='visible' viewport={{ once: true, amount: 0.3 }} variants={containerVariants}>
 				{/* Top fade to black */}
@@ -60,20 +60,20 @@ const ProcessSection: React.FC = () => {
 						variants={lineVariants}
 						className='hidden xl:block absolute top-[48px] sm:top-[56px] left-0 right-0 h-px origin-left'
 						style={{
-							background: 'linear-gradient(90deg, rgba(251,146,60,0) 0%, rgba(251,146,60,0.6) 15%, rgba(251,146,60,0.9) 50%, rgba(251,146,60,0.6) 85%, rgba(251,146,60,0) 100%)',
-							boxShadow: '0 0 12px -2px rgba(251,146,60,0.6)',
+							background: 'linear-gradient(90deg, rgba(var(--duck-rgb),0) 0%, rgba(var(--duck-rgb),0.6) 15%, rgba(var(--duck-rgb),0.9) 50%, rgba(var(--duck-rgb),0.6) 85%, rgba(var(--duck-rgb),0) 100%)',
+							boxShadow: '0 0 12px -2px rgba(var(--duck-rgb),0.6)',
 						}}
 					/>
 					<div className='flex flex-col sm:flex-row sm:flex-wrap xl:flex-nowrap items-stretch justify-center gap-8 sm:gap-12'>
 						{phases.map((phase, index) => (
 							<motion.div key={index} variants={itemVariants} className='group w-full sm:w-56 flex flex-col items-center relative' whileHover={{ y: -8 }}>
 								<div
-									className={`w-12 h-12 sm:w-16 sm:h-16 ${phase.color} rounded-full flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-lg ring-2 ring-orange-400/0 group-hover:ring-orange-400/60 transition-all duration-300`}
-									style={{ boxShadow: '0 4px 18px -2px rgba(251,146,60,0.45)' }}
+									className={`w-12 h-12 sm:w-16 sm:h-16 ${phase.color} rounded-full flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-lg ring-2 ring-[rgba(var(--duck-rgb),0)] group-hover:ring-[rgba(var(--duck-rgb),0.6)] transition-all duration-300`}
+									style={{ boxShadow: '0 4px 18px -2px rgba(var(--duck-rgb),0.45)' }}
 								>
 									{phase.step}
 								</div>
-								<h3 className='text-orange-600 dark:text-orange-400 font-semibold mt-3 sm:mt-4 mb-2 tracking-wide group-hover:text-orange-500 dark:group-hover:text-orange-300 transition-colors text-center'>{phase.title}</h3>
+								<h3 className='text-primary dark:text-primary font-semibold mt-3 sm:mt-4 mb-2 tracking-wide group-hover:text-primary dark:group-hover:text-primary transition-colors text-center'>{phase.title}</h3>
 								<p className='text-foreground/70 text-center text-sm leading-relaxed px-4 sm:px-0'>{phase.description}</p>
 							</motion.div>
 						))}

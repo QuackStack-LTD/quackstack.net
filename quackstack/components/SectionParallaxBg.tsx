@@ -8,7 +8,7 @@ const SectionParallaxBg: React.FC<{
 	id?: string;
 	className?: string;
 	style?: React.CSSProperties;
-}> = ({ image, colorFrom = '#111827', colorTo = '#fb923c', children, id, className = '', style }) => {
+}> = ({ image, colorFrom = '#111827', colorTo = 'var(--brand-orange)', children, id, className = '', style }) => {
 	return (
 		<div id={id} className={`relative ${className}`} style={style}>
 			<div
