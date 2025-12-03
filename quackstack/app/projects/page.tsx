@@ -63,17 +63,18 @@ export default function ProjectsPage() {
 					<h1 className='text-4xl md:text-5xl lg:text-6xl font-bold mb-6 glow-text'>Our Complete Portfolio</h1>
 					<p className='text-xl text-gray-300 max-w-3xl mx-auto mb-8'>Explore our comprehensive collection of projects spanning various technologies and industries.</p>
 
-						<Button asChild size='lg' variant='outline' className='liquid-glass-orange text-primary-contrast'>
-					<div className='max-w-2xl mx-auto relative'>
-						<Search className='absolute left-4 top-1/2 transform -translate-y-1/2 text-foreground/40 w-5 h-5' />
-						<Input
-							type='text'
-							placeholder='Search projects by name, description, or technology...'
-							value={searchQuery}
-							onChange={(e) => setSearchQuery(e.target.value)}
-							className='w-full pl-12 pr-4 py-6 text-lg bg-background/50 backdrop-blur-sm border-[rgba(var(--duck-rgb),0.3)] focus:border-[rgba(var(--duck-rgb),0.85)] rounded-xl'
-						/>
-					</div>
+					<Button asChild size='lg' variant='outline' className='liquid-glass-orange text-primary-contrast'>
+						<div className='max-w-2xl mx-auto relative'>
+							<Search className='absolute left-4 top-1/2 transform -translate-y-1/2 text-foreground/40 w-5 h-5' />
+							<Input
+								type='text'
+								placeholder='Search projects by name, description, or technology...'
+								value={searchQuery}
+								onChange={(e) => setSearchQuery(e.target.value)}
+								className='w-full pl-12 pr-4 py-6 text-lg bg-background/50 backdrop-blur-sm border-[rgba(var(--duck-rgb),0.3)] focus:border-[rgba(var(--duck-rgb),0.85)] rounded-xl'
+							/>
+						</div>
+					</Button>
 
 					{(searchQuery || selectedCategory !== 'All' || selectedStatus !== 'All') && (
 						<p className='mt-4 text-foreground/60'>
@@ -97,7 +98,7 @@ export default function ProjectsPage() {
 							<label className='block text-sm font-medium text-gray-400 mb-2'>Category</label>
 							<div className='flex flex-wrap gap-2'>
 								{categories.map((category) => (
-											<Button
+									<Button
 										key={category}
 										variant={selectedCategory === category ? 'default' : 'outline'}
 										size='sm'
@@ -228,7 +229,7 @@ export default function ProjectsPage() {
 			</section>
 
 			{/* CTA Section */}
-			<section className='py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-orange-500/10 to-transparent'>
+			<section className='py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[rgba(var(--duck-rgb),0.08)] to-transparent'>
 				<div className='max-w-4xl mx-auto text-center'>
 					<h2 className='text-3xl md:text-4xl font-bold text-white mb-6'>Ready to Start Your Project?</h2>
 					<p className='text-xl text-gray-300 mb-8'>Let's discuss how we can bring your vision to life with our expertise and creativity.</p>

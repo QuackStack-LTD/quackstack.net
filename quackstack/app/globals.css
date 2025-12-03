@@ -175,6 +175,17 @@ button,
 	color: #ffffff !important;
 }
 
+/* Sticky footer background using duck tokens (keeps a solid yellow in light mode,
+   falls back to a dark gradient in dark mode). Using a named class avoids
+   Tailwind arbitrary-value parsing issues with commas inside gradients. */
+.sticky-footer {
+	background: linear-gradient(90deg, rgba(var(--duck-rgb), 1) 0%, rgba(var(--duck-rgb), 0.95) 30%, rgba(var(--duck-rgb), 0.9) 60%, rgba(var(--duck-rgb), 0.8) 100%);
+	box-shadow: 0 -10px 40px rgba(var(--duck-rgb), 0.28);
+}
+.dark .sticky-footer {
+	background: linear-gradient(to bottom, #1e0c02, #0a0402);
+}
+
 /* Disable custom cursor & heavy hover scaling on touch / coarse pointers */
 @media (pointer: coarse), (hover: none) {
 	body,

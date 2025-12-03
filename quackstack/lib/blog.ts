@@ -34,7 +34,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 					date: meta?.date || new Date().toISOString(),
 					category: meta?.category || 'Development',
 					tags: meta?.tags || [],
-					image: meta?.image || `https://placehold.co/800x600/1a1a1a/f97316?text=${encodeURIComponent(slug)}`,
+					image: meta?.image || `https://placehold.co/800x600/1a1a1a/ffd43b?text=${encodeURIComponent(slug)}`,
 					readTime: meta?.readTime || 5,
 					featured: meta?.featured || false,
 				} as BlogPost;

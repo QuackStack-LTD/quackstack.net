@@ -114,7 +114,7 @@ const StickyFooter: React.FC = () => {
 	return (
 		/* On small screens we avoid a huge fixed element - make footer flow normally */
 		<div className='relative md:h-[500px] h-auto' style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}>
-			<div className='w-full md:fixed md:bottom-0 md:h-[500px] h-auto'>
+			<div className='w-full md:fixed md:bottom-0 md:h-[500px] h-auto bg-black'>
 				<Content />
 			</div>
 		</div>
