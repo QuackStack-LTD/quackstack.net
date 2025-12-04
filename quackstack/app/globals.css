@@ -444,6 +444,11 @@ button,
 	animation: fade-in-up 0.8s ease-out forwards;
 }
 
+/* Faster variant of fade-in-up for quick UI menus */
+.animate-fade-in-up-fast {
+	animation: fade-in-up 0.28s ease-out forwards;
+}
+
 .animate-scroll-left {
 	animation: scroll-left 30s linear infinite;
 }
