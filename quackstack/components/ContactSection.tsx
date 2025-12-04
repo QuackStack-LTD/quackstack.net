@@ -151,7 +151,14 @@ const ContactSection: React.FC = () => {
 									</div>
 									<Button
 										type='submit'
-										className='w-full liquid-glass-orange text-primary-contrast font-semibold py-3 transition-all duration-300 hover:scale-105 shadow-[0_8px_32px_0_rgba(var(--duck-rgb),0.22)] focus:ring-2 focus:ring-[rgba(var(--duck-rgb),0.35)] focus:outline-none text-lg rounded-lg'
+										className='w-full relative overflow-hidden cursor-pointer group px-8 py-4 text-lg font-semibold text-primary dark:text-white rounded-2xl backdrop-blur-xl bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.28)] shadow-[0_8px_32px_0_rgba(var(--duck-rgb),0.37)] hover:shadow-[0_8px_40px_0_rgba(var(--duck-rgb),0.6)] transition-all duration-500 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+										style={{
+											zIndex: 1,
+											background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.32) 0%, rgba(var(--duck-rgb),0.18) 50%, rgba(var(--duck-rgb),0.32) 100%)',
+											backdropFilter: 'blur(16px) saturate(180%)',
+											WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+											boxShadow: '0 8px 32px 0 rgba(var(--duck-rgb), 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.1)',
+										}}
 										disabled={submitted}
 									>
 										{submitted ? 'Message Sent!' : 'Send Message'}

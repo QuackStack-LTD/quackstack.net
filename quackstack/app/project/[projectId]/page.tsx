@@ -54,7 +54,17 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 						</Link>
 						<div className='flex space-x-4'>
 							{project.demoUrl && (
-								<Button asChild className='liquid-glass-orange text-primary-contrast cursor-pointer'>
+								<Button
+									asChild
+									className='relative overflow-hidden cursor-pointer group px-4 py-2 text-sm font-semibold text-primary dark:text-white rounded-lg backdrop-blur-lg bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.18)] shadow-[0_6px_24px_0_rgba(var(--duck-rgb),0.30)] hover:shadow-[0_6px_30px_0_rgba(var(--duck-rgb),0.5)] transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-lg after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+									style={{
+										zIndex: 1,
+										background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.28) 0%, rgba(var(--duck-rgb),0.14) 50%, rgba(var(--duck-rgb),0.28) 100%)',
+										backdropFilter: 'blur(12px) saturate(160%)',
+										WebkitBackdropFilter: 'blur(12px) saturate(160%)',
+										boxShadow: '0 6px 24px 0 rgba(var(--duck-rgb), 0.30), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)',
+									}}
+								>
 									<a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
 										<ExternalLink className='w-4 h-4 mr-2' />
 										Live Demo
@@ -62,9 +72,14 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 								</Button>
 							)}
 							{project.githubUrl && (
-								<Button asChild variant='outline' className='border-[rgba(var(--duck-rgb),0.6)] text-primary hover:bg-[rgba(var(--duck-rgb),0.12)] cursor-pointer'>
+								<Button
+									asChild
+									variant='outline'
+									className='relative overflow-hidden cursor-pointer group px-4 py-2 text-sm font-semibold rounded-lg bg-[#0b0b0b] text-[rgba(var(--duck-rgb),0.95)] border-[rgba(var(--duck-rgb),0.12)] hover:shadow-[0_6px_30px_0_rgba(var(--duck-rgb),0.26)] transition-all duration-300 hover:scale-105'
+									style={{ zIndex: 1, boxShadow: '0 6px 18px rgba(0,0,0,0.6)' }}
+								>
 									<a href={project.githubUrl} target='_blank' rel='noopener noreferrer'>
-										<Github className='w-4 h-4 mr-2' />
+										<Github className='w-4 h-4 mr-2 text-[rgba(var(--duck-rgb),0.95)]' />
 										Code
 									</a>
 								</Button>
@@ -324,7 +339,19 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 					<h2 className='text-3xl md:text-4xl font-bold text-white mb-6'>Have a Similar Project in Mind?</h2>
 					<p className='text-xl text-gray-300 mb-8'>Let's discuss how we can bring your vision to life with our expertise and creativity.</p>
 					<div className='flex flex-col sm:flex-row gap-4 justify-center'>
-						<Button asChild size='lg' className='liquid-glass-orange text-primary-contrast'>
+						<Button
+							size='lg'
+							className='relative overflow-hidden cursor-pointer group px-8 py-4 text-lg font-semibold text-primary dark:text-white rounded-2xl backdrop-blur-xl bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.28)] shadow-[0_8px_32px_0_rgba(var(--duck-rgb),0.37)] hover:shadow-[0_8px_40px_0_rgba(var(--duck-rgb),0.6)] transition-all duration-500 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+							style={{
+								zIndex: 1,
+								background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.32) 0%, rgba(var(--duck-rgb),0.18) 50%, rgba(var(--duck-rgb),0.32) 100%)',
+								backdropFilter: 'blur(16px) saturate(180%)',
+								WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+								boxShadow: '0 8px 32px 0 rgba(var(--duck-rgb), 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.1)',
+							}}
+							asChild
+							aria-label='Get In Touch'
+						>
 							<Link href='/#contact'>Get In Touch</Link>
 						</Button>
 						<Button asChild size='lg' variant='outline' className='border-[rgba(var(--duck-rgb),0.6)] text-primary hover:bg-[rgba(var(--duck-rgb),0.12)]'>

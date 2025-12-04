@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import ShareButton from '@/components/ShareButton';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Calendar, Clock, User, Share2 } from 'lucide-react';
 
@@ -25,10 +26,7 @@ export function useMDXComponents() {
 										Back to Blog
 									</Button>
 								</Link>
-								<Button variant='ghost' className='text-foreground/70 hover:text-primary hover:bg-[rgba(var(--duck-rgb),0.08)]'>
-									<Share2 className='w-4 h-4 mr-2' />
-									Share
-								</Button>
+								<ShareButton title={meta.title} text={meta.excerpt} />
 							</div>
 						</div>
 					</div>
@@ -94,7 +92,17 @@ export function useMDXComponents() {
 							<p className='text-xl text-foreground/70 mb-8'>Check out our other posts or get in touch to discuss your next project.</p>
 							<div className='flex flex-col sm:flex-row gap-4 justify-center'>
 								<Link href='/#contact'>
-									<Button size='lg' className='liquid-glass-orange text-primary-contrast'>
+									<Button
+										size='lg'
+										className='relative overflow-hidden cursor-pointer group px-8 py-4 text-lg font-semibold text-primary dark:text-white rounded-2xl backdrop-blur-xl bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.28)] shadow-[0_8px_32px_0_rgba(var(--duck-rgb),0.37)] hover:shadow-[0_8px_40px_0_rgba(var(--duck-rgb),0.6)] transition-all duration-500 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+										style={{
+											zIndex: 1,
+											background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.32) 0%, rgba(var(--duck-rgb),0.18) 50%, rgba(var(--duck-rgb),0.32) 100%)',
+											backdropFilter: 'blur(16px) saturate(180%)',
+											WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+											boxShadow: '0 8px 32px 0 rgba(var(--duck-rgb), 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.1)',
+										}}
+									>
 										Get In Touch
 									</Button>
 								</Link>
