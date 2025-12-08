@@ -16,6 +16,8 @@ interface BlogListingProps {
 
 export default function BlogListing({ posts }: BlogListingProps) {
 	const [searchQuery, setSearchQuery] = useState('');
+	const [newsletterEmail, setNewsletterEmail] = useState('');
+	const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
 	// Filter posts based on search query
 	const filteredPosts = useMemo(() => {
@@ -34,6 +36,32 @@ export default function BlogListing({ posts }: BlogListingProps) {
 
 	const featuredPosts = filteredPosts.filter((post) => post.featured);
 	const otherPosts = filteredPosts.filter((post) => !post.featured);
+
+	const handleNewsletterSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		setNewsletterStatus('loading');
+
+		try {
+			const response = await fetch('/api/newsletter', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ email: newsletterEmail }),
+			});
+
+			if (!response.ok) {
+				throw new Error('Failed to subscribe');
+			}
+
+			setNewsletterStatus('success');
+			setNewsletterEmail('');
+			setTimeout(() => setNewsletterStatus('idle'), 3500);
+		} catch (err) {
+			setNewsletterStatus('error');
+			setTimeout(() => setNewsletterStatus('idle'), 3500);
+		}
+	};
 
 	return (
 		<div className='min-h-screen bg-background text-foreground'>
@@ -212,14 +240,20 @@ export default function BlogListing({ posts }: BlogListingProps) {
 				<div className='max-w-4xl mx-auto text-center'>
 					<h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>Stay Updated</h2>
 					<p className='text-xl text-foreground/70 mb-8'>Subscribe to our newsletter to get the latest insights and updates delivered to your inbox.</p>
-					<div className='flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto'>
+					<form onSubmit={handleNewsletterSubmit} className='flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto'>
 						<input
 							type='email'
 							placeholder='Enter your email'
-							className='flex-1 px-4 py-3 bg-background/50 border border-[rgba(var(--duck-rgb),0.3)] rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-[rgba(var(--duck-rgb),0.85)] backdrop-blur-sm'
+							value={newsletterEmail}
+							onChange={(e) => setNewsletterEmail(e.target.value)}
+							required
+							disabled={newsletterStatus === 'loading' || newsletterStatus === 'success'}
+							className='flex-1 px-4 py-3 bg-background/50 border border-[rgba(var(--duck-rgb),0.3)] rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-[rgba(var(--duck-rgb),0.85)] backdrop-blur-sm disabled:opacity-50'
 						/>
 						<Button
-							className='relative overflow-hidden cursor-pointer group px-6 py-3 text-base font-semibold text-primary dark:text-white rounded-lg backdrop-blur-lg bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.28)] shadow-[0_8px_32px_0_rgba(var(--duck-rgb),0.34)] hover:shadow-[0_8px_40px_0_rgba(var(--duck-rgb),0.6)] transition-all duration-350 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-lg after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+							type='submit'
+							disabled={newsletterStatus === 'loading' || newsletterStatus === 'success'}
+							className='relative overflow-hidden cursor-pointer group px-6 py-3 text-base font-semibold text-primary dark:text-white rounded-lg backdrop-blur-lg bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.28)] shadow-[0_8px_32px_0_rgba(var(--duck-rgb),0.34)] hover:shadow-[0_8px_40px_0_rgba(var(--duck-rgb),0.6)] transition-all duration-350 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-lg after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
 							style={{
 								zIndex: 1,
 								background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.32) 0%, rgba(var(--duck-rgb),0.18) 50%, rgba(var(--duck-rgb),0.32) 100%)',
@@ -228,9 +262,11 @@ export default function BlogListing({ posts }: BlogListingProps) {
 								boxShadow: '0 8px 32px 0 rgba(var(--duck-rgb), 0.34), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)',
 							}}
 						>
-							Subscribe
+							{newsletterStatus === 'loading' ? 'Subscribing...' : newsletterStatus === 'success' ? 'Subscribed!' : 'Subscribe'}
 						</Button>
-					</div>
+					</form>
+					{newsletterStatus === 'success' && <p className='mt-4 text-green-400 font-semibold'>Thank you for subscribing!</p>}
+					{newsletterStatus === 'error' && <p className='mt-4 text-red-400 font-semibold'>Failed to subscribe. Please try again.</p>}
 				</div>
 			</section>
 		</div>

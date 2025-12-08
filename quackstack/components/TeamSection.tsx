@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import FadeUp from './FadeUp';
 import SectionHeading from '@/components/SectionHeading';
 
 const defaultTeam = [
@@ -40,7 +40,7 @@ const TeamSection: React.FC = () => {
 				<SectionHeading title='Meet Our Team' subtext='Talented professionals dedicated to bringing your vision to life with expertise and passion.' gradient />
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
 					{defaultTeam.map((member, index) => (
-						<motion.div key={index} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, delay: index * 0.08 }} whileHover={{ y: -6 }}>
+						<FadeUp key={index} duration={1} delay={index * 0.1} whileHover={{ y: -6 }} className=''>
 							<Card className='relative overflow-hidden liquid-glass transition-all duration-500 group text-center rounded-xl'>
 								<CardContent className='p-6 relative z-10'>
 									<div className='relative mb-6'>
@@ -64,7 +64,7 @@ const TeamSection: React.FC = () => {
 									</div>
 								</CardContent>
 							</Card>
-						</motion.div>
+						</FadeUp>
 					))}
 				</div>
 			</div>

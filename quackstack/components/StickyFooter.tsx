@@ -8,7 +8,7 @@ import ThemedLogo from './ThemedLogo';
 
 const Content = () => {
 	return (
-		<div className='bg-gradient-to-b from-[rgba(var(--duck-rgb),0.18)] via-[rgba(var(--duck-rgb),0.08)] to-[rgba(var(--duck-rgb),0.02)]  py-12 px-6 sm:px-12 h-full w-full flex flex-col justify-between shadow-[0_-10px_40px_rgba(var(--duck-rgb),0.28)]'>
+		<div className='bg-gradient-to-b from-[rgba(var(--duck-rgb),0.18)] via-[rgba(var(--duck-rgb),0.08)] to-[rgba(var(--duck-rgb),0.02)] py-12 px-6 sm:px-12 h-full w-full flex flex-col justify-between shadow-[0_-10px_40px_rgba(var(--duck-rgb),0.28)]'>
 			<Section1 />
 			<Section2 />
 		</div>
@@ -114,7 +114,7 @@ const StickyFooter: React.FC = () => {
 	return (
 		/* On small screens we avoid a huge fixed element - make footer flow normally */
 		<div className='relative md:h-[500px] h-auto' style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}>
-			<div className='w-full md:fixed md:bottom-0 md:h-[500px] h-auto bg-black'>
+			<div className='w-full md:fixed md:bottom-0 md:h-[500px] h-auto bg-background'>
 				<Content />
 			</div>
 		</div>
