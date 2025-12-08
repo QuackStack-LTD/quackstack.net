@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import FadeUp from './FadeUp';
 import { useReducedEffects } from '@/hooks/use-reduced-effects';
 
 interface SectionHeadingProps {
@@ -13,13 +13,13 @@ interface SectionHeadingProps {
 
 const wrapper = {
 	hidden: { opacity: 0, y: 20 },
-	visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as any } },
+	visible: { opacity: 1, y: 0 },
 };
 
 export const SectionHeading: React.FC<SectionHeadingProps> = ({ eyebrow, title, subtext, align = 'center', className = '', gradient }) => {
 	const reduced = useReducedEffects();
-	const Wrapper: any = reduced ? 'div' : motion.div;
-	const wrapperProps = reduced ? {} : { variants: wrapper, initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.35 } };
+	const Wrapper: any = reduced ? 'div' : FadeUp;
+	const wrapperProps = reduced ? {} : { duration: 0.4, className: '' };
 
 	return (
 		<Wrapper {...wrapperProps} className={`mb-16 ${align === 'center' ? 'text-center mx-auto' : ''} max-w-3xl ${className}`}>

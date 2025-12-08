@@ -13,16 +13,12 @@ const Navbar: React.FC = () => {
 	const [currentSection, setCurrentSection] = useState(0);
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const { theme, resolvedTheme, setTheme } = useTheme();
-	// Avoid hydration mismatch by rendering a deterministic icon until mounted
+
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => setMounted(true), []);
 
-	// Use the user-selected `theme` to choose the icon (light/dark/system).
-	// `resolvedTheme` is the effective theme (light/dark) when `theme === 'system',
-	// but we want the icon to reflect the user's selection (e.g. a 'system' monitor icon).
 	const ThemeIcon = mounted ? (theme === 'light' ? Sun : theme === 'dark' ? Moon : Monitor) : Sun;
 
-	// Scroll spy effect
 	useEffect(() => {
 		const handleScroll = () => {
 			const offsets = sectionIds.map((id) => {
@@ -58,7 +54,6 @@ const Navbar: React.FC = () => {
 		};
 	}, []);
 
-	// Theme toggle cycles: light -> dark -> system -> light
 	const toggleTheme = () => {
 		const next = theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light';
 		setTheme(next);

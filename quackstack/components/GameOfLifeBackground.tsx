@@ -296,7 +296,7 @@ const GameOfLifeBackground: React.FC = () => {
 			ref={canvasRef}
 			className='fixed inset-0 w-full h-full pointer-events-none'
 			style={{
-				opacity: 0.5,
+				opacity: 0.3,
 				zIndex: -5,
 			}}
 		/>
