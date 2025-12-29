@@ -896,3 +896,24 @@ html {
 	position: relative;
 	z-index: 1;
 }
+
+/* Custom Cursors */
+* {
+	cursor: url('/cursors/default.png'), auto;
+}
+
+a,
+button,
+[role='button'],
+input[type='submit'],
+input[type='button'] {
+	cursor: url('/cursors/pointer.png'), pointer;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='search'],
+textarea {
+	cursor: url('/cursors/text.png'), text;
+}
