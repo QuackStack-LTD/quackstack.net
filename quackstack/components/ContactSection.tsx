@@ -119,7 +119,7 @@ const ContactSection: React.FC = () => {
 													value={form.first}
 													onChange={handleChange}
 													className='bg-background/50 border-border text-foreground focus:border-[rgba(var(--duck-rgb),0.6)] dark:focus:border-[rgba(var(--duck-rgb),0.6)] focus:ring-2 focus:ring-[rgba(var(--duck-rgb),0.18)] dark:focus:ring-[rgba(var(--duck-rgb),0.18)] backdrop-blur-sm transition-all duration-200'
-													placeholder='John'
+													placeholder='Quack'
 													required
 													autoComplete='off'
 												/>
@@ -135,7 +135,7 @@ const ContactSection: React.FC = () => {
 													value={form.last}
 													onChange={handleChange}
 													className='bg-background/50 border-border text-foreground focus:border-[rgba(var(--duck-rgb),0.6)] dark:focus:border-[rgba(var(--duck-rgb),0.6)] focus:ring-2 focus:ring-[rgba(var(--duck-rgb),0.18)] dark:focus:ring-[rgba(var(--duck-rgb),0.18)] backdrop-blur-sm transition-all duration-200'
-													placeholder='Doe'
+													placeholder='Stack'
 													required
 													autoComplete='off'
 												/>
@@ -153,7 +153,7 @@ const ContactSection: React.FC = () => {
 												value={form.email}
 												onChange={handleChange}
 												className='bg-background/50 border-border text-foreground focus:border-[rgba(var(--duck-rgb),0.6)] dark:focus:border-[rgba(var(--duck-rgb),0.6)] focus:ring-2 focus:ring-[rgba(var(--duck-rgb),0.18)] dark:focus:ring-[rgba(var(--duck-rgb),0.18)] backdrop-blur-sm transition-all duration-200'
-												placeholder='john@example.com'
+												placeholder='quackstack@mail.com'
 												required
 												autoComplete='off'
 											/>

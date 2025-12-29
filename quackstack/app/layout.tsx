@@ -43,7 +43,7 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
 				<ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
-					<div className='bg-[rgba(255,255,255,0.03)] dark:bg-[rgba(0,0,0,0.565)] '>{children}</div>
+					<div className='bg-[rgba(255,255,255,0.3)] dark:bg-[rgba(0,0,0,0.565)] '>{children}</div>
 				</ThemeProvider>
 			</body>
 		</html>
