@@ -1,9 +1,0 @@
-{
-  "performanceScore": 48,
-  "firstContentfulPaintMs": 910.2855,
-  "largestContentfulPaintMs": 19772.42825,
-  "speedIndexMs": 1321.2109203700463,
-  "totalBlockingTimeMs": 1776.85725,
-  "timeToInteractiveMs": 19772.42825,
-  "cumulativeLayoutShift": 0
-}

@@ -50,7 +50,7 @@ button,
 	/* Extended design tokens */
 	--brand-orange: #e6a02e;
 	--brand-orange-accent: #e59c2d;
-	--duck-rgb: 255, 212, 59; /* bright duck yellow (r,g,b) */
+	--duck-rgb: 231, 162, 46; /* bright duck yellow (r,g,b) */
 	--duck: rgb(var(--duck-rgb));
 	--duck-500: rgba(var(--duck-rgb), 1);
 	--duck-400: rgba(var(--duck-rgb), 0.9);
@@ -895,4 +895,25 @@ html {
 .liquid-glass-orange > * {
 	position: relative;
 	z-index: 1;
+}
+
+/* Custom Cursors */
+* {
+	cursor: url('/cursors/default.png'), default;
+}
+
+a,
+button,
+[role='button'],
+input[type='submit'],
+input[type='button'] {
+	cursor: url('/cursors/pointer.png'), pointer;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='search'],
+textarea {
+	cursor: url('/cursors/text.png'), text;
 }
