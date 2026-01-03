@@ -21,7 +21,7 @@ services:
         - traefik.swarm.network=shared_network
 
         # Router for the website
-        - traefik.http.routers.qs-site.rule=Host(`site.quackstack.net`)
+        - traefik.http.routers.qs-site.rule=Host(`quackstack.net`)
         - traefik.http.routers.qs-site.entrypoints=websecure
         - traefik.http.routers.qs-site.tls=true
         - traefik.http.routers.qs-site.tls.certresolver=myresolver
