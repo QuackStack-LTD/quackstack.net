@@ -9,7 +9,7 @@ const defaultTeam = [
 		name: 'Martin Uzunov',
 		role: 'Chief Executive Officer',
 		image: '/marto.jpg',
-		skills: ['AWS', 'Docker', 'CI/CD'],
+		skills: ['React', 'Wordpress', 'Figma'],
 	},
 	{
 		name: 'Emil Momchev',
