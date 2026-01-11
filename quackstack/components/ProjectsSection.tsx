@@ -8,10 +8,12 @@ import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import FadeUp from './FadeUp';
 import { useReducedEffects } from '@/hooks/use-reduced-effects';
 import projectsData from '@/data/projects.json';
+import { hasHref } from '@/lib/utils';
 
 const ProjectsSection: React.FC = () => {
 	const reduced = useReducedEffects();
 	const featuredProjects = projectsData.filter((project) => project.featured);
+	const remainderLg = featuredProjects.length % 3;
 
 	return (
 		<section id='projects' className='relative py-24 overflow-hidden'>
@@ -37,11 +39,17 @@ const ProjectsSection: React.FC = () => {
 
 				<div className='grid gap-8 sm:grid-cols-2 lg:grid-cols-3'>
 					{featuredProjects.map((project, index) => {
+						const showDemo = hasHref(project.demoUrl);
+						const showGithub = hasHref(project.githubUrl);
+						const showButtons = showDemo || showGithub;
+						const centerLastInTwoCol = featuredProjects.length % 2 === 1 && index === featuredProjects.length - 1;
+						const shiftLastRowLg = (remainderLg === 1 && index === featuredProjects.length - 1) || (remainderLg === 2 && index === featuredProjects.length - 2);
+
 						const cardContent = (
-							<Card className='relative overflow-hidden group liquid-glass hover:liquid-glass-orange transition-all duration-500 flex flex-col cursor-pointer rounded-xl h-full'>
+							<Card className='relative overflow-hidden group py-0 liquid-glass hover:liquid-glass-orange transition-all duration-500 flex flex-col cursor-pointer rounded-xl h-full w-full'>
 								<Link href={`/project/${project.id}`} className='block flex-1'>
-									<div className='relative overflow-hidden h-44 z-10'>
-										<Image src={project.image || '/placeholder.svg'} alt={project.title} width={600} height={176} className='w-full h-44 object-cover transition-transform duration-300 hover:scale-105' loading='lazy' />
+									<div className='relative overflow-hidden h-44 z-10 bg-black/15'>
+										<Image src={project.image || '/placeholder.svg'} alt={project.title} width={600} height={176} className='w-full h-44 object-cover transition-transform duration-300' loading='lazy' />
 										<div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300' />
 										{project.status && <Badge className='absolute top-4 left-4 bg-[rgba(var(--duck-rgb),0.8)] text-white text-xs'>{project.status}</Badge>}
 									</div>
@@ -63,47 +71,53 @@ const ProjectsSection: React.FC = () => {
 										</div>
 									</CardContent>
 								</Link>
-								<div className='px-5 pb-5 relative z-10'>
-									<div className='flex space-x-2'>
-										{project.demoUrl && (
-											<Button
-												asChild
-												aria-label={`Open live demo for ${project.title}`}
-												size='sm'
-												variant='outline'
-												className='border-[rgba(var(--duck-rgb),0.28)] dark:border-[rgba(var(--duck-rgb),0.28)] text-primary dark:text-primary hover:bg-[rgba(var(--duck-rgb),0.12)] hover:text-primary dark:hover:text-primary bg-transparent backdrop-blur-sm hover:border-[rgba(var(--duck-rgb),0.28)] transition-all duration-300'
-												onClick={(e) => e.stopPropagation()}
-											>
-												<a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
-													<ExternalLink className='w-4 h-4 mr-2' />
-													Live
-												</a>
-											</Button>
-										)}
-										{project.githubUrl && (
-											<Button
-												asChild
-												aria-label={`View source code for ${project.title}`}
-												size='sm'
-												variant='outline'
-												className='border-[rgba(var(--duck-rgb),0.28)] dark:border-[rgba(var(--duck-rgb),0.28)] text-primary dark:text-primary hover:bg-[rgba(var(--duck-rgb),0.12)] hover:text-primary dark:hover:text-primary bg-transparent backdrop-blur-sm hover:border-[rgba(var(--duck-rgb),0.28)] transition-all duration-300'
-												onClick={(e) => e.stopPropagation()}
-											>
-												<a href={project.githubUrl} target='_blank' rel='noopener noreferrer'>
-													<Github className='w-4 h-4 mr-2' />
-													Code
-												</a>
-											</Button>
-										)}
+								{showButtons && (
+									<div className='px-5 pb-5 relative z-10'>
+										<div className='flex space-x-2'>
+											{showDemo && (
+												<Button
+													asChild
+													aria-label={`Open live demo for ${project.title}`}
+													size='sm'
+													variant='outline'
+													className='border-[rgba(var(--duck-rgb),0.28)] dark:border-[rgba(var(--duck-rgb),0.28)] text-primary dark:text-primary hover:bg-[rgba(var(--duck-rgb),0.12)] hover:text-primary dark:hover:text-primary bg-transparent backdrop-blur-sm hover:border-[rgba(var(--duck-rgb),0.28)] transition-all duration-300'
+													onClick={(e) => e.stopPropagation()}
+												>
+													<a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
+														<ExternalLink className='w-4 h-4 mr-2' />
+														Live
+													</a>
+												</Button>
+											)}
+											{showGithub && (
+												<Button
+													asChild
+													aria-label={`View source code for ${project.title}`}
+													size='sm'
+													variant='outline'
+													className='border-[rgba(var(--duck-rgb),0.28)] dark:border-[rgba(var(--duck-rgb),0.28)] text-primary dark:text-primary hover:bg-[rgba(var(--duck-rgb),0.12)] hover:text-primary dark:hover:text-primary bg-transparent backdrop-blur-sm hover:border-[rgba(var(--duck-rgb),0.28)] transition-all duration-300'
+													onClick={(e) => e.stopPropagation()}
+												>
+													<a href={project.githubUrl} target='_blank' rel='noopener noreferrer'>
+														<Github className='w-4 h-4 mr-2' />
+														Code
+													</a>
+												</Button>
+											)}
+										</div>
 									</div>
-								</div>
+								)}
 							</Card>
 						);
 
+						const wrapperClass = ['w-full', centerLastInTwoCol ? 'sm:col-span-2 sm:justify-self-center lg:col-span-1' : '', shiftLastRowLg ? 'lg:col-start-2' : ''].filter(Boolean).join(' ');
+
 						return reduced ? (
-							<div key={project.id}>{cardContent}</div>
+							<div key={project.id} className={wrapperClass}>
+								{cardContent}
+							</div>
 						) : (
-							<FadeUp key={project.id} duration={1} delay={Math.min(index * 0.1, 0.35)}>
+							<FadeUp key={project.id} duration={1} delay={Math.min(index * 0.1, 0.35)} className={wrapperClass}>
 								{cardContent}
 							</FadeUp>
 						);
@@ -116,7 +130,7 @@ const ProjectsSection: React.FC = () => {
 						<div className='text-center mt-12'>
 							<Button
 								size='lg'
-								className='relative overflow-hidden cursor-pointer group px-8 py-4 text-lg font-semibold text-primary dark:text-white rounded-2xl backdrop-blur-xl bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.28)] shadow-[0_8px_32px_0_rgba(var(--duck-rgb),0.37)] hover:shadow-[0_8px_40px_0_rgba(var(--duck-rgb),0.6)] transition-all duration-500 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+								className='relative overflow-hidden cursor-pointer group px-8 py-4 text-lg font-semibold text-primary dark:text-white rounded-2xl backdrop-blur-xl bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.28)] shadow-[0_8px_32px_0_rgba(var(--duck-rgb),0.37)] hover:shadow-[0_8px_40px_0_rgba(var(--duck-rgb),0.6)] transition-all duration-500 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
 								style={{
 									zIndex: 1,
 									background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.32) 0%, rgba(var(--duck-rgb),0.18) 50%, rgba(var(--duck-rgb),0.32) 100%)',
@@ -137,7 +151,7 @@ const ProjectsSection: React.FC = () => {
 						<FadeUp duration={1} delay={0.2} className='text-center mt-12'>
 							<Button
 								size='lg'
-								className='relative overflow-hidden cursor-pointer group px-8 py-4 text-lg font-semibold text-primary dark:text-white rounded-2xl backdrop-blur-xl bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.28)] shadow-[0_8px_32px_0_rgba(var(--duck-rgb),0.37)] hover:shadow-[0_8px_40px_0_rgba(var(--duck-rgb),0.6)] transition-all duration-500 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+								className='relative overflow-hidden cursor-pointer group px-8 py-4 text-lg font-semibold text-primary dark:text-white rounded-2xl backdrop-blur-xl bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.28)] shadow-[0_8px_32px_0_rgba(var(--duck-rgb),0.37)] hover:shadow-[0_8px_40px_0_rgba(var(--duck-rgb),0.6)] transition-all duration-500 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
 								style={{
 									zIndex: 1,
 									background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.32) 0%, rgba(var(--duck-rgb),0.18) 50%, rgba(var(--duck-rgb),0.32) 100%)',

@@ -1,0 +1,71 @@
+---
+title: 'Building QuackStack.net'
+excerpt: 'A behind-the-scenes look at how we built our own marketing site: design system, MDX blog, and performance-first UX.'
+author: 'QuackStack Team'
+date: '2026-01-06'
+category: 'Company'
+tags: ['Next.js', 'Tailwind CSS', 'Performance', 'MDX']
+readTime: 6
+featured: true
+image: '/og-image.png'
+---
+
+# Building QuackStack.net
+
+QuackStack.net is our studio’s home base — a lightweight, fast marketing site that doubles as a portfolio and a blog.
+
+The goal was simple:
+
+- **Look premium** without being heavy
+- **Load fast** on mobile and desktop
+- **Stay maintainable** as we add more projects and write more posts
+
+## The stack
+
+We built the site with a pragmatic setup:
+
+- **Next.js (App Router)** for routing and rendering
+- **TypeScript** for safer refactors
+- **Tailwind CSS** for consistent styling
+- **MDX (via Nextra)** so writing blog posts feels like writing markdown — with component power when needed
+
+## Design system first
+
+A marketing site lives and dies by consistency.
+
+Instead of custom CSS for every section, we leaned on a small set of primitives (cards, badges, buttons) and repeated patterns:
+
+- Strong typographic hierarchy
+- Consistent spacing
+- Reusable components for sections
+
+## Motion — when it helps
+
+Micro-interactions can make a site feel alive, but they also cost CPU/GPU (especially on mobile).
+
+We treat motion as an enhancement:
+
+- Effects reduce automatically when the user prefers reduced motion
+- We avoid running expensive animations when they don’t add real value
+
+## Content that scales
+
+The blog is MDX-powered, which means:
+
+- Posts are written in markdown
+- Code blocks, headings, and links render cleanly
+- We can include components in posts when we want richer content
+
+## Navigation that tracks where you are
+
+On a one-page layout, it’s easy to get lost.
+
+We added a scroll-aware navbar that highlights the section you’re currently reading — it helps users understand the page structure and jump around quickly.
+
+## What’s next
+
+We’ll keep iterating on:
+
+- More case studies
+- More engineering articles
+- Continued performance tuning as the site grows

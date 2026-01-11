@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useTheme } from 'next-themes';
+import { useReducedEffects } from '@/hooks/use-reduced-effects';
 
 interface Cell {
 	alive: boolean;
@@ -17,7 +18,9 @@ const GameOfLifeBackground: React.FC = () => {
 	const [cols, setCols] = useState(0);
 	const animationFrameRef = useRef<number>();
 	const lastUpdateRef = useRef<number>(0);
+	const lastDrawRef = useRef<number>(0);
 	const { resolvedTheme } = useTheme();
+	const reduced = useReducedEffects();
 
 	// read CSS variable for duck/yellow color so canvas can match UI tokens
 	const duckRgbRef = useRef('255, 212, 59');
@@ -184,40 +187,7 @@ const GameOfLifeBackground: React.FC = () => {
 		});
 	}, [rows, cols, countNeighbors]);
 
-	// Handle canvas click to create cells - now works from anywhere on the page
-	const handleCanvasClick = useCallback(
-		(e: MouseEvent) => {
-			const canvas = canvasRef.current;
-			if (!canvas) return;
-
-			const x = e.clientX;
-			const y = e.clientY;
-
-			const col = Math.floor(x / cellSize);
-			const row = Math.floor(y / cellSize);
-
-			if (row >= 0 && row < rows && col >= 0 && col < cols) {
-				setGrid((currentGrid) => {
-					const newGrid = currentGrid.map((r) => r.map((c) => ({ ...c })));
-					// Always create a cell when clicking
-					newGrid[row][col].alive = true;
-					newGrid[row][col].age = 0;
-					return newGrid;
-				});
-			}
-		},
-		[cellSize, rows, cols]
-	);
-
-	// Add global click listener
-	useEffect(() => {
-		const handleClick = (e: MouseEvent) => {
-			handleCanvasClick(e);
-		};
-
-		document.addEventListener('click', handleClick);
-		return () => document.removeEventListener('click', handleClick);
-	}, [handleCanvasClick]);
+	// Note: this canvas is pointer-events-none; avoid global click listeners.
 
 	// Draw grid
 	const drawGrid = useCallback(() => {
@@ -269,8 +239,16 @@ const GameOfLifeBackground: React.FC = () => {
 	useEffect(() => {
 		const animate = (timestamp: number) => {
 			if (!lastUpdateRef.current) lastUpdateRef.current = timestamp;
+			if (!lastDrawRef.current) lastDrawRef.current = timestamp;
+
+			// Skip expensive work when tab is hidden
+			if (typeof document !== 'undefined' && document.hidden) {
+				animationFrameRef.current = requestAnimationFrame(animate);
+				return;
+			}
 
 			const elapsed = timestamp - lastUpdateRef.current;
+			const elapsedDraw = timestamp - lastDrawRef.current;
 
 			// Update every 1200ms (slower - about 0.8 generations per second for better performance)
 			if (elapsed > 1200 && isRunning) {
@@ -278,7 +256,11 @@ const GameOfLifeBackground: React.FC = () => {
 				lastUpdateRef.current = timestamp;
 			}
 
-			drawGrid();
+			// Cap draw rate to reduce CPU/GPU usage
+			if (elapsedDraw > 60) {
+				drawGrid();
+				lastDrawRef.current = timestamp;
+			}
 			animationFrameRef.current = requestAnimationFrame(animate);
 		};
 
@@ -290,6 +272,8 @@ const GameOfLifeBackground: React.FC = () => {
 			}
 		};
 	}, [updateGrid, drawGrid, isRunning]);
+
+	if (reduced) return null;
 
 	return (
 		<canvas

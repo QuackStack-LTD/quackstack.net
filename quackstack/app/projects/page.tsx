@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { ArrowLeft, ArrowRight, ExternalLink, Github, Filter, Search } from 'lucide-react';
 import projectsData from '@/data/projects.json';
+import { hasHref } from '@/lib/utils';
 
 export default function ProjectsPage() {
 	const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -143,8 +144,8 @@ export default function ProjectsPage() {
 						{filteredProjects.map((project) => (
 							<Card key={project.id} className='relative overflow-hidden group liquid-glass-orange text-primary-contrast transition-all duration-500 flex flex-col cursor-pointer rounded-xl'>
 								<Link href={`/project/${project.id}`} className='block flex-1'>
-									<div className='relative overflow-hidden h-48'>
-										<Image src={project.image} alt={project.title} fill className='object-cover transition-transform duration-300 hover:scale-105' />
+									<div className='relative overflow-hidden h-48 bg-black/15'>
+										<Image src={project.image} alt={project.title} fill className='object-cover transition-transform duration-300 scale-[0.96] group-hover:scale-[0.985]' />
 										<div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300' />
 										<div className='absolute top-4 left-4 flex gap-2'>
 											<Badge className='bg-[rgba(var(--duck-rgb),0.8)] text-white text-xs'>{project.category}</Badge>
@@ -172,49 +173,51 @@ export default function ProjectsPage() {
 										</div>
 									</CardContent>
 								</Link>
-								<div className='px-5 pb-5'>
-									<div className='flex space-x-2'>
-										{project.demoUrl && (
-											<Button
-												asChild
-												size='sm'
-												variant='outline'
-												className='relative overflow-hidden cursor-pointer group px-4 py-2 text-sm font-semibold text-primary dark:text-white rounded-lg backdrop-blur-lg bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.18)] shadow-[0_6px_24px_0_rgba(var(--duck-rgb),0.30)] hover:shadow-[0_6px_30px_0_rgba(var(--duck-rgb),0.5)] transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-lg after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
-												style={{
-													zIndex: 1,
-													background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.28) 0%, rgba(var(--duck-rgb),0.14) 50%, rgba(var(--duck-rgb),0.28) 100%)',
-													backdropFilter: 'blur(12px) saturate(160%)',
-													WebkitBackdropFilter: 'blur(12px) saturate(160%)',
-													boxShadow: '0 6px 24px 0 rgba(var(--duck-rgb), 0.30), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)',
-												}}
-												onClick={(e) => e.stopPropagation()}
-											>
-												<a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
-													<ExternalLink className='w-4 h-4 mr-2' />
-													Live
-												</a>
-											</Button>
-										)}
-										{project.githubUrl && (
-											<Button
-												asChild
-												size='sm'
-												variant='outline'
-												className='relative overflow-hidden cursor-pointer group px-4 py-2 text-sm font-semibold rounded-lg bg-[#0b0b0b] text-[rgba(var(--duck-rgb),0.95)] border-[rgba(var(--duck-rgb),0.12)] hover:shadow-[0_6px_30px_0_rgba(var(--duck-rgb),0.26)] transition-all duration-300 hover:scale-105'
-												style={{
-													zIndex: 1,
-													boxShadow: '0 6px 18px rgba(0,0,0,0.6)',
-												}}
-												onClick={(e) => e.stopPropagation()}
-											>
-												<a href={project.githubUrl} target='_blank' rel='noopener noreferrer'>
-													<Github className='w-4 h-4 mr-2 text-[rgba(var(--duck-rgb),0.95)]' />
-													Code
-												</a>
-											</Button>
-										)}
+								{(hasHref(project.demoUrl) || hasHref(project.githubUrl)) && (
+									<div className='px-5 pb-5'>
+										<div className='flex space-x-2'>
+											{hasHref(project.demoUrl) && (
+												<Button
+													asChild
+													size='sm'
+													variant='outline'
+													className='relative overflow-hidden cursor-pointer group px-4 py-2 text-sm font-semibold text-primary dark:text-white rounded-lg backdrop-blur-lg bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.18)] shadow-[0_6px_24px_0_rgba(var(--duck-rgb),0.30)] hover:shadow-[0_6px_30px_0_rgba(var(--duck-rgb),0.5)] transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-lg after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+													style={{
+														zIndex: 1,
+														background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.28) 0%, rgba(var(--duck-rgb),0.14) 50%, rgba(var(--duck-rgb),0.28) 100%)',
+														backdropFilter: 'blur(12px) saturate(160%)',
+														WebkitBackdropFilter: 'blur(12px) saturate(160%)',
+														boxShadow: '0 6px 24px 0 rgba(var(--duck-rgb), 0.30), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)',
+													}}
+													onClick={(e) => e.stopPropagation()}
+												>
+													<a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
+														<ExternalLink className='w-4 h-4 mr-2' />
+														Live
+													</a>
+												</Button>
+											)}
+											{hasHref(project.githubUrl) && (
+												<Button
+													asChild
+													size='sm'
+													variant='outline'
+													className='relative overflow-hidden cursor-pointer group px-4 py-2 text-sm font-semibold rounded-lg bg-[#0b0b0b] text-[rgba(var(--duck-rgb),0.95)] border-[rgba(var(--duck-rgb),0.12)] hover:shadow-[0_6px_30px_0_rgba(var(--duck-rgb),0.26)] transition-all duration-300 hover:scale-105'
+													style={{
+														zIndex: 1,
+														boxShadow: '0 6px 18px rgba(0,0,0,0.6)',
+													}}
+													onClick={(e) => e.stopPropagation()}
+												>
+													<a href={project.githubUrl} target='_blank' rel='noopener noreferrer'>
+														<Github className='w-4 h-4 mr-2 text-[rgba(var(--duck-rgb),0.95)]' />
+														Code
+													</a>
+												</Button>
+											)}
+										</div>
 									</div>
-								</div>
+								)}
 							</Card>
 						))}
 					</div>

@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, ExternalLink, Github, Calendar, Users, Clock } from 'lucide-react';
 import projectsData from '@/data/projects.json';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { hasHref } from '@/lib/utils';
 
 interface ProjectPageProps {
 	params: {
@@ -47,44 +48,46 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 					<div className='flex items-center justify-between h-16'>
 						<Link href='/#projects'>
-							<Button variant='ghost' className='text-gray-300 hover:text-primary hover:bg-[rgba(var(--duck-rgb),0.1)] cursor-pointer'>
+							<Button variant='ghost' className='text-foreground/70 hover:text-primary hover:bg-[rgba(var(--duck-rgb),0.1)] cursor-pointer'>
 								<ArrowLeft className='w-4 h-4 mr-2' />
 								Back to Projects
 							</Button>
 						</Link>
-						<div className='flex space-x-4'>
-							{project.demoUrl && (
-								<Button
-									asChild
-									className='relative overflow-hidden cursor-pointer group px-4 py-2 text-sm font-semibold text-primary dark:text-white rounded-lg backdrop-blur-lg bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.18)] shadow-[0_6px_24px_0_rgba(var(--duck-rgb),0.30)] hover:shadow-[0_6px_30px_0_rgba(var(--duck-rgb),0.5)] transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-lg after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
-									style={{
-										zIndex: 1,
-										background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.28) 0%, rgba(var(--duck-rgb),0.14) 50%, rgba(var(--duck-rgb),0.28) 100%)',
-										backdropFilter: 'blur(12px) saturate(160%)',
-										WebkitBackdropFilter: 'blur(12px) saturate(160%)',
-										boxShadow: '0 6px 24px 0 rgba(var(--duck-rgb), 0.30), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)',
-									}}
-								>
-									<a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
-										<ExternalLink className='w-4 h-4 mr-2' />
-										Live Demo
-									</a>
-								</Button>
-							)}
-							{project.githubUrl && (
-								<Button
-									asChild
-									variant='outline'
-									className='relative overflow-hidden cursor-pointer group px-4 py-2 text-sm font-semibold rounded-lg bg-[#0b0b0b] text-[rgba(var(--duck-rgb),0.95)] border-[rgba(var(--duck-rgb),0.12)] hover:shadow-[0_6px_30px_0_rgba(var(--duck-rgb),0.26)] transition-all duration-300 hover:scale-105'
-									style={{ zIndex: 1, boxShadow: '0 6px 18px rgba(0,0,0,0.6)' }}
-								>
-									<a href={project.githubUrl} target='_blank' rel='noopener noreferrer'>
-										<Github className='w-4 h-4 mr-2 text-[rgba(var(--duck-rgb),0.95)]' />
-										Code
-									</a>
-								</Button>
-							)}
-						</div>
+						{(hasHref(project.demoUrl) || hasHref(project.githubUrl)) && (
+							<div className='flex space-x-4'>
+								{hasHref(project.demoUrl) && (
+									<Button
+										asChild
+										className='relative overflow-hidden cursor-pointer group px-4 py-2 text-sm font-semibold text-primary dark:text-white rounded-lg backdrop-blur-lg bg-[var(--gradient-primary)] border-[rgba(var(--duck-rgb),0.18)] shadow-[0_6px_24px_0_rgba(var(--duck-rgb),0.30)] hover:shadow-[0_6px_30px_0_rgba(var(--duck-rgb),0.5)] transition-all duration-300 hover:scale-105 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[rgba(var(--duck-rgb),0.12)] before:via-transparent before:to-[rgba(var(--duck-rgb),0.12)] before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:rounded-lg after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-300'
+										style={{
+											zIndex: 1,
+											background: 'linear-gradient(135deg, rgba(var(--duck-rgb),0.28) 0%, rgba(var(--duck-rgb),0.14) 50%, rgba(var(--duck-rgb),0.28) 100%)',
+											backdropFilter: 'blur(12px) saturate(160%)',
+											WebkitBackdropFilter: 'blur(12px) saturate(160%)',
+											boxShadow: '0 6px 24px 0 rgba(var(--duck-rgb), 0.30), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)',
+										}}
+									>
+										<a href={project.demoUrl} target='_blank' rel='noopener noreferrer'>
+											<ExternalLink className='w-4 h-4 mr-2' />
+											Live Demo
+										</a>
+									</Button>
+								)}
+								{hasHref(project.githubUrl) && (
+									<Button
+										asChild
+										variant='outline'
+										className='relative overflow-hidden cursor-pointer group px-4 py-2 text-sm font-semibold rounded-lg bg-[#0b0b0b] text-[rgba(var(--duck-rgb),0.95)] border-[rgba(var(--duck-rgb),0.12)] hover:shadow-[0_6px_30px_0_rgba(var(--duck-rgb),0.26)] transition-all duration-300 hover:scale-105'
+										style={{ zIndex: 1, boxShadow: '0 6px 18px rgba(0,0,0,0.6)' }}
+									>
+										<a href={project.githubUrl} target='_blank' rel='noopener noreferrer'>
+											<Github className='w-4 h-4 mr-2 text-[rgba(var(--duck-rgb),0.95)]' />
+											Code
+										</a>
+									</Button>
+								)}
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
@@ -98,14 +101,14 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 								{project.category}
 							</Badge>
 							<h1 className='text-4xl md:text-5xl lg:text-6xl font-bold mb-6 glow-text'>{project.title}</h1>
-							<p className='text-xl text-gray-300 mb-8 leading-relaxed'>{project.shortDescription}</p>
+							<p className='text-xl text-foreground/70 mb-8 leading-relaxed'>{project.shortDescription}</p>
 
 							{/* Project Info */}
 							<div className='grid grid-cols-2 md:grid-cols-4 gap-4 mb-8'>
 								<div className='text-center'>
 									<Calendar className='w-6 h-6 text-primary mx-auto mb-2' />
-									<p className='text-sm text-gray-400'>Date</p>
-									<p className='text-white font-medium'>
+									<p className='text-sm text-foreground/60'>Date</p>
+									<p className='text-foreground font-medium'>
 										{new Date(project.projectDate).toLocaleDateString('en-US', {
 											month: 'short',
 											year: 'numeric',
@@ -114,20 +117,20 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 								</div>
 								<div className='text-center'>
 									<Clock className='w-6 h-6 text-primary mx-auto mb-2' />
-									<p className='text-sm text-gray-400'>Duration</p>
-									<p className='text-white font-medium'>{project.duration}</p>
+									<p className='text-sm text-foreground/60'>Duration</p>
+									<p className='text-foreground font-medium'>{project.duration}</p>
 								</div>
 								<div className='text-center'>
 									<Users className='w-6 h-6 text-primary mx-auto mb-2' />
-									<p className='text-sm text-gray-400'>Team</p>
-									<p className='text-white font-medium'>{project.teamSize} members</p>
+									<p className='text-sm text-foreground/60'>Team</p>
+									<p className='text-foreground font-medium'>{project.teamSize} members</p>
 								</div>
 								<div className='text-center'>
 									<div className='w-6 h-6 bg-primary rounded-full mx-auto mb-2 flex items-center justify-center'>
 										<div className='w-3 h-3 bg-white rounded-full'></div>
 									</div>
-									<p className='text-sm text-gray-400'>Status</p>
-									<p className='text-white font-medium'>{project.status}</p>
+									<p className='text-sm text-foreground/60'>Status</p>
+									<p className='text-foreground font-medium'>{project.status}</p>
 								</div>
 							</div>
 
@@ -143,8 +146,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
 						{/* Main Image */}
 						<div className='relative'>
-							<div className='aspect-video relative overflow-hidden rounded-lg border border-[rgba(var(--duck-rgb),0.2)]'>
-								<Image src={project.image} alt={project.title} fill className='object-cover' priority />
+							<div className='aspect-video relative overflow-hidden rounded-lg border border-[rgba(var(--duck-rgb),0.2)] bg-black/15'>
+								<Image src={project.image} alt={project.title} fill className='object-cover scale-[0.98]' priority />
 								<div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />
 							</div>
 						</div>
@@ -162,7 +165,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 							<Card className='liquid-glass-orange text-primary-contrast rounded-xl'>
 								<CardContent className='p-8'>
 									<h2 className='text-2xl font-bold text-primary mb-4'>The Challenge</h2>
-									<p className='text-gray-300 leading-relaxed'>{project.challenge}</p>
+									<p className='text-foreground/80 leading-relaxed'>{project.challenge}</p>
 								</CardContent>
 							</Card>
 
@@ -170,7 +173,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 							<Card className='liquid-glass-orange text-primary-contrast rounded-xl'>
 								<CardContent className='p-8'>
 									<h2 className='text-2xl font-bold text-primary mb-4'>Our Solution</h2>
-									<p className='text-gray-300 leading-relaxed'>{project.solution}</p>
+									<p className='text-foreground/80 leading-relaxed'>{project.solution}</p>
 								</CardContent>
 							</Card>
 
@@ -182,7 +185,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 										{project.results.map((result, index) => (
 											<li key={index} className='flex items-start'>
 												<div className='w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0' />
-												<span className='text-gray-300'>{result}</span>
+												<span className='text-foreground/80'>{result}</span>
 											</li>
 										))}
 									</ul>
@@ -203,7 +206,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 												}}
 												className='aspect-video relative overflow-hidden rounded-lg border border-[rgba(var(--duck-rgb),0.2)] focus:outline-none focus:ring-2 focus:ring-[rgba(var(--duck-rgb),0.6)] cursor-pointer'
 											>
-												<Image src={image} alt={`${project.title} screenshot ${index + 2}`} fill className='object-cover' />
+												<Image src={image} alt={`${project.title} screenshot ${index + 2}`} fill className='object-cover scale-[0.98]' />
 											</button>
 										))}
 									</div>

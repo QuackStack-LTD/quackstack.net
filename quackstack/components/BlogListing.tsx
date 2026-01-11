@@ -114,14 +114,14 @@ export default function BlogListing({ posts }: BlogListingProps) {
 						<h2 className='text-3xl font-bold text-foreground mb-8'>Featured Posts</h2>
 						<div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
 							{featuredPosts.map((post) => (
-								<Card key={post.slug} className='relative overflow-hidden group liquid-glass hover:liquid-glass-orange transition-all duration-500 rounded-xl'>
+								<Card key={post.slug} className='relative overflow-hidden py-0 group liquid-glass hover:liquid-glass-orange transition-all duration-500 rounded-xl'>
 									<div className='relative overflow-hidden h-64'>
 										<Image src={post.image || ''} alt={post.title} fill className='object-cover transition-transform duration-300 hover:scale-105' />
 										<div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300' />
 										<Badge className='absolute top-4 left-4 bg-[rgba(var(--duck-rgb),0.85)] text-white'>Featured</Badge>
 									</div>
 									<CardContent className='p-6'>
-										<div className='flex items-center space-x-4 text-sm text-gray-400 mb-3'>
+										<div className='flex items-center space-x-4 text-sm text-foreground/60 mb-3'>
 											<div className='flex items-center'>
 												<Calendar className='w-4 h-4 mr-1' />
 												{new Date(post.date).toLocaleDateString('en-US', {
@@ -181,14 +181,14 @@ export default function BlogListing({ posts }: BlogListingProps) {
 					) : (
 						<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
 							{filteredPosts.map((post) => (
-								<Card key={post.slug} className='relative overflow-hidden group liquid-glass hover:liquid-glass-orange transition-all duration-500 flex flex-col rounded-xl'>
+								<Card key={post.slug} className='relative overflow-hidden py-0 group liquid-glass hover:liquid-glass-orange transition-all duration-500 flex flex-col rounded-xl'>
 									<div className='relative overflow-hidden h-48'>
 										<Image src={post.image || ''} alt={post.title} fill className='object-cover transition-transform duration-300 hover:scale-105' />
 										<div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300' />
 										<Badge className='absolute top-4 left-4 bg-[rgba(var(--duck-rgb),0.85)] text-white text-xs'>{post.category}</Badge>
 									</div>
 									<CardContent className='p-5 flex flex-col flex-1'>
-										<div className='flex items-center space-x-4 text-xs text-gray-400 mb-3'>
+										<div className='flex items-center space-x-4 text-xs text-foreground/60 mb-3'>
 											<div className='flex items-center'>
 												<Calendar className='w-3 h-3 mr-1' />
 												{new Date(post.date).toLocaleDateString('en-US', {

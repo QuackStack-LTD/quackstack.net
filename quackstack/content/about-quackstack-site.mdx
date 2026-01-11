@@ -1,0 +1,49 @@
+---
+title: 'About This Site: QuackStack.net'
+excerpt: 'A quick tour of QuackStack.net — the structure, stack, and the performance choices behind it.'
+author: 'QuackStack Team'
+date: '2026-01-11'
+category: 'Company'
+tags: ['QuackStack', 'Next.js', 'MDX', 'Performance', 'Design System']
+readTime: 4
+featured: false
+image: '/og-image.png'
+---
+
+# About This Site: QuackStack.net
+
+QuackStack.net is our studio’s marketing site — but we treat it like a product.
+
+It’s designed to be:
+
+- **Fast** (especially on mobile)
+- **Clear** (easy to scan, easy to navigate)
+- **Maintainable** (easy to add projects and articles)
+
+## What it’s built with
+
+- **Next.js (App Router)** for routing and rendering
+- **TypeScript** for safer refactors
+- **Tailwind CSS** for consistent styling
+- **MDX (via Nextra)** so writing posts feels like plain markdown
+
+## Structure
+
+- A single-page home layout with sections (Services, Projects, Team, etc.)
+- Project case-study pages under `/project/[projectId]`
+- A blog under `/blog` backed by files in `content/`
+
+## Performance choices
+
+We like motion — but we don’t want it to cost usability.
+
+- Effects are reduced automatically on coarse pointers (touch), small screens, and slow-network hints.
+- Heavier visuals (like the animated background) are treated as progressive enhancement.
+
+## Why MDX
+
+MDX lets us keep the workflow simple:
+
+- Posts live in the repo
+- Markdown renders with good typography
+- We can add components later if a post needs richer UI

@@ -27,6 +27,9 @@ const defaultTeam = [
 
 const TeamSection: React.FC = () => {
 	// Removed manual scroll transforms & unused hover state
+	const team = defaultTeam;
+	const centerLastInTwoCol = team.length % 2 === 1;
+	const remainderLg = team.length % 3;
 
 	return (
 		<section id='team' className='py-32 relative'>
@@ -39,9 +42,23 @@ const TeamSection: React.FC = () => {
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<SectionHeading title='Meet Our Team' subtext='Talented professionals dedicated to bringing your vision to life with expertise and passion.' gradient />
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
-					{defaultTeam.map((member, index) => (
-						<FadeUp key={index} duration={1} delay={index * 0.1} whileHover={{ y: -6 }} className=''>
-							<Card className='relative overflow-hidden liquid-glass transition-all duration-500 group text-center rounded-xl'>
+					{team.map((member, index) => (
+						// On lg (3 cols), shift the last row to start at col 2 when uneven.
+						// On md (2 cols), span both cols for the last item when uneven.
+						<FadeUp
+							key={index}
+							duration={1}
+							delay={index * 0.1}
+							whileHover={{ y: -6 }}
+							className={[
+								'w-full',
+								centerLastInTwoCol && index === team.length - 1 ? 'md:col-span-2 md:justify-self-center lg:col-span-1' : '',
+								(remainderLg === 1 && index === team.length - 1) || (remainderLg === 2 && index === team.length - 2) ? 'lg:col-start-2' : '',
+							]
+								.filter(Boolean)
+								.join(' ')}
+						>
+							<Card className='relative overflow-hidden liquid-glass transition-all duration-500 group text-center rounded-xl w-full'>
 								<CardContent className='p-6 relative z-10'>
 									<div className='relative mb-6'>
 										<Image

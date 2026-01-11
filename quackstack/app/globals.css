@@ -6,10 +6,12 @@ button,
 .shadcn-ui-button,
 .cursor-pointer,
 [data-radix-collection-item] {
-	cursor: pointer !important;
+	cursor: url('/new-cursors/pointinghand.png'), pointer !important;
 }
 @import 'tailwindcss';
 @import 'tw-animate-css';
+
+@plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -898,16 +900,19 @@ html {
 }
 
 /* Custom Cursors */
-* {
-	cursor: url('/cursors/default.png'), default;
+body {
+	cursor: url('/new-cursors/normal.png'), default;
 }
 
 a,
 button,
 [role='button'],
+[href],
+summary,
+.cursor-pointer,
 input[type='submit'],
 input[type='button'] {
-	cursor: url('/cursors/pointer.png'), pointer;
+	cursor: url('/new-cursors/pointinghand.png'), pointer !important;
 }
 
 input[type='text'],
@@ -915,5 +920,5 @@ input[type='email'],
 input[type='password'],
 input[type='search'],
 textarea {
-	cursor: url('/cursors/text.png'), text;
+	cursor: url('/new-cursors/typing.png'), text !important;
 }

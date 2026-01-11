@@ -34,7 +34,7 @@ const CustomCursor: React.FC<CustomCursorProps> = ({ isHovering, isHoveringLink,
 				translateY: '-50%',
 			}}
 		>
-			<Image src='/cursor.png' alt='Custom cursor' width={32} height={32} className='w-full h-full object-contain' priority unoptimized />
+			<Image src='/new-cursors/normal.png' alt='Custom cursor' width={32} height={32} className='w-full h-full object-contain' priority unoptimized />
 		</motion.div>
 	);
 };

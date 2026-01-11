@@ -10,7 +10,7 @@ import ThemedLogo from '@/components/ThemedLogo';
 const sectionIds = ['home', 'services', 'technologies', 'projects', 'team', 'process', 'contact'];
 
 const Navbar: React.FC = () => {
-	const [currentSection, setCurrentSection] = useState(0);
+	const [currentSection, setCurrentSection] = useState<string>(sectionIds[0]);
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const { theme, resolvedTheme, setTheme } = useTheme();
 
@@ -20,17 +20,51 @@ const Navbar: React.FC = () => {
 	const ThemeIcon = mounted ? (theme === 'light' ? Sun : theme === 'dark' ? Moon : Monitor) : Sun;
 
 	useEffect(() => {
-		const handleScroll = () => {
-			const offsets = sectionIds.map((id) => {
-				const el = document.getElementById(id);
-				return el ? el.getBoundingClientRect().top : Infinity;
-			});
-			const active = offsets.findIndex((offset, idx) => offset > 0 && (idx === 0 || offsets[idx - 1] <= 0));
-			setCurrentSection(active === -1 ? sectionIds.length - 1 : active);
-		};
-		window.addEventListener('scroll', handleScroll);
-		handleScroll();
-		return () => window.removeEventListener('scroll', handleScroll);
+		// Use IntersectionObserver for accurate + cheap section tracking.
+		const elements = sectionIds.map((id) => ({ id, el: document.getElementById(id) })).filter((x): x is { id: string; el: HTMLElement } => Boolean(x.el));
+
+		if (elements.length === 0) return;
+
+		const ratios = new Map<string, number>();
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					ratios.set((entry.target as HTMLElement).id, entry.isIntersecting ? entry.intersectionRatio : 0);
+				}
+
+				let bestId = elements[0].id;
+				let bestRatio = -1;
+				for (const { id } of elements) {
+					const r = ratios.get(id) ?? 0;
+					if (r > bestRatio) {
+						bestRatio = r;
+						bestId = id;
+					}
+				}
+
+				// If nothing is intersecting (e.g. fast scroll), pick the last section above the viewport center.
+				if (bestRatio <= 0) {
+					const viewportMid = window.innerHeight * 0.5;
+					let fallbackId = elements[0].id;
+					for (const { id, el } of elements) {
+						const top = el.getBoundingClientRect().top;
+						if (top <= viewportMid) fallbackId = id;
+					}
+					bestId = fallbackId;
+				}
+				setCurrentSection((prev) => (prev === bestId ? prev : bestId));
+			},
+			{
+				root: null,
+				// Consider a section "active" around the middle of the viewport.
+				rootMargin: '-45% 0px -50% 0px',
+				threshold: [0, 0.15, 0.35, 0.55, 0.75, 1],
+			}
+		);
+
+		for (const { el } of elements) observer.observe(el);
+		return () => observer.disconnect();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	// Close mobile menu on scroll or resize
@@ -84,7 +118,7 @@ const Navbar: React.FC = () => {
 									key={id}
 									href={`#${id}`}
 									className={`text-foreground/70 hover:text-primary dark:hover:text-primary px-2 lg:px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 rounded-md ${
-										currentSection === idx ? 'text-primary font-bold bg-[rgba(var(--duck-rgb),0.08)]' : ''
+										currentSection === id ? 'text-primary font-bold bg-[rgba(var(--duck-rgb),0.08)]' : ''
 									}`}
 								>
 									{id.charAt(0).toUpperCase() + id.slice(1)}
@@ -119,7 +153,7 @@ const Navbar: React.FC = () => {
 							key={id}
 							href={`#${id}`}
 							className={`block px-3 py-3 text-base font-medium transition-all duration-300 rounded-md ${
-								currentSection === idx ? 'text-primary dark:text-primary bg-[rgba(var(--duck-rgb),0.08)]' : 'text-foreground/70 hover:text-primary dark:hover:text-primary hover:bg-[rgba(var(--duck-rgb),0.05)]'
+								currentSection === id ? 'text-primary dark:text-primary bg-[rgba(var(--duck-rgb),0.08)]' : 'text-foreground/70 hover:text-primary dark:hover:text-primary hover:bg-[rgba(var(--duck-rgb),0.05)]'
 							}`}
 							onClick={handleNavClick}
 						>

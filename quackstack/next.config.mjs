@@ -2,7 +2,7 @@ import nextra from 'nextra';
 
 // Configure Nextra 4 with blog path
 const withNextra = nextra({
-	contentDirBasePath: '/blog',
+	contentDirBasePath: '/content',
 });
 
 /** @type {import('next').NextConfig} */

@@ -17,11 +17,11 @@ export interface BlogPost {
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
 	const contentDir = path.join(process.cwd(), 'content');
-	const files = fs.readdirSync(contentDir).filter((file) => file.endsWith('.mdx') && file !== 'index.mdx');
+	const files = fs.readdirSync(contentDir).filter((file) => (file.endsWith('.mdx') || file.endsWith('.md')) && file !== 'index.mdx' && file !== 'index.md');
 
 	const posts = await Promise.all(
 		files.map(async (filename) => {
-			const slug = filename.replace('.mdx', '');
+			const slug = filename.replace(/\.(md|mdx)$/i, '');
 			try {
 				const { metadata } = await importPage([slug]);
 				const meta = metadata as any;

@@ -17,7 +17,7 @@ const Content = () => {
 
 const Section1 = () => {
 	return (
-		<div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-8'>
+		<div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left'>
 			<Nav />
 			<ContactInfo />
 		</div>
@@ -26,7 +26,7 @@ const Section1 = () => {
 
 const Section2 = () => {
 	return (
-		<div className='flex flex-col sm:flex-row justify-between items-center gap-4 pt-8'>
+		<div className='flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4 pt-8 text-center sm:text-left'>
 			<div className='flex items-center'>
 				<ThemedLogo width={220} height={72} className='w-[120px] sm:w-[220px] h-12 object-contain drop-shadow-xl' />
 			</div>
@@ -47,7 +47,7 @@ const Section2 = () => {
 const Nav = () => {
 	return (
 		<>
-			<div className='flex flex-col gap-2'>
+			<div className='flex flex-col gap-2 items-center md:items-start'>
 				<h3 className='mb-2 uppercase text-primary dark:text-primary font-semibold text-sm'>Company</h3>
 				<a href='#home' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm'>
 					Home
@@ -62,7 +62,7 @@ const Nav = () => {
 					Contact Us
 				</a>
 			</div>
-			<div className='flex flex-col gap-2'>
+			<div className='flex flex-col gap-2 items-center md:items-start'>
 				<h3 className='mb-2 uppercase text-primary dark:text-primary font-semibold text-sm'>Resources</h3>
 				<Link href='/blog' className='text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm'>
 					Blog
@@ -83,7 +83,7 @@ const Nav = () => {
 
 const ContactInfo = () => {
 	return (
-		<div className='flex flex-col gap-2'>
+		<div className='flex flex-col gap-2 items-center md:items-start'>
 			<h3 className='mb-2 uppercase text-primary dark:text-primary font-semibold text-sm'>Contact</h3>
 			<a href='mailto:contact@quackstack.net' className='flex items-center gap-2 text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm group'>
 				<Mail className='w-4 h-4 text-primary dark:text-primary group-hover:text-primary dark:group-hover:text-primary' />
