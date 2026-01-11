@@ -28,7 +28,7 @@ const ProjectsSection: React.FC = () => {
 					</>
 				) : (
 					<>
-						<FadeUp duration={0.4} className='text-4xl md:text-5xl font-bold text-foreground mb-8 glow-text text-center'>
+						<FadeUp duration={0.4} className='text-4xl md:text-5xl font-bold text-foreground mb-8 text-center'>
 							Featured Projects
 						</FadeUp>
 						<FadeUp duration={0.4} delay={0.05} className='text-lg text-foreground/70 max-w-3xl mx-auto mb-12 text-center'>

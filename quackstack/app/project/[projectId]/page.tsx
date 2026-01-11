@@ -224,7 +224,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 										{project.features.map((feature, index) => (
 											<li key={index} className='flex items-start'>
 												<div className='w-1.5 h-1.5 bg-primary rounded-full mt-2 mr-3 flex-shrink-0' />
-												<span className='text-gray-300 text-sm'>{feature}</span>
+												<span className='text-gray-600 text-sm'>{feature}</span>
 											</li>
 										))}
 									</ul>
@@ -252,15 +252,15 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 									<div className='space-y-3'>
 										<div>
 											<p className='text-sm text-gray-400'>Client</p>
-											<p className='text-white font-medium'>{project.client}</p>
+											<p className='text-gray-600 dark:text-white font-medium'>{project.client}</p>
 										</div>
 										<div>
 											<p className='text-sm text-gray-400'>Category</p>
-											<p className='text-white font-medium'>{project.category}</p>
+											<p className='text-gray-600 dark:text-white font-medium'>{project.category}</p>
 										</div>
 										<div>
 											<p className='text-sm text-gray-400'>Project Date</p>
-											<p className='text-white font-medium'>
+											<p className='text-gray-600 dark:text-white font-medium'>
 												{new Date(project.projectDate).toLocaleDateString('en-US', {
 													month: 'long',
 													day: 'numeric',
@@ -339,7 +339,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 			{/* CTA Section */}
 			<section className='py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[rgba(var(--duck-rgb),0.08)] to-transparent'>
 				<div className='max-w-4xl mx-auto text-center'>
-					<h2 className='text-3xl md:text-4xl font-bold text-white mb-6'>Have a Similar Project in Mind?</h2>
+					<h2 className='text-3xl md:text-4xl font-bold dark:text-white text-gray-600 mb-6'>Have a Similar Project in Mind?</h2>
 					<p className='text-xl text-gray-300 mb-8'>Let's discuss how we can bring your vision to life with our expertise and creativity.</p>
 					<div className='flex flex-col sm:flex-row gap-4 justify-center'>
 						<Button

@@ -18,7 +18,7 @@ const ProcessSection: React.FC = () => {
 			{reduced ? (
 				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20'>
 					<div className='text-center mb-20'>
-						<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-6 glow-text'>Development Process</h2>
+						<h2 className='text-4xl md:text-5xl font-bold text-primary mb-6'>Development Process</h2>
 						<p className='text-xl text-foreground/70 max-w-3xl mx-auto'>Our development process follows a proven methodology to ensure quality, efficiency, and client satisfaction at every step.</p>
 					</div>
 					<div className='relative'>
@@ -43,7 +43,7 @@ const ProcessSection: React.FC = () => {
 			) : (
 				<FadeUp className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20' duration={1} viewport={{ once: true, amount: 0.3 }}>
 					<div className='text-center mb-20'>
-						<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-6 glow-text'>Development Process</h2>
+						<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-6'>Development Process</h2>
 						<p className='text-xl text-foreground/70 max-w-3xl mx-auto'>Our development process follows a proven methodology to ensure quality, efficiency, and client satisfaction at every step.</p>
 					</div>
 					<div className='relative'>

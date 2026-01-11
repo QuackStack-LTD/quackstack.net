@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import ThemedLogo from '@/components/ThemedLogo';
 
-const sectionIds = ['home', 'services', 'technologies', 'projects', 'team', 'process', 'contact'];
+const sectionIds = ['home', 'services', 'projects', 'team', 'process', 'contact'];
 
 const Navbar: React.FC = () => {
 	const [currentSection, setCurrentSection] = useState<string>(sectionIds[0]);

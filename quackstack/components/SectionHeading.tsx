@@ -24,7 +24,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({ eyebrow, title, 
 	return (
 		<Wrapper {...wrapperProps} className={`mb-16 ${align === 'center' ? 'text-center mx-auto' : ''} max-w-3xl ${className}`}>
 			{eyebrow && <div className='uppercase tracking-[0.18em] text-[11px] font-semibold text-primary/80 mb-3'>{eyebrow}</div>}
-			<h2 className={`font-bold leading-tight text-black dark:text-white text-4xl md:text-5xl ${gradient ? 'bg-[var(--gradient-primary)] bg-clip-text text-transparent' : ''}`}>{title}</h2>
+			<h2 className={`font-bold leading-tight text-black dark:text-white text-4xl md:text-5xl ${gradient ? 'bg-[var(--gradient-primary)] bg-clip-text' : ''}`}>{title}</h2>
 			{subtext && <p className='mt-5 text-lg md:text-xl text-foreground/70 leading-relaxed'>{subtext}</p>}
 		</Wrapper>
 	);
