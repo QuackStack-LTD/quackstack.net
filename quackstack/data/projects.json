@@ -4,11 +4,9 @@
 		"title": "E-Gradebook St Sofia",
 		"description": "Mobile-friendly gradebook experience for St. Sofia that layers a responsive UI on top of an existing ASP.NET Web Forms backend.",
 		"shortDescription": "Mobile gradebook and parent portal for St. Sofia.",
-		"image": "/og-image.png",
+		"image": "/e-gradebook-login.png",
 		"images": [
-			"/og-image.png",
-			"/logo.svg",
-			"/laptop.svg"
+			"/e-gradebook-login.png"
 		],
 		"tech": [
 			"C#",
@@ -149,6 +147,58 @@
 			"E-Signature",
 			"PDF",
 			"Security"
+		]
+	},
+	{
+		"id": "venus-labyrinth-oracle-board",
+		"title": "Venus Labyrinth Oracle Board",
+		"description": "Custom interactive control system for Venus Labyrinth's immersive sensory theatre experience. The Oracle Board connects to three symbolic object tables and operates stage lighting as a compass to guide audience members through 28 rooms exploring brain functions and memory.",
+		"shortDescription": "Interactive light control system for immersive sensory theatre.",
+		"image": "/labyrinth-1.png",
+		"images": [
+			"/labyrinth-1.png",
+			"/labyrinth-2.svg",
+			"/labyrinth-3.svg",
+			"/labyrinth-4.svg",
+			"/labyrinth-5.svg",
+			"/labyrinth-6.svg"
+		],
+		"tech": [
+			"Custom Hardware",
+			"Lighting Control",
+			"Interactive Systems"
+		],
+		"category": "Interactive Art",
+		"status": "Completed",
+		"featured": true,
+		"client": "Venus Labyrinth / Sensory Theatre Sofia",
+		"projectDate": "2025-12-08",
+		"duration": "Completed",
+		"teamSize": 2,
+		"challenge": "Inherit and improve a custom Oracle Board control system that coordinates stage lighting across three symbolic object tables to guide audiences through an immersive, human-specific performance.",
+		"solution": "Refined and optimized the existing Oracle Board system, enhancing its responsiveness and reliability for real-time audience guidance through lighting cues that act as a compass for room selection.",
+		"results": [
+			"Successfully supported second unique performance (December 6-7, 2025)",
+			"Improved system reliability and responsiveness",
+			"Seamless integration with 28-room experience",
+			"Enhanced audience navigation through lighting guidance"
+		],
+		"features": [
+			"Central Oracle Board control panel",
+			"Three connected symbolic object tables",
+			"Real-time lighting compass system",
+			"Audience choice guidance through 28 rooms",
+			"Brain function and memory exploration support"
+		],
+		"demoUrl": "",
+		"githubUrl": "",
+		"tags": [
+			"Interactive Art",
+			"Stage Design",
+			"Tech Art",
+			"Immersive Experience",
+			"Lighting Control",
+			"Sofia Events"
 		]
 	},
 	{
