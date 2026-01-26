@@ -5,67 +5,101 @@ author: 'QuackStack Team'
 date: '2026-01-06'
 category: 'Company'
 tags: ['Next.js', 'Tailwind CSS', 'Performance', 'MDX']
-readTime: 6
+readTime: 8
 featured: true
-image: '/og-image.png'
+image: '/og-image.webp'
 ---
 
 # Building QuackStack.net
 
-QuackStack.net is our studio’s home base — a lightweight, fast marketing site that doubles as a portfolio and a blog.
+QuackStack.net isn't just a portfolio site — it's a bit of a self-inflicted case study. When you build client projects all day, your own site tends to get postponed. By the time we actually committed to rebuilding it from scratch, we'd accumulated enough lessons from our projects to do it right the first time.
 
-The goal was simple:
+The mandate was crystal clear: **build something that looks premium, loads fast, and actually stays manageable as we grow.** Not just "fast by 2025 standards," but genuinely fast. And not through hidden performance tricks or JavaScript bundle gymnastics, but through honest design and pragmatic tech choices.
 
-- **Look premium** without being heavy
-- **Load fast** on mobile and desktop
-- **Stay maintainable** as we add more projects and write more posts
+Credit where it belongs: as of this post, the first version of the new site was designed and built by Valentin Asenov.
 
-## The stack
+## Why we rebuilt
 
-We built the site with a pragmatic setup:
+The original site worked, but it was showing its age. We had outdated case studies, a stale blog setup, and—most importantly—we knew we could do better. More than that, we wanted to prove we could practice what we preach: ship something that performs, that's maintainable, and that respects the user's time and bandwidth.
 
-- **Next.js (App Router)** for routing and rendering
-- **TypeScript** for safer refactors
-- **Tailwind CSS** for consistent styling
-- **MDX (via Nextra)** so writing blog posts feels like writing markdown — with component power when needed
+When you're selling optimization and thoughtful engineering to clients, your own site has to demonstrate that. It's not vanity—it's credibility.
 
-## Design system first
+## The tech stack (and why)
 
-A marketing site lives and dies by consistency.
+We landed on a deliberately minimal stack:
 
-Instead of custom CSS for every section, we leaned on a small set of primitives (cards, badges, buttons) and repeated patterns:
+- **Next.js (App Router)** — Static generation where possible, ISR for blog posts, streaming for interactive sections
+- **TypeScript** — Catches mistakes at build time, not production time
+- **Tailwind CSS** — Utility-first styling keeps the CSS bundle predictable and scales well with components
+- **MDX via Nextra** — Markdown for content writers, React components for when we need interactivity
+- **Vercel Analytics** — Real user metrics so we're not flying blind on performance
 
-- Strong typographic hierarchy
-- Consistent spacing
-- Reusable components for sections
+What we *didn't* include tells you something: no JavaScript animation library, no state management beyond React Context, no headless CMS (we edit the MDX files directly). Three developers, limited time — we couldn't afford to overcomplicate things. Every dependency had to earn its place.
 
-## Motion — when it helps
+## Design constraints as features
 
-Micro-interactions can make a site feel alive, but they also cost CPU/GPU (especially on mobile).
+Here's something unexpected: constraints improved the design.
 
-We treat motion as an enhancement:
+We imposed strict rules on ourselves:
 
-- Effects reduce automatically when the user prefers reduced motion
-- We avoid running expensive animations when they don’t add real value
+- **One typeface** (Inter, system fallback to -apple-system)
+- **Limited color palette** (brand colors + neutrals)
+- **No custom CSS** — everything comes from Tailwind + component composition
+- **Minimal motion** — only when it adds clarity, not decoration
 
-## Content that scales
+These constraints forced us to solve problems through layout, hierarchy, and whitespace instead of visual effects. The site feels cohesive because everything is built from the same primitives. Yes, it was harder to design this way at first. But it's *so* much easier to maintain and extend.
 
-The blog is MDX-powered, which means:
+## Performance from the ground up
 
-- Posts are written in markdown
-- Code blocks, headings, and links render cleanly
-- We can include components in posts when we want richer content
+We didn't optimize after the fact. Performance was baked into every decision, and we tuned against the same targets we use on client work: fast LCP on 4G, stable layout (CLS near zero), snappy interactions, and a lean JS bundle.
 
-## Navigation that tracks where you are
+How we got there:
 
-On a one-page layout, it’s easy to get lost.
+- **Static generation** for marketing pages (HTML cached at CDN)
+- **WebP images** with fallbacks, lazy-loaded below the fold
+- **Font subsetting** — we only load the characters we use
+- **Component-level code splitting** — heavy components load on demand
+- **No third-party scripts** (no analytics, no fonts from CDNs)
 
-We added a scroll-aware navbar that highlights the section you’re currently reading — it helps users understand the page structure and jump around quickly.
+The Game of Life animation in the background? It actually has a performance detector built in. If the browser is struggling (low FPS), it reduces the particle count automatically. Users see motion either way; they just don't get a slideshow.
 
-## What’s next
+## Real challenges
 
-We’ll keep iterating on:
+### The parallax background
 
-- More case studies
-- More engineering articles
-- Continued performance tuning as the site grows
+We wanted visual polish, but we were terrified of the performance cost. The first iteration used a massive Canvas element that re-rendered on every scroll event. Garbage collection went haywire on mobile.
+
+The solution: **use CSS transforms instead**. `transform: translateY()` is GPU-accelerated and doesn't trigger layout recalculations. We animate it via JavaScript, but the browser's compositor handles the heavy lifting. Suddenly, 60fps became achievable even on mid-range phones.
+
+### Mobile-first, but not second-class
+
+The catch with "mobile-first design" is that it's easy to let desktop become an afterthought. We flipped it: design for mobile constraints, then enhance for larger screens.
+
+This meant rethinking touch targets (48px minimum, not 44px), ensuring readability without pinch-zooming, and testing on actual devices—not just DevTools emulation. The toughest part? Resisting the urge to add "just one more feature" for desktop that would bloat the mobile experience.
+
+### Staying disciplined
+
+With three developers and no PM saying "no," scope creep is your worst enemy. We had a Figma file full of ideas: dark mode, animated charts, interactive project filters... all things we *could* build, but didn't need to.
+
+The rule: ship the core first, measure real user requests, *then* consider adding things. We shipped, and exactly zero users asked for dark mode. Proof that your gut feeling about "essential features" is often wrong.
+
+## What we learned
+
+1. **Constraints create clarity.** Unlimited design choices lead to decision paralysis. Strict rules actually freed us to focus on what mattered.
+
+2. **Performance doesn't require sacrifice.** People worry that a beautiful site has to be heavy. Ours proves otherwise—simplicity and speed are partners, not enemies.
+
+3. **MDX is genuinely powerful.** Letting developers (and non-developers) write posts as markdown, then include components when needed, is surprisingly powerful. No CMS overhead, just files in the repo.
+
+4. **Your own site is your best marketing.** Every performance metric, every accessibility feature, every thoughtful interaction—it's all selling your work better than any copy could.
+
+## What's next
+
+The site isn't "done" — it's never done. We're iterating on:
+
+- More case studies (like this one!)
+- Engineering deep-dives and technical posts
+- Continued performance tuning as the site grows and gets more complex
+- Exploring edge cases we haven't hit yet
+
+But the foundation is solid, and that matters. We built something we're proud to show clients, and more importantly, something we actually enjoy maintaining. That's the real win.

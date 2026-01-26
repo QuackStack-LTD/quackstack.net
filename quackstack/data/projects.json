@@ -4,9 +4,9 @@
 		"title": "E-Gradebook St Sofia",
 		"description": "Mobile-friendly gradebook experience for St. Sofia that layers a responsive UI on top of an existing ASP.NET Web Forms backend.",
 		"shortDescription": "Mobile gradebook and parent portal for St. Sofia.",
-		"image": "/e-gradebook-login.png",
+		"image": "/e-gradebook-login.webp",
 		"images": [
-			"/e-gradebook-login.png"
+			"/e-gradebook-login.webp"
 		],
 		"tech": [
 			"C#",
@@ -46,10 +46,10 @@
 		"title": "Task Bank St Sofia",
 		"description": "A modern web platform for teachers to create, manage, and share printable and downloadable worksheets, powered by a flexible task bank and worksheet builder — with OCR ingestion of existing worksheets and AI-assisted generation of similar tasks from examples.",
 		"shortDescription": "Worksheet builder and task bank for St. Sofia teachers.",
-		"image": "/stepss-main-page.png",
+		"image": "/stepss-main-page.webp",
 		"images": [
-			"/stepss-main-page.png",
-			"/stepss-AP.png"
+			"/stepss-main-page.webp",
+			"/stepss-AP.webp"
 		],
 		"tech": [
 			"Angular",
@@ -105,9 +105,9 @@
 		"title": "QSign",
 		"description": "Desktop e-signature application built with Python and Tkinter for secure document signing with customizable digital signatures, logo support, size and positioning controls, and real-time signature validation.",
 		"shortDescription": "Desktop app for creating and validating custom digital signatures.",
-		"image": "/og-image.png",
+		"image": "/og-image.webp",
 		"images": [
-			"/og-image.png",
+			"/og-image.webp",
 			"/logo.svg",
 			"/laptop.svg"
 		],
@@ -154,9 +154,9 @@
 		"title": "Venus Labyrinth Oracle Board",
 		"description": "Custom interactive control system for Venus Labyrinth's immersive sensory theatre experience. The Oracle Board connects to three symbolic object tables and operates stage lighting as a compass to guide audience members through 28 rooms exploring brain functions and memory.",
 		"shortDescription": "Interactive light control system for immersive sensory theatre.",
-		"image": "/labyrinth-1.png",
+		"image": "/labyrinth-1.webp",
 		"images": [
-			"/labyrinth-1.png",
+			"/labyrinth-1.webp",
 			"/labyrinth-2.svg",
 			"/labyrinth-3.svg",
 			"/labyrinth-4.svg",
@@ -206,10 +206,10 @@
 		"title": "Chestitka.bg",
 		"description": "WordPress-powered greeting cards and gifts storefront with a custom theme, WooCommerce flows, and performance tuning for fast checkout in Bulgarian.",
 		"shortDescription": "Greeting cards and gifts store built on WordPress/WooCommerce.",
-		"image": "/chestitka-main-page.png",
+		"image": "/chestitka-main-page.webp",
 		"images": [
-			"/chestitka-main-page.png",
-			"/chestitka-shop.png",
+			"/chestitka-main-page.webp",
+			"/chestitka-shop.webp",
 			"/chestitka-footer.svg"
 		],
 		"tech": [
@@ -255,9 +255,9 @@
 		"title": "QuackStack Website",
 		"description": "The QuackStack marketing site and portfolio — built for speed, clarity, and a premium feel.",
 		"shortDescription": "Our own site: fast, responsive, and designed to convert.",
-		"image": "/og-image.png",
+		"image": "/og-image.webp",
 		"images": [
-			"/og-image.png",
+			"/og-image.webp",
 			"/logo.svg",
 			"/laptop.svg"
 		],

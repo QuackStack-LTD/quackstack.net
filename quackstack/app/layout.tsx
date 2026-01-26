@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 		description: 'We build modern, scalable web applications using cutting-edge technologies. Specializing in React, Next.js, and full-stack development.',
 		images: [
 			{
-				url: '/og-image.png',
+				url: '/og-image.webp',
 				width: 1200,
 				height: 630,
 				alt: 'QuackStack - Web Development & Design Studio',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 		card: 'summary_large_image',
 		title: 'QuackStack - Web Development & Design Studio',
 		description: 'We build modern, scalable web applications using cutting-edge technologies.',
-		images: ['/og-image.png'],
+		images: ['/og-image.webp'],
 	},
 };
 

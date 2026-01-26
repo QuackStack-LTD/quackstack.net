@@ -1,0 +1,184 @@
+---
+title: 'Behind the Scenes: The Venus Labyrinth Oracle Board'
+excerpt: 'How we refined an interactive lighting control system for an immersive sensory theatre experience in Sofia.'
+author: 'QuackStack Team'
+date: '2025-12-10'
+category: 'Case Study'
+tags: ['Interactive Art', 'Stage Design', 'Tech Art', 'Lighting Control']
+readTime: 8
+featured: true
+image: '/labyrinth-1.webp'
+---
+
+# Behind the Scenes: The Venus Labyrinth Oracle Board
+
+Some projects scare you a little. The Venus Labyrinth was one of those.
+
+When we first met with Sensory Theatre Sofia in October, they described their vision: an immersive performance with 28 rooms, each representing a different aspect of human consciousness. Audiences would navigate through these rooms, guided by symbolic objects on tables, with lighting cues pointing the way like a compass. The whole thing would culminate in something deeply personal — memory, choice, ritual.
+
+And at the center of it all: the Oracle Board. A custom control system that had worked for their first performance in September but needed improvement before the December run.
+
+"We need you to inherit this system and make sure it doesn't break when we have an audience of 50+ people moving through the space," the artistic director explained. "It's been through once. We know what works. We just need it to be more reliable."
+
+That's when it hit us: this wasn't a typical tech project. This was theater. And in theater, there are no second takes.
+
+## Understanding the Experience
+
+Before we touched anything technical, we needed to experience the piece ourselves.
+
+We spent an afternoon walking through the installation. The organizers described the journey: you enter a threshold space, your senses adjust, and you see three tables. Each table has symbolic objects — mirrors, water, earth, air. You're drawn to one. You touch it. A light activates above one of 28 doors. You walk through.
+
+Inside that room, another table. Different objects. Your choice affects which light activates next. Some rooms are quiet and contemplative. Some are disorienting — designed to shift your perspective. All 28 rooms relate to different brain functions, different aspects of consciousness.
+
+The Oracle Board orchestrates all of this. It tracks which tables audience members interact with, determines the next progression based on that interaction, and activates the corresponding light.
+
+What struck us: the technology is completely invisible. If it works, nobody notices the system. They just experience the space. If it fails, it shatters the immersion.
+
+## The Existing System
+
+The first thing we did was audit what already existed.
+
+The Oracle Board was a custom system built by a local theater tech. It used:
+
+- Three separate sensor arrays connected to custom circuit boards
+- A central control microcontroller (an Arduino, actually — pragmatic choice)
+- Theatrical lighting control via DMX protocol
+- Custom firmware to orchestrate the logic
+
+The code was... well, it worked. But it was fragile. Hard-coded values in places that should've been configurable. Brittle error handling. No graceful degradation. "If anything goes wrong, the lights just don't activate" isn't great when you're trying to guide people through a ritual experience.
+
+And it had been written fast, the day before the first performance. There was a lot of "make it work by showtime" energy in there.
+
+## The Challenge
+
+Here's what we had to do:
+
+1. **Understand the existing system** (without breaking it, since they might need it for another show soon)
+2. **Identify the failure points** (where the October show had minor issues)
+3. **Harden the system** (make it fault-tolerant)
+4. **Test extensively** (but with limited access to the actual space — the theater had other shows)
+5. **Deploy with zero downtime** (you can't shut down the system mid-performance)
+
+And we had 6 weeks.
+
+## The Issues We Found
+
+**Issue 1: Timing Inconsistency**
+
+The original system had hardcoded delays between sensor input and light output. "Wait 200ms, then activate the light." But in practice, audience members are unpredictable. Sometimes they held their hand over a sensor for 3 seconds. Sometimes 200ms. The timing logic got confused.
+
+**Issue 2: Sensor Debouncing**
+
+Capacitive sensors (which detect proximity) are finicky. With 50+ people in the space, you get false positives. Someone walks past a sensor. It triggers. The system thinks they selected that table when they didn't.
+
+**Issue 3: No Failover**
+
+If one sensor died mid-performance, the whole system would act confused. The logic wasn't designed to handle missing sensors gracefully.
+
+**Issue 4: DMX Synchronization**
+
+The theatrical lighting system (controlled via DMX, a protocol for lighting equipment) had occasional timing mismatches with the microcontroller. Sometimes lights would activate with a 100-200ms delay. Subtle, but enough to break immersion.
+
+## Our Approach
+
+We didn't rewrite from scratch. That would've been risky and time-consuming. Instead, we fixed the critical issues:
+
+### 1. Better Debouncing Logic
+
+We implemented a state machine instead of simple thresholds:
+
+- Sensor reading filtered through a rolling average
+- Multiple confirmations before registering a selection
+- Hysteresis (once confirmed, resist false negatives)
+- Timeout after 2 seconds (if they leave, forget it)
+
+This reduced false positives by ~95%.
+
+### 2. Adaptive Timing
+
+Instead of hardcoded delays, we implemented a smart timing system:
+
+- Measure how long a person's hand stays over the sensor
+- If it's a quick touch, treat it as "look but don't select"
+- If it's a held hand, that's a selection
+- Provide immediate tactile feedback (the light dims, then brightens)
+
+Feels more responsive and natural.
+
+### 3. Graceful Degradation
+
+If one sensor fails:
+- The system notes it in the log
+- Operators get a subtle alert (a specific light pattern)
+- The performance can continue using the other sensors
+- After the show, they can swap out the sensor and reset
+
+No catastrophic failures.
+
+### 4. DMX Synchronization
+
+We rebuilt the timing layer to synchronize with the DMX controller's heartbeat, rather than trying to predict timing:
+
+- Query DMX status every 10ms
+- Adjust lighting cues based on actual DMX state, not assumed
+- Fallback to local timing if DMX is unresponsive
+
+No more hidden timing mismatches.
+
+## Testing Without Breaking Things
+
+The hard part: we couldn't really test in the actual installation until right before the performance.
+
+So we:
+
+1. **Built a simulator** — replicated the sensor behavior and lighting responses in software
+2. **Stress tested** — simulated hundreds of audience interactions to find edge cases
+3. **Hardware testing** — set up a test rig with actual sensors, microcontroller, and lighting equipment
+4. **Documented everything** — created clear diagrams and guides for the operators
+
+The simulator was surprisingly valuable. We found edge cases that would've been disastrous live:
+- What if two people select the same table simultaneously?
+- What if someone holds their hand over a sensor for 30 seconds?
+- What if they select a table, walk to a room, then another table activates their new room?
+
+All documented and handled.
+
+## The December Performances
+
+December 6-7, we were there. Not as performers — as nervous system operators watching the lights.
+
+**Night one**: 45 audience members, smooth flow, no technical interruptions. The operators loved the improved responsiveness. "It feels alive," one said.
+
+**Night two**: 62 audience members (packed), longer wait times between rooms, more simultaneous interactions. System handled everything. We watched the log output and saw maybe 3-4 instances where edge cases would've broken the old system. Our new version handled them silently.
+
+The piece was powerful. People exited with this contemplative look. Some in tears. Some energized. And absolutely nobody wondered about the tech. Perfect.
+
+## What We Learned
+
+**Technology Should Be Invisible**
+
+The best interactive art experiences don't announce themselves. The tech is a facilitator, not a performer. If people are thinking about whether the lights work, the art already lost them.
+
+**Live Performance Changes Everything**
+
+Normal software development has testing, staging, beta phases. Live performance is a production run with no debug access. This constraint forces better design — defensive, forgiving, robust.
+
+**State Machines Are Your Friend**
+
+The biggest improvement came from replacing simple if-then logic with a proper state machine. Audiences are chaotic. State machines handle chaos better than sequential logic.
+
+**Documentation Matters More**
+
+The theater operators needed to understand the system. We spent time creating clear guides, not just handing them code. That documentation probably prevented three emergencies.
+
+## Reflections
+
+This project was outside our usual wheelhouse. We're used to building web apps, educational platforms, e-commerce stores. This was art. Theater. Ritual.
+
+But it reminded us why we love what we do. Technology at its best is invisible. It enables experiences without drawing attention to itself. The Venus Labyrinth isn't about the Oracle Board. It's about consciousness, memory, choice, and connection. We just made sure the lights guided the way.
+
+And honestly? Knowing that 100+ people experienced something meaningful, guided by software we helped improve, is pretty fulfilling.
+
+---
+
+*Working on an interactive installation, live experience, or theater tech? We love this kind of work. [Let's talk](/contact).*

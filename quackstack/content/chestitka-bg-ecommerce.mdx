@@ -1,0 +1,263 @@
+---
+title: 'Launching Chestitka.bg: A Fast WooCommerce Store'
+excerpt: 'How we built a lean, fast e-commerce store for greeting cards and gifts on WordPress — without the typical plugin bloat.'
+author: 'QuackStack Team'
+date: '2025-02-05'
+category: 'Case Study'
+tags: ['WordPress', 'WooCommerce', 'E-commerce', 'Performance']
+readTime: 9
+featured: true
+image: '/chestitka-main-page.webp'
+---
+
+# Launching Chestitka.bg: A Fast WooCommerce Store
+
+The client walked in with a problem we see constantly: "I want to sell greeting cards online, I need it fast, and I don't want to spend a fortune."
+
+Fair enough. They had a small team making beautiful greeting cards and gifts — mostly sold locally in Sofia. They wanted to go online but on a tight budget. They'd looked at Shopify ($30/month, plus transaction fees) and figured it would add up. They'd considered building custom, but recognized that's overkill for what they needed.
+
+"Can we use WordPress?" they asked.
+
+Our first instinct: hesitate. WordPress e-commerce stores often turn into performance nightmares. You add WooCommerce, then plugins for payment, then plugins for shipping, then plugins for SEO, then a plugin to speed up all those plugins. By month two, the site loads like a sloth on dial-up.
+
+But here's the thing: WordPress doesn't *have* to be slow. If you're disciplined. If you respect the medium. If you actually think before installing your 47th plugin.
+
+We said yes. But with conditions.
+
+## The Real Challenge
+
+On the surface, the ask was simple: "e-commerce store, 6 weeks, Bulgarian market."
+
+But digging deeper:
+
+- **Tight budget** meant shared hosting, not a private server
+- **Bulgarian market** meant currency, shipping partners, and language considerations
+- **Small team** meant they couldn't manage complex systems — it had to be intuitive
+- **Growth trajectory** — they expected to go from 0 to 1,000 orders in the first three months
+- **Mobile-first** — Bulgarians buy on phones, and the store needed to be fast on 4G
+
+The constraint: budget-friendly shared hosting with limited resources and variable load. We couldn't change hosts immediately — the budget prioritized building the store, not infrastructure upgrades.
+
+So we had to build a WordPress store that *felt fast* on modest infrastructure.
+
+## The Stack (Minimal Edition)
+
+We deliberately chose a lean approach:
+
+**Core:**
+- WordPress 6.1
+- WooCommerce 8.0
+- PHP 8.1
+
+**Payment:**
+- Stripe (simple integration, battle-tested)
+
+**Shipping:**
+- Speedy (local Bulgarian courier)
+
+**Caching/Performance:**
+- WP Super Cache (lightweight caching)
+- Cloudflare (free CDN)
+
+**Monitoring:**
+- Google Analytics (free)
+- Lighthouse CI (free, built into Google Search Console)
+
+**That's it.** No page builders. No unnecessary plugins. No "one more tool" spiral.
+
+The entire plugin count: 12. Most WordPress stores we see have 50+. We were extreme about it, but intentionally so.
+
+## Building the Theme
+
+Instead of using a bloated theme, we built a custom one. This took 2 weeks but was worth it.
+
+**Why custom?**
+
+Most WordPress themes are designed to "work for everyone," which means they include thousands of lines of CSS and JavaScript for features we'd never use. Better to build specifically for this use case:
+
+- Product grids (that's it, nothing fancy)
+- Shopping cart (straightforward)
+- Checkout (simplified, no bloat)
+- Mobile navigation (clean, lightweight)
+
+We used WordPress's block editor architecture (Gutenberg), which meant the content team could add new pages without touching code.
+
+**Design constraints we imposed:**
+
+- Limit to 3 colors (reduces CSS)
+- Limit to 2 fonts (reduces render-blocking requests)
+- No autoplay videos (kills performance)
+- No sliders or carousels (animations are expensive)
+- SVG icons instead of icon fonts (smaller, faster)
+
+Sounds restrictive, but the result was actually beautiful. Constraints breed creativity. The store has a clean, premium feel — not cluttered.
+
+## The Performance Audit
+
+Week one, we ran extensive performance tests.
+
+On the shared hosting (baseline):
+- Fully loaded WooCommerce store: ~6 seconds on 4G
+- Unoptimized images: 2.8MB
+- Uncompressed CSS/JS: 340KB
+- Server response time: 800ms (yikes, the bad hosting)
+
+We needed to cut that in half. Ideally to under 2 seconds.
+
+## Optimization: The Painful Parts
+
+**Image Optimization**
+
+This was the biggest win. Greeting card images are pretty, but they're heavy. We:
+
+1. Converted all product images to WebP (saves ~40% file size)
+2. Resized for actual display (no loading 4000x3000 images when you display 400x300)
+3. Implemented lazy loading (images load only when visible)
+4. Optimized background images to 1-2KB (SVG patterns instead of PNGs)
+
+Result: 2.8MB down to 680KB. **That's a 75% reduction.**
+
+**CSS/JavaScript Minification**
+
+- Minified all CSS (no spaces, no comments)
+- Minified all JavaScript
+- Removed unused Bootstrap CSS (the theme was using Bootstrap for nothing)
+- Deferred non-critical JavaScript (analytics, ads) to load after page render
+
+Result: 340KB down to 85KB.
+
+**Caching Strategy**
+
+This was the tricky part. Different content needs different cache durations:
+
+- **Static assets** (CSS, JS, images): 1 year (set version hash in filename, bust when changed)
+- **Product pages**: 1 hour (updates throughout the day, but can be slightly stale)
+- **Cart/checkout**: No cache (real-time, per user)
+- **Homepage**: 30 minutes (promotions change frequently)
+
+We configured WP Super Cache with these rules. We also told Cloudflare to cache aggressively at the edge.
+
+Result: repeat visitors now load in under 500ms (fully cached, just rendering). First-time visitors: 1.8 seconds on 4G.
+
+**Server Response Time**
+
+Shared hosting imposes latency. We targeted server response time with practical optimizations:
+
+1. Tightened WordPress queries (reduced database calls)
+2. Enabled object caching (paired with CDN edge caching)
+3. Deferred non-blocking tasks
+
+Result: improved average TTFB from ~800ms to ~350ms — acceptable for the hosting tier.
+
+## Bulgarian Localization
+
+More nuanced than just translating text:
+
+**Currency:**
+- All prices in BGN (Bulgarian Lev)
+- Proper formatting (2,500.00 лв instead of $2,500.00)
+
+**Shipping:**
+- Integration with Speedy (major Bulgarian courier)
+- Real-time shipping quotes based on location
+- ZIP code lookups for Bulgaria
+
+**Payments:**
+- Stripe set to Bulgarian language
+- Option for bank transfers (common in Bulgaria)
+- Proper VAT handling (Bulgaria has specific VAT rules)
+
+**Right-to-left? No.** Bulgarian uses the Cyrillic alphabet but is left-to-right. Common mistake.
+
+## The Editorial Team
+
+The store owner needed to:
+- Add new products (including uploading images)
+- Create promotions
+- Manage orders
+- Generate reports
+
+We built a simple admin workflow:
+
+1. Products: Use the WordPress edit screen, but simplified (hid unnecessary fields)
+2. Promotions: Custom post type for seasonal sales (easy to manage)
+3. Orders: Standard WooCommerce, but we highlighted important actions
+4. Reports: Custom dashboard showing daily sales, top products, revenue
+
+We trained the team in 2 hours. They were managing the store independently by day 3.
+
+## Launch and Reality
+
+We launched January 23rd. What happened:
+
+**Week 1:**
+- 12 orders (friends, family testing)
+- Average page load: 2.1 seconds
+- Zero technical issues
+
+**Week 2:**
+- 45 orders (word of mouth)
+- Average page load: 2.3 seconds (slightly higher due to traffic spikes, but still good)
+- They ran first promotion (Valentine's Day cards)
+
+**Week 3:**
+- 180 orders (promotion working)
+- One moment of load-related downtime on shared hosting
+- We moved to an upgraded shared plan and tuned caching accordingly
+
+**Month 2:**
+- 800+ orders
+- Average page load: 1.9 seconds (caching is now optimal)
+- They've added three new product categories
+
+**Month 3:**
+- 1,200 orders
+- They're considering expansion (maybe a warehouse)
+
+## The Unexpected Challenges
+
+**Challenge 1: Image Licensing**
+
+The card designs are gorgeous, but they include artwork from various artists. We had to set up proper attribution and licensing. Took longer than expected, but it's solid now.
+
+**Challenge 2: Currency Fluctuations**
+
+BGN is pegged to EUR, but there's still variance. We set up automatic currency conversion in case they want to accept EUR in the future. Future-proofing.
+
+**Challenge 3: Email Deliverability**
+
+WordPress's default email system is unreliable. Order confirmations were going to spam. We installed a proper SMTP plugin. Fixed in 2 hours, but it was a gotcha.
+
+## What Actually Mattered
+
+If I could redo this project, here's what I'd prioritize:
+
+1. **Image optimization first** — it's the biggest impact, and every project has it
+2. **Caching strategy early** — don't wait until launch
+3. **Know your hosting limitations** — and build around them
+4. **Simplicity over features** — every feature adds weight
+5. **Test on real devices** — not just in DevTools
+
+## Lessons Learned
+
+**WordPress can be fast.** The platform gets a bad rap, but slow WordPress is usually slow because of poor discipline, not WordPress itself. Every plugin is a choice. Every feature is a cost.
+
+**Shared hosting is survivable** if you're smart about it. We proved you can run a successful e-commerce store on budget hosting with the right optimizations.
+
+**Bulgarian market matters.** Localization isn't just translation. Currency, shipping partners, payment methods, VAT — it all has to be right.
+
+**Performance is a feature.** The store loads fast, so customers actually complete their purchase. That's a direct business metric.
+
+## What's Next
+
+Chestitka.bg is stable. They're planning:
+
+- Expand to seasonal products
+- Possibly ship to other Balkan countries
+- Maybe add a subscription model for regular customers
+
+We'll help with the technical side, but honestly, they're self-sufficient now. That's how it should be.
+
+---
+
+*Building an e-commerce store? Whether it's WordPress, custom, or something else, performance and simplicity matter. [Get in touch](/contact) if you want to talk strategy.*

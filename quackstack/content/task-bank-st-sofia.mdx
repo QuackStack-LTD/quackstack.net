@@ -1,0 +1,173 @@
+---
+title: 'Building a Smart Task Bank for Teachers'
+excerpt: 'How we built a worksheet builder with OCR ingestion and AI-assisted task generation for St. Sofia's teaching staff.'
+author: 'QuackStack Team'
+date: '2025-05-10'
+category: 'Case Study'
+tags: ['Angular', 'Spring Boot', 'OCR', 'AI', 'Education']
+readTime: 9
+featured: true
+image: '/stepss-main-page.webp'
+---
+
+# Building a Smart Task Bank for Teachers
+
+There's a running joke among teachers: "What do teachers do in their free time?" The answer is usually a sad laugh, because most teachers don't have free time. They're grading, planning, preparing materials — and probably spending way too much time on the most mundane task of all: finding or creating worksheets.
+
+We sat down with the teaching staff at St. Sofia in early 2025, and the pain was obvious. Materials lived across notebooks, shared drives, and PDFs. Great exercises were hard to find and even harder to reuse consistently. Many teachers recreated similar worksheets each term because there wasn't a central place to draw from.
+
+They wanted a platform where the collective knowledge of the entire teaching staff — all those great exercises, all that curriculum experience — could live in one place and scale. They wanted to spend less time finding tasks and more time actually teaching.
+
+That became our mission: build a system that makes worksheet creation feel less like admin work and more like actual teaching.
+
+## Understanding the Problem (The Hard Way)
+
+We spent the first week just observing. We sat in the staff room. We asked questions. We learned:
+
+- Teachers had thousands of worksheets, many in paper form only
+- Good exercises got lost (or hoarded) because there was no central place to store them
+- Creating a new worksheet meant either hunting through folders or starting from scratch
+- Differentiation (varying difficulty levels) meant doing even more work
+- Most worksheets ended up as PDFs that were rarely reused
+
+Existing tools hadn't fit their workflow. They were powerful, but they didn't make everyday tasks faster for teachers.
+
+## The Vision
+
+By the end of week one, the vision was clear. We needed:
+
+1. **A shared task bank** — every exercise the school has ever created, searchable and tagged
+2. **A worksheet builder** — drag-and-drop simplicity, not form-filling complexity
+3. **OCR ingestion** — scan old paper worksheets and automatically extract tasks
+4. **AI generation** — "I like this exercise, give me 5 more like it at varying difficulty levels"
+5. **PDF export** — beautiful, print-ready worksheets the instant they're done
+
+## The Technical Stack
+
+We knew this needed to scale. Eight weeks, two developers, scalable systems:
+
+- **Angular + TypeScript** for a responsive, fast frontend
+- **Spring Boot + Java** for a rock-solid backend API
+- **PostgreSQL** for complex queries (find exercises by subject, difficulty, grade level)
+- **Redis** for caching (the task bank gets queried *a lot*)
+- **Tesseract OCR** for converting paper to text
+- **OpenAI API** for generating task variations
+
+The tech stack looked heavy on paper, but each piece had a reason. We needed performance and reliability over cleverness.
+
+## The Build Process
+
+**Weeks 1-2: Discovery and Design**
+
+We mapped out every workflow:
+- How does a teacher create a new worksheet?
+- How does the OCR import flow work?
+- What happens when the AI generates tasks?
+- How do teachers collaborate without stepping on each other's work?
+
+We built wireframes. A lot of them. We also learned that teachers think in terms of subjects and grade levels, not technical categories. So our data model needed to reflect that.
+
+**Weeks 3-4: Core Infrastructure**
+
+We built the API first. The database schema was more complex than we initially thought. Tasks have:
+- Multiple subjects
+- Multiple grade levels
+- Difficulty ratings (but from multiple teachers — averaging helps)
+- Related tasks
+- Usage statistics
+- Revision history
+
+We built that schema with PostgreSQL, then added Redis for fast lookups.
+
+The worksheet builder started as a simple interface — grab tasks from the left sidebar, drop them on the canvas on the right. But then we realized teachers needed to:
+- Reorder tasks
+- Add custom notes between tasks
+- Group tasks by section
+- Preview how it would print
+- Save drafts
+
+So the UI evolved. By end of week 4, the MVP was solid.
+
+**Weeks 5-6: The OCR Journey**
+
+This is where things got interesting (and frustrating).
+
+We tested OCR on different worksheet types: typed, handwritten, scanned badly, scanned well, faxed, etc. Results ranged from perfect to completely wrong.
+
+Typed documents? 98% accuracy. Handwritten? 20-40%. Old faxes? Forget it.
+
+We had to make a call: auto-import works great for typed worksheets, but handwritten or poor-quality scans need human review. So we built a semi-automated flow:
+
+1. Upload/scan the worksheet
+2. OCR extracts the text
+3. Show the teacher what OCR found
+4. Let them correct it before adding to the bank
+5. Save the corrected version
+
+This took longer than we expected because we had to build not just OCR, but a UI for reviewing and correcting OCR output. But the result was solid — teachers got the speed of automation without the risk of garbage data.
+
+**Weeks 7-8: AI and Polish**
+
+The AI part was actually more straightforward than OCR. We used OpenAI's API to generate task variations. A teacher selects a task and says "Generate 3 easier versions and 2 harder versions." The API understands the context and creates new tasks.
+
+Of course, AI isn't perfect. Sometimes the generated tasks were weird. We built an approval workflow so teachers could rate suggested tasks (good/bad), and over time the AI got better at understanding what the school wanted.
+
+We also added:
+- Real-time collaboration (when one teacher adds a task, others see it instantly via WebSocket)
+- Full-text search across all tasks
+- Filtering by subject, grade level, difficulty
+- Usage analytics (which tasks are most popular?)
+
+## The Challenges We Didn't Expect
+
+**Challenge 1: Teacher Buy-In**
+
+This was the biggest one. We built something great, but teachers are busy. Adoption was slow. So we did something unconventional: we sat down with the most skeptical teachers and *built* worksheets *with* them in the system. Watching the "I could do this faster myself" look turn into "oh, this is actually fast" was worth the time investment.
+
+**Challenge 2: Data Quality**
+
+When we auto-migrated old worksheets into the system, we found duplicate tasks, tasks missing difficulty ratings, subjects that didn't match the school's taxonomy. We had to go back and do manual cleanup. It took a week, but it was necessary. Garbage in, garbage out.
+
+**Challenge 3: AI Hallucination**
+
+The AI would sometimes generate tasks that were mathematically incorrect or grammatically weird. We didn't ship with auto-generation immediately. First release was "AI suggests tasks, teachers review them." Only after teachers validated that the quality was high enough did we consider more automation.
+
+## What Actually Happened After Launch
+
+Teachers started using it immediately. Within a week:
+
+- The first 200+ tasks were added to the bank
+- Teachers were scanning old worksheets and building new ones from the bank
+- One teacher generated 15 differentiated versions of a math worksheet (easy, medium, hard) — work that would have taken her a full day before
+
+Three months in:
+
+- **4,000+ tasks in the bank**
+- **Teachers spend 60% less time on worksheet creation**
+- **Differentiation is now standard** — teachers build 3 difficulty levels instead of 1
+- **Cross-grade collaboration** — 3rd-grade teachers borrow and adapt 2nd-grade tasks
+
+Most important metric? When we asked teachers if they'd want to go back to the old system, all of them said "absolutely not."
+
+## Lessons from Building Educational Software
+
+- **Teachers know what they need.** Listen to them. Really listen. Don't impose workflows.
+- **Automation should never require perfection.** Semi-automated workflows (human-in-the-loop) beat fully automated garbage.
+- **Adoption takes time.** We built a great tool, but teachers needed to be shown it was worth learning. That's not their fault; it's ours.
+- **Real data is messy.** Assume your migration will uncover weird stuff. Budget time for cleanup.
+- **Differentiation is a superpower.** One of the biggest insights: teachers want to differentiate but rarely do because it's too much work. Make it easy, and they'll do it every time.
+
+## What's Next
+
+We're working on:
+
+- Mobile app so teachers can build worksheets on the go
+- PDF annotations (teachers marking up worksheets)
+- Integration with school management systems
+- More sophisticated AI (understanding pedagogy, not just text)
+
+But honestly, the system is already doing what it was supposed to do: giving teachers their time back.
+
+---
+
+*Building educational tools? We'd love to help. [Get in touch](/contact).*
