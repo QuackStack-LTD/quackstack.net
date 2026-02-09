@@ -12,20 +12,18 @@ image: '/e-gradebook-login.webp'
 
 # Extending a Gradebook for Mobile
 
-Private Primary School "St. Sofia" came to us with a clear need: their gradebook system — built internally by a teacher — worked well for desktop workflows. Teachers could reliably enter grades, and parents could access them from computers. But the mobile experience was limited. In our first conversation, the school's leadership noted that parents and teachers wanted better access on phones, and the navigation needed redesign for smaller screens.
+Private Primary School "St. Sofia" came to us with a clear need: their gradebook system — built internally — worked well for desktop workflows. Teachers could reliably enter grades, and parents could access them from computers. But the mobile experience was limited. In our first conversation, the school's leadership noted that parents and teachers wanted better access on phones, and the navigation needed redesign for smaller screens.
 
 The challenge was straightforward: enhance the interface for mobile and improve the UX without disrupting the backend that was already working well.
 
 ## The Challenge
 
-The constraints were clear. The backend served the school well and held years of data and complex workflows. A full rewrite wasn't practical — it would risk data integrity, take too long, and cost far more than the budget allowed. They needed:
+The constraints were clear. The backend served the school well and held years of data and complex workflows. A full rewrite wasn't practical, as it would risk data integrity, take too long, and cost far more than the budget allowed. They needed:
 
 - A **mobile-first experience** layered on existing infrastructure
 - **Zero-downtime deployment** of the new interface alongside the current system
 - **Preserved authentication** and data flows
-- A solution delivered in **8 weeks** (before the next grading period)
-
-We had about 8 weeks. No room for mistakes.
+- A solution delivered in **8 weeks**
 
 ## The Initial Audit
 
@@ -33,7 +31,7 @@ Before we committed to anything, we spent three days actually *using* the system
 
 What we found:
 
-- The layout was optimized for desktop screens — tables didn't adapt to smaller mobile viewports
+- The layout was optimized for desktop screens
 - Navigation required horizontal scrolling on phones to access buttons
 - Load times were noticeably slow on 4G connections
 
@@ -58,51 +56,34 @@ The trick was making sure our new CSS didn't break the existing backend logic. W
 Parents and teachers shouldn't see the same thing. We built two distinct interfaces:
 
 - **Parents**: The most important info first — their kid's grades, plus a heads-up about missing assignments and upcoming tests. We put the messaging system front and center because that's how parents prefer to contact teachers.
-- **Teachers**: A class roster view for quick attendance, inline grade entry for faster updates, and a separate admin panel for more complex tasks.
+- **Teachers**: A class roster view for quick attendance, inline grade entry for faster updates.
 
 A parent's workflow changed from "log in → navigate to child → find grade" to "log in → see grade." Two fewer clicks.
 
-### 3. Performance Optimization
+### 3. Authentication Preserved
 
-The existing system, like many web applications, could benefit from optimization. The original implementation included:
-
-- Unminified assets (common for internal tools)
-- Separate CSS and JS files without bundling
-- Unoptimized images
-
-We optimized aggressively. We minified and bundled assets, converted images to WebP, implemented HTTP caching. We also added service worker support for repeat visitors. First-page load time improved from ~4.2 seconds on 4G to about 1.1 seconds.
-
-### 4. Authentication Preserved
-
-The login system was actually solid. Instead of messing with it, we built around it. We preserved the session management, the password hashing, the audit logs — everything. This meant we didn't introduce any security regressions.
+The login system was actually solid. Instead of messing with it, we built around it. We preserved the session management, the password hashing, the audit logs. This meant we didn't introduce any security regressions.
 
 ## The Real Challenges
 
 Of course, nothing goes perfectly.
 
-**Challenge 1: Legacy Data Quirks**
+**Challenge 1: ...**
 
-The old system had some... interesting data. We found grades entered with extra spaces, weird character encoding in names, and a few orphaned records. Before we launched, we had to write migration scripts to clean it all up. That took longer than we expected.
+...
 
-**Challenge 2: Browser Compatibility**
+**Challenge 2: ...**
 
-ASP.NET Web Forms sometimes generated HTML that older browsers loved but modern mobile browsers choked on. We had to add polyfills and work around some quirky form behavior. A few sessions we spent just figuring out why iOS Safari wouldn't submit grades properly.
-
-**Challenge 3: School Integration**
-
-St. Sofia runs multiple programs — kindergarten, primary school, even a small music academy. They share the same gradebook database. We had to ensure our new UI worked across all programs without breaking anything. Testing was intense.
+...
 
 ## Results
 
 We launched on time, mid-semester, with zero downtime. Here's what actually happened:
 
-- **Parents started checking grades more often** — usage went up 60% in the first month (we tracked this through Google Analytics)
 - **Teachers reported checking attendance from their phones** — previously they'd only do it from the office
 - **No backend issues** — the ASP.NET layer kept chugging along, handling all our requests perfectly
 - **Faster perceived experience** — especially for parents with slower connections in suburban areas
 - **Editorial team managing everything** — the school's admin staff needed zero help after launch
-
-One parent even sent a thank-you email. That was nice.
 
 ## What Actually Took Time
 
@@ -120,7 +101,6 @@ The actual UI development was about 2 weeks for two developers. The hard part wa
 - **Preserve what works.** The authentication, data layer, and business logic were solid. We focused on improving the experience layer.
 - **Comprehensive testing is critical.** When integrating a new interface with an existing backend, testing everything is non-negotiable.
 - **Design for actual workflows.** We didn't ask teachers or parents to change how they work. We adapted the interface to fit their needs.
-- **Measure outcomes.** Usage, performance metrics, and user feedback tell you what actually matters.
 
 ---
 
