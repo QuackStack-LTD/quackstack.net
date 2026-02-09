@@ -75,9 +75,9 @@ Capacitive sensors (which detect proximity) are finicky. With 50+ people in the 
 
 If one sensor died mid-performance, the whole system would act confused. The logic wasn't designed to handle missing sensors gracefully.
 
-**Issue 4: DMX Synchronization**
+**Issue 4: Synchronization**
 
-The theatrical lighting system (controlled via DMX, a protocol for lighting equipment) had occasional timing mismatches with the microcontroller. Sometimes lights would activate with a 100-200ms delay. Subtle, but enough to break immersion.
+The theatrical lighting system had occasional timing mismatches with the microcontroller. Sometimes lights would activate with a 100-200ms delay. Subtle, but enough to break immersion.
 
 ## Our Approach
 
@@ -145,7 +145,7 @@ All documented and handled.
 
 ## The December Performances
 
-December 6-7, we were there. Not as performers — as nervous system operators watching the lights.
+December 6-7, we were there. Not as performers, but as nervous system operators watching the lights.
 
 **Night one**: 45 audience members, smooth flow, no technical interruptions. The operators loved the improved responsiveness. "It feels alive," one said.
 
@@ -167,15 +167,9 @@ Normal software development has testing, staging, beta phases. Live performance 
 
 The biggest improvement came from replacing simple if-then logic with a proper state machine. Audiences are chaotic. State machines handle chaos better than sequential logic.
 
-**Documentation Matters More**
-
-The theater operators needed to understand the system. We spent time creating clear guides, not just handing them code. That documentation probably prevented three emergencies.
-
 ## Reflections
 
-This project was outside our usual wheelhouse. We're used to building web apps, educational platforms, e-commerce stores. This was art. Theater. Ritual.
-
-But it reminded us why we love what we do. Technology at its best is invisible. It enables experiences without drawing attention to itself. The Venus Labyrinth isn't about the Oracle Board. It's about consciousness, memory, choice, and connection. We just made sure the lights guided the way.
+This projec reminded us why we love what we do. Technology at its best is invisible. It enables experiences without drawing attention to itself. The Venus Labyrinth isn't about the Oracle Board. It's about consciousness, memory, choice, and connection. We just made sure the lights guided the way.
 
 And honestly? Knowing that 100+ people experienced something meaningful, guided by software we helped improve, is pretty fulfilling.
 
