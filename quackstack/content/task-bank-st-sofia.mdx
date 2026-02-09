@@ -1,100 +1,167 @@
 ---
-title: 'Building a Smart Task Bank for Teachers'
-excerpt: "How we built a worksheet builder with OCR ingestion and AI-assisted task generation for St. Sofia's teaching staff."
+title: 'Building a Smart Task Bank for Teachers: Lessons from 7 Months in Production'
+excerpt: "How we built a comprehensive worksheet management system with OCR, AI assistance, and collaborative features for St. Sofia's teaching staff—and why we had to rebuild half of it."
 author: 'QuackStack Team'
-date: '2025-05-10'
+date: '2026-02-09'
 category: 'Case Study'
-tags: ['Angular', 'Spring Boot', 'OCR', 'AI', 'Education']
-readTime: 9
+tags: ['Angular', 'Spring Boot', 'OCR', 'AI', 'Education', 'Architecture']
+readTime: 12
 featured: true
 image: '/stepss-main-page.webp'
 ---
 
-# Building a Smart Task Bank for Teachers
+# Building a Smart Task Bank for Teachers: Lessons from 7 Months in Production
 
-There's a running joke among teachers: "What do teachers do in their free time?" The answer is usually a sad laugh, because most teachers don't have free time. They're grading, planning, preparing materials — and probably spending way too much time on the most mundane task of all: finding or creating worksheets.
+There's a running joke among teachers: "What do teachers do in their free time?" The answer is usually a sad laugh, because most teachers don't have free time. They're grading, planning, preparing materials—and probably spending way too much time on the most mundane task of all: finding or creating worksheets.
 
 We sat down with the teaching staff at St. Sofia in early 2025, and the pain was obvious. Materials lived across notebooks, shared drives, and PDFs. Great exercises were hard to find and even harder to reuse consistently. Many teachers recreated similar worksheets each term because there wasn't a central place to draw from.
 
-They wanted a platform where the collective knowledge of the entire teaching staff — all those great exercises, all that curriculum experience — could live in one place and scale. They wanted to spend less time finding tasks and more time actually teaching.
+They wanted a platform where the collective knowledge of the entire teaching staff—all those great exercises, all that curriculum experience—could live in one place and scale. They wanted to spend less time finding tasks and more time actually teaching.
 
 That became our mission: build a system that makes worksheet creation feel less like admin work and more like actual teaching.
 
 ## Understanding the Problem (The Hard Way)
 
-We spent the first week just observing. We sat in the staff room. We asked questions. We learned:
+We spent the first weeks just observing. We sat in the staff room. We asked questions. We learned:
 
 - Teachers had thousands of worksheets, many in paper form only
 - Good exercises got lost (or hoarded) because there was no central place to store them
 - Creating a new worksheet meant either hunting through folders or starting from scratch
 - Differentiation (varying difficulty levels) meant doing even more work
 - Most worksheets ended up as PDFs that were rarely reused
+- Teachers needed to collaborate, but existing tools were either too simple or too complex
 
 Existing tools hadn't fit their workflow. They were powerful, but they didn't make everyday tasks faster for teachers.
 
 ## The Vision
 
-By the end of week one, the vision was clear. We needed:
+By late June 2025, the vision was clear. We needed:
 
 1. **A shared task bank** — every exercise the school has ever created, searchable and tagged
-2. **A worksheet builder** — drag-and-drop simplicity, not form-filling complexity
+2. **A worksheet builder** — Microsoft Word-like experience because teachers were most familiar with it, not complex form-filling
 3. **OCR ingestion** — scan old paper worksheets and automatically extract tasks
 4. **AI generation** — "I like this exercise, give me 5 more like it at varying difficulty levels"
-5. **PDF export** — beautiful, print-ready worksheets the instant they're done
+5. **Version control** — track changes, maintain history, enable collaboration
+6. **PDF/Word export** — beautiful, print-ready worksheets the instant they're done
 
 ## The Technical Stack
 
-We knew this needed to scale. Eight weeks, two developers, scalable systems:
+We knew this needed to scale and be maintainable. Here's what we chose:
 
-- **Angular + TypeScript** for a responsive, fast frontend
-- **Spring Boot + Java** for a rock-solid backend API
+### Frontend
+- **Angular 13** with TypeScript for a responsive, fast SPA
+- **Angular Material** for consistent UI components
+- **Quill Editor** for rich text editing
+- **RxJS** for reactive state management
+- **Angular CDK** for drag-and-drop functionality
+
+### Backend
+- **Spring Boot 3.5.3** (Java 21) for a rock-solid backend API
+- **Spring Security** with JWT and OAuth2 for authentication
+- **JPA/Hibernate** for ORM
+- **Liquibase** for database migrations
+
+### Infrastructure
 - **PostgreSQL** for complex queries (find exercises by subject, difficulty, grade level)
-- **Redis** for caching (the task bank gets queried *a lot*)
+- **Redis** for caching and session management (the task bank gets queried *a lot*)
+- **RabbitMQ** with STOMP for asynchronous OCR and AI task processing via WebSockets
+- **FTP Server** for file uploads and management
+- **Docker & Docker Compose** for containerization
 - **Tesseract OCR** for converting paper to text
 - **OpenAI API** for generating task variations
 
 The tech stack looked heavy on paper, but each piece had a reason. We needed performance and reliability over cleverness.
 
-## The Build Process
+## The Build Process: A Reality Check
 
-**Weeks 1-2: Discovery and Design**
+**July 2025: Discovery and Foundation (Weeks 1-4)**
+
+Project start: July 1, 2025. First commit: Database structure and Docker setup.
 
 We mapped out every workflow:
 - How does a teacher create a new worksheet?
 - How does the OCR import flow work?
 - What happens when the AI generates tasks?
 - How do teachers collaborate without stepping on each other's work?
+- How do we handle versioning?
 
 We built wireframes. A lot of them. We also learned that teachers think in terms of subjects and grade levels, not technical categories. So our data model needed to reflect that.
 
-**Weeks 3-4: Core Infrastructure**
-
-We built the API first. The database schema was more complex than we initially thought. Tasks have:
-- Multiple subjects
-- Multiple grade levels
-- Difficulty ratings (but from multiple teachers — averaging helps)
-- Related tasks
+The database schema was more complex than we initially thought. Tasks have:
+- Multiple subjects and grade levels
+- Difficulty ratings (but from multiple teachers—averaging helps)
+- Related tasks and parent-child relationships
+- File attachments (images, documents)
 - Usage statistics
 - Revision history
+- Skills/learning objectives
 
-We built that schema with PostgreSQL, then added Redis for fast lookups.
+By mid-July, we had:
+- Basic DB structure
+- Docker environment
+- Google OAuth2 authentication working
+- Admin panel foundation
 
-The worksheet builder started as a simple interface — grab tasks from the left sidebar, drop them on the canvas on the right. But then we realized teachers needed to:
-- Reorder tasks
-- Add custom notes between tasks
-- Group tasks by section
-- Preview how it would print
-- Save drafts
+**August 2025: Core Features (Weeks 5-8)**
 
-So the UI evolved. By end of week 4, the MVP was solid.
+This is where we built the meat of the system:
+- **Weeks 5-6**: Admin panel, user management, subject/theme management
+- **Weeks 7-8**: Task creation, worksheet builder, FTP integration for file uploads
 
-**Weeks 5-6: The OCR Journey**
+The worksheet builder was designed to feel like Microsoft Word—because that's what teachers know. They didn't want to learn a new paradigm; they wanted something familiar. Grab tasks from the left sidebar, drop them on a canvas that looks and behaves like a Word document. But then we realized teachers needed even more:
+- Reorder tasks with drag-and-drop (just like moving paragraphs in Word)
+- Add custom text and notes between tasks (rich text editing with familiar formatting)
+- Group tasks by sections with headings
+- Preview exactly how it would print (WYSIWYG)
+- Save drafts and create versions
+- Export to PDF and Word with proper formatting that preserved their layout
 
-This is where things got interesting (and frustrating).
+The key insight: **familiarity reduces friction**. Teachers didn't need to read a manual. They already knew how to use it because it felt like Word. So the UI evolved constantly based on that principle. Teachers would use it, break it, and tell us what was wrong. We'd fix it overnight.
+
+**September-October 2025: The Great Backend Rebuild**
+
+Here's the truth: we knew from day one the existing architecture was problematic. The previous system used MongoDB, which sounds modern, but for this use case—complex relational queries across subjects, grades, themes, tasks, and worksheets—it was the wrong choice. We needed joins, transactions, and complex filtering. NoSQL was fighting us at every turn.
+
+By September, we had 282 commits and teachers were using the system. But we'd been building on a foundation we knew had to be replaced. The decision point came in mid-October: **keep patching or rebuild it right**.
+
+We chose to rebuild. From the ground up:
+
+**The Big Switch: MongoDB → PostgreSQL**
+
+This was the core decision. PostgreSQL gave us:
+- Proper relational modeling (tasks ↔ subjects ↔ themes ↔ worksheets)
+- ACID transactions (critical when teachers are collaborating)
+- Complex queries that were simple in SQL but nightmares in MongoDB
+- Foreign key constraints that prevented data corruption
+- Full-text search built-in
+
+The migration took weeks. We had to:
+- Redesign the entire schema
+- Migrate existing data without losing anything
+- Rewrite every repository layer
+- Add proper indexing for performance
+
+**Everything Else We Fixed:**
+- Clear service layer separation (no more business logic in controllers)
+- Consistent caching strategy with Redis
+- Proper message broker integration (switched from Spring's built-in broker to RabbitMQ)
+- Comprehensive E2E test suite with Selenide (browser-based testing)
+- Better error handling and logging
+- Liquibase for database migrations (version control for the schema)
+
+Was it painful? Absolutely. Did it delay features? By at least a month. Was it worth it? **100%. This decision saved the project.**
+
+The refactored system with PostgreSQL handles 10x more concurrent users, queries that took seconds now take milliseconds, and we can actually reason about the data model.
+
+**November-December 2025: OCR and AI (Weeks 16-24)**
+
+360 commits in these two months alone. This is where things got interesting (and frustrating).
 
 We tested OCR on different worksheet types: typed, handwritten, scanned badly, scanned well, faxed, etc. Results ranged from perfect to completely wrong.
 
-Typed documents? 98% accuracy. Handwritten? 20-40%. Old faxes? Forget it.
+- Typed documents? 95%+ accuracy
+- Handwritten? 20-40%
+- Old faxes or bad scans? Forget it
 
 We had to make a call: auto-import works great for typed worksheets, but handwritten or poor-quality scans need human review. So we built a semi-automated flow:
 
@@ -104,70 +171,123 @@ We had to make a call: auto-import works great for typed worksheets, but handwri
 4. Let them correct it before adding to the bank
 5. Save the corrected version
 
-This took longer than we expected because we had to build not just OCR, but a UI for reviewing and correcting OCR output. But the result was solid — teachers got the speed of automation without the risk of garbage data.
+This took longer than expected because we had to build not just OCR, but:
+- A UI for reviewing and editing OCR output
+- Quick correction tools for fixing extracted text
+- Batch processing for multiple files
+- WebSocket integration for real-time progress updates
 
-**Weeks 7-8: AI and Polish**
+The AI part was more straightforward. A teacher selects a task and says "Generate 3 easier versions and 2 harder versions." The API understands the context and creates new tasks.
 
-The AI part was actually more straightforward than OCR. We used OpenAI's API to generate task variations. A teacher selects a task and says "Generate 3 easier versions and 2 harder versions." The API understands the context and creates new tasks.
+Of course, AI isn't perfect. Sometimes the generated tasks were weird, mathematically incorrect, or grammatically off. We built an approval workflow so teachers could rate suggested tasks (good/bad), and over time the AI got better.
 
-Of course, AI isn't perfect. Sometimes the generated tasks were weird. We built an approval workflow so teachers could rate suggested tasks (good/bad), and over time the AI got better at understanding what the school wanted.
+**January 2026: Polish and Real-World Usage (Weeks 25-28)**
 
-We also added:
-- Real-time collaboration (when one teacher adds a task, others see it instantly via WebSocket)
+By January, we had:
 - Full-text search across all tasks
-- Filtering by subject, grade level, difficulty
+- Advanced filtering by subject, grade, difficulty, type, theme
+- Folder organization for personal collections
+- Like/dislike system for community feedback
 - Usage analytics (which tasks are most popular?)
+- Theme periods for organizing by academic calendar
+- Source attribution for tracking where tasks came from
+- Comprehensive export options (PDF, Word)
+
+**February 2026: Refinements (Ongoing)**
+
+We're now at 7 months in production. Recent work includes:
+- Source management for tracking material origins
+- Alphabetical sorting improvements
+- Deactivation impact assessment (understanding dependencies before deleting)
+- Enhanced error handling and user feedback
+- Performance optimizations
 
 ## The Challenges We Didn't Expect
 
-**Challenge 1: Teacher Buy-In**
+### Challenge 1: Data Quality and Migration
 
-This was the biggest one. We built something great, but teachers are busy. Adoption was slow. So we did something unconventional: we sat down with the most skeptical teachers and *built* worksheets *with* them in the system. Watching the "I could do this faster myself" look turn into "oh, this is actually fast" was worth the time investment.
+When we migrated old worksheets into the system, we found:
+- Duplicate tasks with slight variations
+- Tasks missing difficulty ratings or subjects
+- Subjects that didn't match the school's current taxonomy
+- Broken file references
+- Inconsistent formatting
 
-**Challenge 2: Data Quality**
+We had to go back and do manual cleanup. It took weeks, but it was necessary. Garbage in, garbage out.
 
-When we auto-migrated old worksheets into the system, we found duplicate tasks, tasks missing difficulty ratings, subjects that didn't match the school's taxonomy. We had to go back and do manual cleanup. It took a week, but it was necessary. Garbage in, garbage out.
+### Challenge 2: Choosing the Right Database (MongoDB vs PostgreSQL)
 
-**Challenge 3: AI Hallucination**
+We mentioned this earlier, but it deserves emphasis. The original architecture used MongoDB—a decision that sounded modern but was fundamentally wrong for this problem.
 
-The AI would sometimes generate tasks that were mathematically incorrect or grammatically weird. We didn't ship with auto-generation immediately. First release was "AI suggests tasks, teachers review them." Only after teachers validated that the quality was high enough did we consider more automation.
+Educational content is inherently relational:
+- Tasks belong to multiple subjects and themes
+- Worksheets contain tasks with specific ordering
+- Users create folders that organize tasks
+- Everything needs to be filtered by grade, difficulty, subject, source
 
-## What Actually Happened After Launch
+In MongoDB, every query was a nightmare of aggregations and manual joins. In PostgreSQL, it's just SQL.
 
-Teachers started using it immediately. Within a week:
+Making the call to pause features and migrate databases mid-project was hard. Teachers were using the system. But we knew: keep building on MongoDB and we'd be rewriting queries forever, or bite the bullet and migrate to PostgreSQL.
 
-- The first 200+ tasks were added to the bank
-- Teachers were scanning old worksheets and building new ones from the bank
-- One teacher generated 15 differentiated versions of a math worksheet (easy, medium, hard) — work that would have taken her a full day before
+We chose PostgreSQL. The migration took a month. Every piece of data had to be transformed, relationships had to be restructured, and we had to ensure nothing was lost.
 
-Three months in:
+But it was the right call:
+- Queries that took 2-3 seconds in MongoDB now take 50-100ms in PostgreSQL
+- Complex filtering ("show me grade 5 math tasks from source X, difficulty medium") went from painful aggregations to a simple WHERE clause
+- Data integrity issues (orphaned references, duplicate entries) disappeared with foreign keys
+- The codebase became drastically simpler—SQL is more maintainable than MongoDB aggregations
 
-- **4,000+ tasks in the bank**
-- **Teachers spend 60% less time on worksheet creation**
-- **Differentiation is now standard** — teachers build 3 difficulty levels instead of 1
-- **Cross-grade collaboration** — 3rd-grade teachers borrow and adapt 2nd-grade tasks
+### Challenge 3: AI Hallucination
 
-Most important metric? When we asked teachers if they'd want to go back to the old system, all of them said "absolutely not."
+The AI would sometimes generate tasks that were mathematically incorrect, factually wrong, or grammatically weird. We didn't ship auto-generation immediately. 
+
+First release: "AI suggests tasks, teachers review them."
+Only after teachers validated that the quality was acceptable did we consider more automation.
 
 ## Lessons from Building Educational Software
 
-- **Teachers know what they need.** Listen to them. Really listen. Don't impose workflows.
-- **Automation should never require perfection.** Semi-automated workflows (human-in-the-loop) beat fully automated garbage.
-- **Adoption takes time.** We built a great tool, but teachers needed to be shown it was worth learning. That's not their fault; it's ours.
-- **Real data is messy.** Assume your migration will uncover weird stuff. Budget time for cleanup.
-- **Differentiation is a superpower.** One of the biggest insights: teachers want to differentiate but rarely do because it's too much work. Make it easy, and they'll do it every time.
+### 1. Teachers know what they need. Listen to them. Really listen.
+Don't impose workflows. Observe how they actually work, then build tools that fit *their* process, not your idea of their process.
 
-## What's Next
+### 2. Automation should never require perfection
+Semi-automated workflows (human-in-the-loop) beat fully automated garbage. OCR with review beats OCR with blind trust.
 
-We're working on:
+### 3. Adoption takes time and hand-holding
+We built a great tool, but teachers needed to be shown it was worth learning. That's not their fault; it's ours. Budget time for training and support.
 
-- Mobile app so teachers can build worksheets on the go
-- PDF annotations (teachers marking up worksheets)
-- Integration with school management systems
-- More sophisticated AI (understanding pedagogy, not just text)
+### 4. Choose the right database for your problem. Not the trendy one.
+We started with MongoDB because it seemed modern. Big mistake. Educational content is relational. PostgreSQL was the right choice from day one. Migrating mid-project was painful, but necessary. If your data has relationships, use a relational database. It's not sexy, but it works.
 
-But honestly, the system is already doing what it was supposed to do: giving teachers their time back.
+### 5. Real data is messy
+Assume your migration will uncover weird stuff. Budget time for cleanup. Old systems accumulate cruft, and you'll inherit it.
+
+### 6. Asynchronous processing needs proper infrastructure
+Using WebSockets with RabbitMQ for OCR and AI processing was more complex than expected. Session management, message serialization, and handling long-running tasks required careful architecture.
+
+### 7. AI is powerful but needs guardrails
+Don't ship AI features without human review. Teachers need to trust the system, and one bad AI-generated task can destroy that trust.
+
+### 8. Differentiation is a superpower
+One of the biggest insights: teachers *want* to differentiate but rarely do because it's too much work. Make it easy, and they'll do it every time.
+
+## Final Thoughts
+
+Seven months in, we've learned that building educational software is different from building other types of software. The users are busy, the stakes are high (this affects actual students), and the workflows are complex.
+
+We made mistakes:
+- **Started with the wrong database** (MongoDB for a relational problem—rookie mistake)
+- Underestimated how painful the MongoDB → PostgreSQL migration would be
+- Didn't plan enough time for data cleanup during migration
+- Had to rebuild messaging infrastructure mid-project (Spring broker → RabbitMQ)
+
+But we also got a lot right:
+- Listened to teachers constantly
+- Built features they actually needed (not what we thought was cool)
+- Made hard calls (architecture refactor) when necessary
+- Focused on reliability over cleverness
+
+If you're building educational tools, here's our advice: **Spend time with teachers. Watch them work. Build what makes their lives easier, not what wins hackathons.**
 
 ---
 
-*Building educational tools? We'd love to help. [Get in touch](/contact).*
+*Building educational tools? Want to talk architecture, OCR, or AI integration? We'd love to help. [Get in touch](/contact).*
