@@ -3,6 +3,7 @@
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
+import WhoWeWorkWithSection from '@/components/WhoWeWorkWithSection';
 import TechnologiesSection from '@/components/TechnologiesSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import TeamSection from '@/components/TeamSection';
@@ -18,6 +19,7 @@ export default function QuackStackPortfolio() {
 			<GameOfLifeBackground />
 			<HeroSection />
 			<ServicesSection />
+			<WhoWeWorkWithSection />
 			<ProjectsSection />
 			<TeamSection />
 			<ProcessSection />
