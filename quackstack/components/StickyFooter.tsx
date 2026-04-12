@@ -89,7 +89,7 @@ const ContactInfo = () => {
 				<Mail className='w-4 h-4 text-primary dark:text-primary group-hover:text-primary dark:group-hover:text-primary' />
 				contact@quackstack.net
 			</a>
-			<a href='tel:+1234567890' className='flex items-center gap-2 text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm group'>
+			<a href='tel:+359893058517' className='flex items-center gap-2 text-foreground/70 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer text-sm group'>
 				<Phone className='w-4 h-4 text-primary dark:text-primary group-hover:text-primary dark:group-hover:text-primary' />
 				+359 893 058 517
 			</a>
