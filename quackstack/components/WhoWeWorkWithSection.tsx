@@ -20,6 +20,11 @@ const partners: Partner[] = [
 		imageUrl: '/sveta_sofia_logo.webp',
 	},
 	{
+		name: 'Mindhub',
+		role: 'Partner',
+		imageUrl: '/m-hub.png',
+	},
+	{
 		name: 'Sensory Theatre Sofia',
 		role: 'Client',
 		imageUrl: '/sensatory_theatre_sofia.png',
@@ -44,11 +49,11 @@ const partners: Partner[] = [
 		role: 'Client',
 		imageUrl: '/horreror.jpg'
 	},
-	// {
-	// 	name: 'Sanista',
-	// 	role: 'Client',
-	// 	imageUrl: '/sanista.png'
-	// },
+	{
+		name: 'Sanista',
+		role: 'Client',
+		imageUrl: '/sanista.png'
+	},
 	// {
 	// 	name: 'Kvadra',
 	// 	role: 'Client',
