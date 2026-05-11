@@ -19,7 +19,7 @@ jobs:
       context: ./quackstack
       repo: ghcr.io/quackstack-ltd/quackstack.net
       tags: latest,sha
-      platforms: linux/amd64,linux/arm64
+      platforms: linux/amd64
       dockerfile: Dockerfile
       build-args: ""
       push: true
