@@ -11,6 +11,7 @@ type Partner = {
 	role: string;
 	icon?: React.ReactNode;
 	imageUrl?: string;
+	invertOnLight?: boolean;
 };
 
 const partners: Partner[] = [
@@ -28,6 +29,7 @@ const partners: Partner[] = [
 		name: 'Sensory Theatre Sofia',
 		role: 'Client',
 		imageUrl: '/sensatory_theatre_sofia.png',
+		invertOnLight: true,
 	},
 	{
 		name: 'Chestitka.bg',
@@ -87,7 +89,8 @@ const partners: Partner[] = [
 	{
 		name: 'Upgrade Vision AI',
 		role: 'Partner',
-		imageUrl: '/upgrade_vision_ai.png'
+		imageUrl: '/upgrade_vision_ai.png',
+		invertOnLight: true
 	},
 	// {
 	// 	name: 'Codbex',
@@ -115,7 +118,7 @@ const WhoWeWorkWithSection: React.FC = () => {
 								<CardContent className='p-0 flex flex-col items-center justify-center text-center w-full h-full'>
 									{partner.imageUrl ? (
 										<div className="relative w-full h-20 mb-3">
-											<Image src={partner.imageUrl} alt={`${partner.name} logo`} fill className="object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm" sizes="160px" />
+											<Image src={partner.imageUrl} alt={`${partner.name} logo`} fill className={`object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm ${partner.invertOnLight ? 'invert dark:invert-0' : ''}`} sizes="160px" />
 										</div>
 									) : (
 										partner.icon
