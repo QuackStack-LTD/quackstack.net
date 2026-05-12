@@ -21,7 +21,7 @@ The challenge was straightforward: enhance the interface for mobile and improve 
 The constraints were clear. The backend served the school well and held years of data and complex workflows. A full rewrite wasn't practical, as it would risk data integrity, take too long, and cost far more than the budget allowed. They needed:
 
 - A **mobile-first experience** layered on existing infrastructure
-- **Zero-downtime deployment** of the new interface alongside the current system
+- **HTTPS implementation** for secure access (the server was Windows-based with IIS)
 - **Preserved authentication** and data flows
 - A solution delivered in **8 weeks**
 
@@ -64,17 +64,13 @@ A parent's workflow changed from "log in → navigate to child → find grade" t
 
 The login system was actually solid. Instead of messing with it, we built around it. We preserved the session management, the password hashing, the audit logs. This meant we didn't introduce any security regressions.
 
+### 4. HTTPS Configuration
+
+Since the system ran on Windows Server with IIS, we configured SSL certificates and set up HTTPS bindings. The infrastructure was already in place — we just enabled the security layer.
+
 ## The Real Challenges
 
-Of course, nothing goes perfectly.
-
-**Challenge 1: ...**
-
-...
-
-**Challenge 2: ...**
-
-...
+The school handled the go-live mid-semesterginally built by another developer, so understanding the existing codebase and ASP.NET Web Forms architecture took time. Limited architectural documentation meant we had to learn the system by reading through code. Working with legacy patterns like code-behind files, ViewState, and postbacks required careful refactoring to improve maintainability without breaking existing functionality.
 
 ## Results
 
