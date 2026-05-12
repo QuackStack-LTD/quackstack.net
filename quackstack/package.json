@@ -78,5 +78,11 @@
 		"tw-animate-css": "1.3.3",
 		"typescript": "^5",
 		"wait-on": "^9.0.1"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@tailwindcss/oxide",
+			"puppeteer"
+		]
 	}
 }
