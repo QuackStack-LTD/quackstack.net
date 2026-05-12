@@ -11,7 +11,10 @@ type Partner = {
 	role: string;
 	icon?: React.ReactNode;
 	imageUrl?: string;
+	darkImageUrl?: string;
 	invertOnLight?: boolean;
+	lightBgOnDark?: boolean;
+	haloOnDark?: boolean;
 };
 
 const partners: Partner[] = [
@@ -19,22 +22,25 @@ const partners: Partner[] = [
 		name: 'Частно Училище Света София',
 		role: 'Client',
 		imageUrl: '/sveta_sofia_logo.webp',
+		darkImageUrl: '/sveta_sofia_logo-dark.webp',
 	},
 	{
-		name: 'Mindhub',
+		name: 'MindHub',
 		role: 'Partner',
-		imageUrl: '/m-hub.png',
+		imageUrl: '/m-hub.webp',
+		darkImageUrl: '/m-hub-white.webp',
 	},
 	{
 		name: 'Sensory Theatre Sofia',
 		role: 'Client',
-		imageUrl: '/sensatory_theatre_sofia.png',
+		imageUrl: '/sensatory_theatre_sofia.webp',
 		invertOnLight: true,
 	},
 	{
 		name: 'Chestitka.bg',
 		role: 'Client',
-		imageUrl: '/chestitka.png',
+		imageUrl: '/chestitka.webp',
+		haloOnDark: true,
 	},
 	// {
 	// 	name: 'BNI Triumph',
@@ -44,17 +50,17 @@ const partners: Partner[] = [
 	{
 		name: 'Hack TUES',
 		role: 'Sponsored by us',
-		imageUrl: '/hack_tues_logo-last.png',
+		imageUrl: '/hack_tues_logo.webp',
 	},
 	{
 		name: 'Horreror',
 		role: 'Client',
-		imageUrl: '/horreror.jpg'
+		imageUrl: '/horreror.webp'
 	},
 	{
 		name: 'Sanista',
 		role: 'Client',
-		imageUrl: '/sanista.png'
+		imageUrl: '/sanista.webp',
 	},
 	// {
 	// 	name: 'Kvadra',
@@ -64,7 +70,8 @@ const partners: Partner[] = [
 	{
 		name: 'John Atanasoff School',
 		role: 'Partner',
-		imageUrl: '/John_Atanasof_school.png'
+		imageUrl: '/John_Atanasof_school.webp',
+		haloOnDark: true,
 	},
 	// {
 	// 	name: 'TUES',
@@ -89,7 +96,7 @@ const partners: Partner[] = [
 	{
 		name: 'Upgrade Vision AI',
 		role: 'Partner',
-		imageUrl: '/upgrade_vision_ai.png',
+		imageUrl: '/upgrade_vision_ai.webp',
 		invertOnLight: true
 	},
 	// {
@@ -100,7 +107,8 @@ const partners: Partner[] = [
 	{
 		name: 'SCAS',
 		role: 'Client & Partner',
-		imageUrl: '/SCAS.png'
+		imageUrl: '/SCAS.webp',
+		darkImageUrl: '/SCAS-dark.webp',
 	}
 ];
 
@@ -117,8 +125,11 @@ const WhoWeWorkWithSection: React.FC = () => {
 							<Card className='relative overflow-hidden liquid-glass hover:liquid-glass-orange transition-all duration-300 ease-out group-hover:shadow-lg rounded-xl flex flex-col items-center justify-center p-6 h-40 w-full'>
 								<CardContent className='p-0 flex flex-col items-center justify-center text-center w-full h-full'>
 									{partner.imageUrl ? (
-										<div className="relative w-full h-20 mb-3">
-											<Image src={partner.imageUrl} alt={`${partner.name} logo`} fill className={`object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm ${partner.invertOnLight ? 'invert dark:invert-0' : ''}`} sizes="160px" />
+										<div className={`relative w-full h-20 mb-3 ${partner.lightBgOnDark ? 'dark:bg-white dark:rounded-lg dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08)] dark:p-2' : ''}`}>
+											<Image src={partner.imageUrl} alt={`${partner.name} logo`} fill className={`object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm ${partner.darkImageUrl ? 'dark:hidden' : ''} ${partner.invertOnLight ? 'invert dark:invert-0' : ''} ${partner.haloOnDark ? 'dark:[filter:drop-shadow(0_0_2px_rgba(255,255,255,0.95))_drop-shadow(0_0_4px_rgba(255,255,255,0.8))]' : ''}`} sizes="160px" />
+											{partner.darkImageUrl && (
+												<Image src={partner.darkImageUrl} alt={`${partner.name} logo`} fill className='hidden dark:block object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm' sizes="160px" />
+											)}
 										</div>
 									) : (
 										partner.icon
