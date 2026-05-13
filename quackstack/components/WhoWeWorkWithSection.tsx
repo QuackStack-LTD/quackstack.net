@@ -88,11 +88,11 @@ const partners: Partner[] = [
 		role: 'Client & Partner',
 		imageUrl: '/nsicc.svg'
 	},
-	{
-		name: 'DevHubOne',
-		role: 'Partner',
-		imageUrl: '/DevHubOne.webp'
-	},
+	// {
+	// 	name: 'DevHubOne',
+	// 	role: 'Partner',
+	// 	imageUrl: '/DevHubOne.webp'
+	// },
 	{
 		name: 'Upgrade Vision AI',
 		role: 'Partner',
