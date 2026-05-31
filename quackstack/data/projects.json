@@ -502,5 +502,54 @@
 			"Bulgaria",
 			"Legacy Fix"
 		]
+	},
+	{
+		"id": "kvadra",
+		"title": "Kvadra Website",
+		"description": "Custom WordPress theme for Kvadra — a custom furniture studio specializing in bespoke kitchens, bedrooms, wardrobes, and interior solutions. Built from scratch with a tailor-made theme to showcase their portfolio and craftsmanship.",
+		"shortDescription": "Custom WordPress theme for a bespoke furniture studio.",
+		"image": "/KvadraBanner.png",
+		"images": [
+			"/KvadraBanner.png"
+		],
+		"tech": [
+			"WordPress",
+			"PHP",
+			"Custom Theme",
+			"Responsive Design"
+		],
+		"category": "Web Development",
+		"status": "In Progress",
+		"featured": true,
+		"client": "Kvadra",
+		"projectDate": "2025-12-01",
+		"duration": "Ongoing",
+		"teamSize": 2,
+		"challenge": "Design and develop a custom WordPress theme from scratch that reflects Kvadra's premium craftsmanship, showcases their furniture portfolio with high-quality imagery, and provides an intuitive browsing experience for potential clients.",
+		"solution": "Building a fully custom WordPress theme with a portfolio-driven layout, optimized image galleries for furniture showcases, clean typography, and a design language that communicates quality and attention to detail.",
+		"results": [
+			"Custom theme built from scratch — no generic templates",
+			"Portfolio-focused layout for showcasing furniture projects",
+			"Mobile-responsive design for all devices",
+			"Easy content management for the Kvadra team"
+		],
+		"features": [
+			"Fully custom WordPress theme",
+			"Furniture portfolio with category browsing",
+			"High-quality image galleries",
+			"Mobile-first responsive layout",
+			"SEO-friendly structure",
+			"Content management for non-technical staff"
+		],
+		"demoUrl": "",
+		"githubUrl": "",
+		"tags": [
+			"WordPress",
+			"Custom Theme",
+			"Furniture",
+			"Interior Design",
+			"Portfolio",
+			"Bulgaria"
+		]
 	}
 ]
