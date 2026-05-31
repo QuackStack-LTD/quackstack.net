@@ -4,8 +4,9 @@
 		"title": "E-Gradebook St Sofia",
 		"description": "Mobile-friendly gradebook experience for St. Sofia that layers a responsive UI on top of an existing ASP.NET Web Forms backend.",
 		"shortDescription": "Mobile gradebook and parent portal for St. Sofia.",
-		"image": "/e-gradebook-login.webp",
+		"image": "/SvetaSofiaDnevnikBanner.png",
 		"images": [
+			"/SvetaSofiaDnevnikBanner.png",
 			"/e-gradebook-login.webp"
 		],
 		"tech": [
@@ -348,6 +349,158 @@
 			"Branding",
 			"Dark Theme",
 			"Online Store"
+		]
+	},
+	{
+		"id": "qubstack",
+		"title": "QubStack",
+		"description": "A powerful browser-based 3D scene editor with real-time preview, PBR materials, AR/VR support, and cloud saves. No downloads, no installs — just create.",
+		"shortDescription": "Browser-based 3D scene editor with real-time preview and cloud saves.",
+		"image": "https://qubstack.quackstack.net/screenshot1.png",
+		"images": [
+			"https://qubstack.quackstack.net/screenshot1.png"
+		],
+		"tech": [
+			"Three.js",
+			"WebGL",
+			"TypeScript",
+			"Cloud Storage",
+			"AR/VR"
+		],
+		"category": "Web Application",
+		"status": "Live",
+		"featured": true,
+		"client": "QuackStack Ltd.",
+		"projectDate": "2025-10-15",
+		"duration": "Ongoing",
+		"teamSize": 3,
+		"challenge": "Build a fully-featured 3D scene editor that runs entirely in the browser — no downloads or plugins — with professional-grade features like PBR materials, real-time preview, and AR/VR export.",
+		"solution": "Developed a WebGL-powered 3D editor using Three.js with an intuitive UI, real-time scene preview, PBR material system, AR/VR support, and cloud-based project saves for seamless cross-device access.",
+		"results": [
+			"Full 3D scene editing directly in the browser",
+			"Real-time preview with PBR material support",
+			"AR/VR export for immersive experiences",
+			"Cloud saves for cross-device project access",
+			"Zero install — works on any modern browser"
+		],
+		"features": [
+			"Browser-based 3D scene editor",
+			"Real-time preview and rendering",
+			"PBR materials and lighting",
+			"AR/VR support and export",
+			"Cloud project saves",
+			"No downloads or installs required"
+		],
+		"demoUrl": "https://qubstack.quackstack.net/start",
+		"githubUrl": "",
+		"tags": [
+			"3D",
+			"WebGL",
+			"Three.js",
+			"AR/VR",
+			"Cloud",
+			"Editor",
+			"Web App"
+		]
+	},
+	{
+		"id": "nsicc",
+		"title": "InfoCareerCenter (NSICC)",
+		"description": "WordPress website for the National Student Information and Career Center (NSICC) — a Bulgarian organization supporting youth career guidance, information processing, and international cooperation across Bulgaria and Europe.",
+		"shortDescription": "WordPress site for Bulgaria's National Student Information and Career Center.",
+		"image": "/nsic-banner.png",
+		"images": [
+			"/nsic-banner.png"
+		],
+		"tech": [
+			"WordPress",
+			"PHP",
+			"Custom Theme",
+			"Responsive Design"
+		],
+		"category": "Web Development",
+		"status": "Completed",
+		"featured": true,
+		"client": "NSICC",
+		"projectDate": "2025-09-01",
+		"duration": "5 weeks",
+		"teamSize": 2,
+		"challenge": "Create a professional, bilingual web presence for a national career center that serves students and youth across Bulgaria, with clear navigation for programs, events, and international cooperation initiatives.",
+		"solution": "Built a custom WordPress site with a clean, institutional design, easy content management for staff, responsive layouts for mobile access, and structured sections for career guidance resources, events, and European cooperation programs.",
+		"results": [
+			"Professional web presence for a national institution",
+			"Easy content management for non-technical staff",
+			"Clear information architecture for students and partners",
+			"Mobile-responsive design for broad accessibility"
+		],
+		"features": [
+			"Custom WordPress theme",
+			"Career guidance resources section",
+			"Events and programs listings",
+			"International cooperation pages",
+			"Mobile-responsive layout",
+			"Content management for staff"
+		],
+		"demoUrl": "https://infocareercenter.org/",
+		"githubUrl": "",
+		"tags": [
+			"WordPress",
+			"Career Guidance",
+			"Education",
+			"Government",
+			"Bulgaria",
+			"Institutional"
+		]
+	},
+	{
+		"id": "sanista",
+		"title": "Sanista VIP",
+		"description": "WordPress renovation for Sanista VIP — a Bulgarian pest control company with over 25 years of experience in disinfection, disinsection, and deratization services. Years of plugin bloat, design inconsistencies, and broken elements had degraded the site. Custom elements were built to replace those that had been corrupted over time, restoring the site to a clean, professional state.",
+		"shortDescription": "WordPress renovation for a 25+ year pest control company.",
+		"image": "/Sanista-banner.png",
+		"images": [
+			"/Sanista-banner.png"
+		],
+		"tech": [
+			"WordPress",
+			"WooCommerce",
+			"PHP",
+			"Custom Elements",
+			"WPBakery"
+		],
+		"category": "Web Development",
+		"status": "Completed",
+		"featured": true,
+		"client": "Sanista VIP",
+		"projectDate": "2025-07-01",
+		"duration": "6 weeks",
+		"teamSize": 2,
+		"challenge": "Renovate a WordPress site that had been degraded over the years by plugin bloat, broken design elements, and inconsistent styling — without disrupting the live business or losing existing content and SEO rankings.",
+		"solution": "Audited and cleaned up plugin dependencies, rebuilt broken UI components with custom elements matching the original design intent, optimized performance, and restored design consistency across all pages and the WooCommerce product shop.",
+		"results": [
+			"Site restored to a clean, professional state",
+			"Broken custom elements rebuilt to match original design",
+			"Plugin bloat cleaned up for better performance",
+			"WooCommerce product shop fully functional",
+			"Preserved existing SEO rankings and content"
+		],
+		"features": [
+			"WordPress site renovation and cleanup",
+			"Custom element rebuilds for broken components",
+			"Plugin audit and optimization",
+			"WooCommerce product shop maintenance",
+			"Performance and design consistency restoration",
+			"SEO-safe migration of changes"
+		],
+		"demoUrl": "https://www.sanista.net/",
+		"githubUrl": "",
+		"tags": [
+			"WordPress",
+			"WooCommerce",
+			"Renovation",
+			"Pest Control",
+			"Bulgaria",
+			"Legacy Fix"
 		]
 	}
 ]
