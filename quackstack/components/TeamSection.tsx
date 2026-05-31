@@ -14,7 +14,7 @@ const defaultTeam = [
 	{
 		name: 'Emil Momchev',
 		role: 'Chief Product Officer',
-		image: '/emo.jpg',
+		image: '/emo.png',
 		skills: ['Marketing', 'Communication', 'Innovation'],
 	},
 	{
