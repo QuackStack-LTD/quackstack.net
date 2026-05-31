@@ -551,5 +551,55 @@
 			"Portfolio",
 			"Bulgaria"
 		]
+	},
+	{
+		"id": "qpress",
+		"title": "QPress",
+		"description": "A custom website builder built on React and Express — empowering users to design, build, and publish websites visually without writing code. Features a drag-and-drop editor, component library, and live preview with one-click publishing.",
+		"shortDescription": "Custom website builder powered by React and Express.",
+		"image": "/qpress.png",
+		"images": [
+			"/qpress.png"
+		],
+		"tech": [
+			"React",
+			"Express",
+			"Node.js",
+			"TypeScript",
+			"MongoDB"
+		],
+		"category": "Web Application",
+		"status": "In Progress",
+		"featured": true,
+		"client": "QuackStack Ltd.",
+		"projectDate": "2026-05-01",
+		"duration": "Ongoing",
+		"teamSize": 3,
+		"challenge": "Build an intuitive, full-featured website builder from scratch that lets users visually design and publish sites — without relying on third-party page builders or CMS platforms.",
+		"solution": "Developing a custom React-based visual editor with a drag-and-drop interface, reusable component library, and an Express backend handling project storage, asset management, and one-click site publishing.",
+		"results": [
+			"Visual drag-and-drop website creation",
+			"Live preview of changes in real time",
+			"One-click publishing workflow",
+			"No coding required for end users"
+		],
+		"features": [
+			"Drag-and-drop visual editor",
+			"Reusable component library",
+			"Live preview and real-time editing",
+			"One-click site publishing",
+			"Responsive design controls",
+			"Asset and media management"
+		],
+		"demoUrl": "",
+		"githubUrl": "",
+		"tags": [
+			"Website Builder",
+			"React",
+			"Express",
+			"Visual Editor",
+			"No-Code",
+			"Web App"
+		]
 	}
 ]
