@@ -49,7 +49,7 @@ const ProjectsSection: React.FC = () => {
 							<Card className='relative overflow-hidden group py-0 liquid-glass hover:liquid-glass-orange transition-all duration-500 flex flex-col cursor-pointer rounded-xl h-full w-full'>
 								<Link href={`/project/${project.id}`} className='block flex-1'>
 									<div className='relative overflow-hidden h-44 z-10 bg-black/15'>
-										<Image src={project.image || '/placeholder.svg'} alt={project.title} width={600} height={176} className='w-full h-44 object-cover transition-transform duration-300' loading='lazy' />
+										<Image src={project.image || '/placeholder.svg'} alt={project.title} width={600} height={176} className='w-full h-44 object-cover transition-transform duration-300' style={{ height: 'auto' }} loading='lazy' />
 										<div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300' />
 										{project.status && <Badge className='absolute top-4 left-4 bg-[rgba(var(--duck-rgb),0.8)] text-white text-xs'>{project.status}</Badge>}
 									</div>

@@ -571,8 +571,10 @@ html {
 	scroll-behavior: smooth;
 }
 
-/* Respect user reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
+/* DISABLED: Respect user reduced motion preference
+   Commented out to allow full animations on all devices including mobile.
+   To restore, uncomment the block below. */
+/* @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
 	*::after {
@@ -585,7 +587,7 @@ html {
 		scroll-behavior: auto;
 	}
 	body {
-		cursor: default; /* Allow system cursor if custom effects feel distracting */
+		cursor: default;
 	}
 	.animate-enhanced-float,
 	.animate-float-slow,
@@ -607,7 +609,7 @@ html {
 	.animate-cloud-morph-enhanced {
 		animation: none !important;
 	}
-}
+} */
 
 /* Adding gradient-radial utility class */
 .bg-gradient-radial {
@@ -854,8 +856,10 @@ html {
 	backdrop-filter: blur(var(--blur-strength, 8px)) saturate(120%);
 	-webkit-backdrop-filter: blur(var(--blur-strength, 8px)) saturate(120%);
 }
-/* Heuristic-based reduced motion/perf mode (applied via class on <html>) */
-.reduced-motion *,
+/* DISABLED: Heuristic-based reduced motion/perf mode (applied via class on <html>)
+   Commented out to allow full animations on all devices including mobile.
+   To restore, uncomment the block below. */
+/* .reduced-motion *,
 .reduced-motion *::before,
 .reduced-motion *::after {
 	animation: none !important;
@@ -865,7 +869,7 @@ html {
 .reduced-motion {
 	--blur-strength: 4px;
 	--glass-blur: 8px;
-}
+} */
 
 .liquid-glass:hover {
 	background: rgba(var(--duck-rgb), 0.06);
