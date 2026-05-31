@@ -103,48 +103,50 @@
 	{
 		"id": "qsign",
 		"title": "QSign",
-		"description": "Desktop e-signature application built with Python and Tkinter for secure document signing with customizable digital signatures, logo support, size and positioning controls, and real-time signature validation.",
-		"shortDescription": "Desktop app for creating and validating custom digital signatures.",
-		"image": "/og-image.webp",
+		"description": "A desktop signing client for physical tokens and smart cards. Customize signature appearance, placement, and overlays — then sign with your eIDAS-compliant certificate. B-Trust compatible.",
+		"shortDescription": "Desktop signing client for physical tokens and smart cards.",
+		"image": "/qsign-screenshot.png",
 		"images": [
-			"/og-image.webp",
-			"/logo.svg",
-			"/laptop.svg"
+			"/qsign-screenshot.png"
 		],
 		"tech": [
 			"Python",
-			"Tkinter",
-			"PDF handling"
+			"Desktop App",
+			"eIDAS",
+			"B-Trust",
+			"PDF Signing"
 		],
 		"category": "Desktop Application",
-		"status": "Completed",
+		"status": "Live",
 		"featured": true,
-		"client": "QSign",
+		"client": "QuackStack Ltd.",
 		"projectDate": "2025-08-10",
 		"duration": "8 weeks",
 		"teamSize": 2,
-		"challenge": "Create a desktop tool that lets users design custom signatures with logos and positioning, apply them to PDFs, and validate signatures created by others with full audit trails.",
-		"solution": "Built a Python/Tkinter desktop app with intuitive signature design tools, PDF rendering for signature placement preview, validation logic to confirm signature authenticity, and local document management for privacy.",
+		"challenge": "Create a desktop signing client that works with physical tokens and smart cards, allowing users to customize signature appearance, placement, and overlays while maintaining eIDAS compliance.",
+		"solution": "Built a desktop application that integrates with physical security tokens and smart cards, featuring a visual signature designer with placement controls, overlay support, and eIDAS-compliant signing — fully compatible with B-Trust certificates.",
 		"results": [
-			"Users can create professional signatures and apply them to documents instantly",
-			"Signature validation confirms authenticity and creation timestamps",
-			"Lightweight desktop app with no cloud dependency",
-			"Works offline for document processing"
+			"Users can brand every signature with custom appearance and overlays",
+			"Full eIDAS-compliant digital signing workflow",
+			"B-Trust certificate compatibility out of the box",
+			"Works offline with physical tokens and smart cards"
 		],
 		"features": [
-			"Drag-and-drop signature creation with logo uploads",
-			"Adjustable signature size, rotation, and transparency",
-			"PDF import and signature placement preview",
-			"Signature validation with timestamp verification",
-			"Local audit logs for all signing activity",
-			"Batch signature application to multiple documents"
+			"Physical token and smart card signing",
+			"Custom signature appearance and overlays",
+			"Precise signature placement controls",
+			"eIDAS-compliant certificate support",
+			"B-Trust compatibility",
+			"PDF document signing"
 		],
-		"demoUrl": "",
+		"demoUrl": "https://qsign.quackstack.net",
 		"githubUrl": "",
 		"tags": [
 			"Desktop",
 			"Python",
 			"E-Signature",
+			"eIDAS",
+			"B-Trust",
 			"PDF",
 			"Security"
 		]
@@ -298,6 +300,54 @@
 			"Performance",
 			"MDX",
 			"SEO"
+		]
+	},
+	{
+		"id": "horreror",
+		"title": "Horreror",
+		"description": "A lite online store for Horreror — a bold streetwear clothing brand inspired by horror aesthetics. Features a bilingual storefront (EN/BG), product catalog with cart functionality, and a dark, immersive design that matches the brand's identity.",
+		"shortDescription": "Lite online store for a horror-themed streetwear clothing brand.",
+		"image": "/horreror-main.png",
+		"images": [
+			"/horreror-main.png"
+		],
+		"tech": [
+			"E-commerce",
+			"Web Design",
+			"Responsive UI"
+		],
+		"category": "E-commerce",
+		"status": "Completed",
+		"featured": true,
+		"client": "Horreror",
+		"projectDate": "2025-06-01",
+		"duration": "4 weeks",
+		"teamSize": 2,
+		"challenge": "Build a lightweight yet visually striking online store for a horror-themed clothing brand that captures the dark, edgy aesthetic while keeping the shopping experience smooth and intuitive.",
+		"solution": "Designed and developed a streamlined e-commerce storefront with a dark immersive UI, bilingual support, product browsing with cart functionality, and mobile-first responsiveness — all tuned to reflect the brand's bold identity.",
+		"results": [
+			"Immersive dark-themed storefront that matches brand identity",
+			"Bilingual support (English and Bulgarian)",
+			"Smooth product browsing and cart experience",
+			"Mobile-optimized responsive layout"
+		],
+		"features": [
+			"Dark, horror-inspired visual design",
+			"Product catalog with category browsing",
+			"Shopping cart functionality",
+			"Bilingual storefront (EN/BG)",
+			"Mobile-first responsive layout",
+			"Brand-consistent typography and imagery"
+		],
+		"demoUrl": "",
+		"githubUrl": "",
+		"tags": [
+			"E-commerce",
+			"Clothing",
+			"Streetwear",
+			"Branding",
+			"Dark Theme",
+			"Online Store"
 		]
 	}
 ]

@@ -40,7 +40,7 @@ const TeamSection: React.FC = () => {
 				}}
 			/>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-				<SectionHeading title='Meet Our Leadership' subtext='Behind every project is a growing team of 20+ — programmers, designers, testers, architects, marketing specialists, copywriters, 3D artists, innovators, and more — led by three co-founders who started it all.' gradient />
+				<SectionHeading title='Meet Our Leadership' subtext='Behind every project is a growing team of 20+ programmers, designers, testers, architects, marketing specialists, copywriters, 3D artists, innovators, and more — led by three co-founders who started it all.' gradient />
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
 					{team.map((member, index) => (
 						// On lg (3 cols), shift the last row to start at col 2 when uneven.
@@ -86,7 +86,7 @@ const TeamSection: React.FC = () => {
 				</div>
 				<FadeUp duration={0.4} delay={0.3} className='text-center mt-12'>
 					<p className='text-foreground/50 text-sm'>
-						…and <span className='text-primary font-semibold'>20+ talented people</span> who make it all happen. Our team is growing — fast.
+						…and <span className='text-primary font-semibold'>20+ talented people</span> who make it all happen. Our team is growing fast.
 					</p>
 				</FadeUp>
 			</div>
