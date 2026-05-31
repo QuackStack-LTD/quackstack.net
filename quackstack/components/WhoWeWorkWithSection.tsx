@@ -91,7 +91,7 @@ const partners: Partner[] = [
 	{
 		name: 'DevHubOne',
 		role: 'Partner',
-		imageUrl: '/DevHubOne.webp'
+		imageUrl: '/DevHubOne.webp',
 	},
 	{
 		name: 'Upgrade Vision AI',

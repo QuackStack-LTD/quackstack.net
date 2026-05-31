@@ -6,6 +6,7 @@ import ServicesSection from '@/components/ServicesSection';
 import WhoWeWorkWithSection from '@/components/WhoWeWorkWithSection';
 import TechnologiesSection from '@/components/TechnologiesSection';
 import ProjectsSection from '@/components/ProjectsSection';
+import OurProductsSection from '@/components/OurProductsSection';
 import TeamSection from '@/components/TeamSection';
 import ProcessSection from '@/components/ProcessSection';
 import ContactSection from '@/components/ContactSection';
@@ -19,11 +20,12 @@ export default function QuackStackPortfolio() {
 			<GameOfLifeBackground />
 			<HeroSection />
 			<ServicesSection />
+			<TechnologiesSection />
 			<WhoWeWorkWithSection />
+			<OurProductsSection />
 			<ProjectsSection />
 			<TeamSection />
 			<ProcessSection />
-			<TechnologiesSection />
 			<ContactSection />
 			<StickyFooter />
 		</>
