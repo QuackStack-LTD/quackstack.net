@@ -99,11 +99,11 @@ const partners: Partner[] = [
 		imageUrl: '/upgrade_vision_ai.webp',
 		invertOnLight: true
 	},
-	// {
-	// 	name: 'Codbex',
-	// 	role: 'Partner',
-	// 	imageUrl: '/codbex.svg'
-	// },
+	{
+	 name: 'Codbex',
+	 role: 'Partner',
+	 imageUrl: '/codbex.svg'
+	},
 	{
 		name: 'SCAS',
 		role: 'Client & Partner',
